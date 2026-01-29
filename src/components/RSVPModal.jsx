@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { gsap } from 'gsap'
 import { X } from 'lucide-react'
@@ -8,11 +8,20 @@ const RSVPModal = ({ isOpen, onClose }) => {
   const modalRef = useRef(null)
   const overlayRef = useRef(null)
   const contentRef = useRef(null)
+  const [isIframeLoading, setIsIframeLoading] = useState(true)
 
   useEffect(() => {
     if (isOpen) {
+      // Reset loading state when modal opens
+      setIsIframeLoading(true)
+      
       // Prevent body scroll when modal is open
       document.body.style.overflow = 'hidden'
+      // Prevent layout shift from scrollbar
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+      if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`
+      }
       
       // Modal entrance animation
       gsap.set([overlayRef.current, contentRef.current], { opacity: 0 })
@@ -28,12 +37,14 @@ const RSVPModal = ({ isOpen, onClose }) => {
       })
     } else {
       // Re-enable body scroll when modal is closed
-      document.body.style.overflow = 'unset'
+      document.body.style.overflow = ''
+      document.body.style.paddingRight = ''
     }
 
     // Cleanup function
     return () => {
-      document.body.style.overflow = 'unset'
+      document.body.style.overflow = ''
+      document.body.style.paddingRight = ''
     }
   }, [isOpen])
 
@@ -75,10 +86,10 @@ const RSVPModal = ({ isOpen, onClose }) => {
       {/* Modal Content */}
       <div
         ref={contentRef}
-        className={`relative ${themeConfig.paragraph.background} rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden`}
+        className={`relative ${themeConfig.paragraph.background} rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden`}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-300/50">
+        <div className="flex items-center justify-between p-6 border-b border-gray-300/50 flex-shrink-0">
           <h2 className="text-2xl font-leckerli font-light text-gray-900/70">RSVP</h2>
           <button
             onClick={handleClose}
@@ -88,14 +99,53 @@ const RSVPModal = ({ isOpen, onClose }) => {
           </button>
         </div>
         
-        {/* Content */}
-        <div className="p-6">
-          <div className="w-full h-[600px] overflow-hidden rounded-lg">
+        {/* Content - Scrollable */}
+        <div className="p-6 overflow-y-auto flex-1 rsvp-modal-content">
+          {/* Flower, Title, and Description Section */}
+          <div className="text-center relative z-10 mb-6">
+            {/* Single Flower 2 Image */}
+            <div className="flex justify-center mb-4">
+              <img 
+                src="/assets/images/graphics/single-flower-2.png" 
+                alt="Flower decoration" 
+                className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain"
+              />
+            </div>
+            <h3 className="relative inline-block px-6 py-3">
+              <span 
+                className="font-tebranos text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none"
+                style={{ fontStyle: 'italic' }}
+              >
+                RSVP
+              </span>
+            </h3>
+            <div className="w-full max-w-3xl mx-auto mb-4">
+              <div className="w-full h-px bg-[#6B8FA3] opacity-40"></div>
+            </div>
+            <p className="text-sm sm:text-base font-albert font-thin text-[#333333] max-w-3xl mx-auto leading-relaxed text-center">
+              As we count the days with hearts to bright,<br />
+              Your RSVP helps make everything right.<br />
+              Kindly respond on or before<br /><strong className="!font-bold" style={{ fontWeight: 700 }}>February 28, 2026</strong>, we pray.<br />
+              For after this date, arrangements are final and must stay.
+            </p>
+          </div>
+          
+          {/* Iframe */}
+          <div className="w-full rounded-lg relative">
+            {isIframeLoading && (
+              <div className="absolute inset-0 flex items-center justify-center bg-[#f4f5ef] rounded-lg">
+                <p className="text-base sm:text-lg font-albert font-thin text-[#6B8FA3]">
+                  Loading the RSVP form...
+                </p>
+              </div>
+            )}
             <iframe
               src="https://forms.gle/tnGfeB2LUYEtXcMA9"
               title="RSVP Form"
-              className="w-full h-full border-0"
-              style={{ minHeight: '600px' }}
+              className="w-full border-0"
+              style={{ minHeight: '600px', height: '100%', width: '100%' }}
+              scrolling="yes"
+              onLoad={() => setIsIframeLoading(false)}
             />
           </div>
         </div>

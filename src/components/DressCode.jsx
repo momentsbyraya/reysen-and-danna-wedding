@@ -192,8 +192,8 @@ const DressCode = () => {
                         {/* Category Name */}
                         <div className="text-lg sm:text-xl md:text-2xl font-boska text-[#333333] mb-2 text-right lg-custom:text-left">
                           {section.title}
-                        </div>
-                        
+            </div>
+            
                         {/* Description */}
                         {section.description && (
                           <p className="text-sm sm:text-base font-albert font-thin italic text-[#333333] mb-3 text-right lg-custom:text-left">
@@ -204,22 +204,22 @@ const DressCode = () => {
                         {/* Color Swatches */}
                         <div className="flex gap-2 justify-end lg-custom:justify-start">
                           {['#000000', '#003366'].map((color, index) => (
-                            <div
+                    <div 
                               key={index}
                               className="relative group"
                               onMouseEnter={() => setActiveTooltip(`sponsors-${index}`)}
                               onMouseLeave={() => setActiveTooltip(null)}
                               onClick={() => setActiveTooltip(activeTooltip === `sponsors-${index}` ? null : `sponsors-${index}`)}
-                            >
+                    >
                               <div className="w-6 h-6 sm:w-8 sm:h-8 border border-gray-300 rounded cursor-pointer" style={{ backgroundColor: color }}></div>
                               {activeTooltip === `sponsors-${index}` && (
                                 <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-[#333333] text-white text-xs rounded whitespace-nowrap z-[9999] pointer-events-none color-swatch-tooltip" style={{ position: 'absolute' }}>
                                   {colorNames[color]}
                                   <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1 border-4 border-transparent border-t-[#333333]"></div>
-                                </div>
+                      </div>
                               )}
-                            </div>
-                          ))}
+                    </div>
+                  ))}
                         </div>
                       </div>
                     </div>
@@ -239,9 +239,9 @@ const DressCode = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          );
-        })()}
+                </div>
+              );
+            })()}
             
         {/* Vertical Divider - Hidden on mobile, shown on 992px and above */}
         {dresscode.sections && dresscode.sections.length > 1 && (
@@ -324,8 +324,8 @@ const DressCode = () => {
                       <p className="text-xs sm:text-sm font-albert font-thin italic text-[#333333]">
                         {section.description}
                       </p>
-                    </div>
-                  )}
+          </div>
+        )}
                       </div>
                     </div>
                 </div>
