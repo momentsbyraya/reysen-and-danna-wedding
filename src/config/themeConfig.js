@@ -26,7 +26,9 @@ export const themeConfig = {
         // Garden Wedding Color Palette
         terracotta: '#E07A5F',         // Terracotta color
         burntOrange: '#CC5500',        // Burnt Orange color (main)
+        lightBurntOrange: '#E67E5F',   // Light Burnt Orange color
         sageGreen: '#87AE73',          // Sage Green color
+        darkSageGreen: '#6B8F5A',       // Dark Sage Green color
         ivory: '#FFFFF0',              // Ivory color
         beige: '#F5F5DC',              // Beige color
         brown: '#8B4513',              // Brown color

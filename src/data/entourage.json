@@ -1,139 +1,140 @@
 {
   "couple": {
     "groom": {
-      "name": "MARK RESTY ROYO DERIT"
+      "name": "ALVIN P. IGNACIO"
     },
     "bride": {
-      "name": "EMMARIEL ALFANOSO ANTONIO"
+      "name": "NIKKA CHRISTINE T. BILLONES"
     }
   },
   "parents": {
     "groom": {
-      "father": "ROBERTO S. MENDOZA",
-      "mother": "MARIA CRISTINA L. MENDOZA"
+      "father": "ALVARADO IGNACIO",
+      "mother": "IMELDA P. IGNACIO"
     },
     "bride": {
-      "father": "CARLOS M. SANTOS",
-      "mother": "JOSEPHINE R. SANTOS"
+      "father": "RENATO BILLONES",
+      "mother": "NATIVIDAD JOENINE BILLONES"
     }
   },
   "entourageList": [
     {
+      "category": "Officiating Minister",
+      "names": [
+        "Ptr. Nolito M. Pragas"
+      ]
+    },
+    {
       "category": "Principal Sponsors",
       "ninong": [
-        "Mr. James Michael Cruz",
-        "Cong. Antonio Gabriel Reyes",
-        "Gen. Fernando Dela Rosa",
-        "Hon. Rafael Vincente Torres",
-        "Mr. Christian Paul Villanueva",
-        "Atty. Marcus Angelo Bautista",
-        "Atty. Daniel Joseph Garcia",
-        "Atty. Adrian Miguel Santos",
-        "Mr. Kevin Lawrence Ramos"
+        "Pastor Nolito M. Pragas",
+        "Pastor Eusebey D. Varona",
+        "Rev. Jess D. Sibug",
+        "Mr. Rolly C. Arango",
+        "Engr. Fred O. Dela Cruz",
+        "Mr. Enrique S. Lucero",
+        "Mr. Ronaldo L. Salonga",
+        "Arch. Leonardo B. San Diego",
+        "Hon. Renilo M. Teves",
+        "Engr. Ronald M. Frencillo",
+        "Mr. Danilo B. Rodriguez",
+        "Mr. Ariel C. Estudillo",
+        "Mr. Ricardo B. Animas",
+        "Mr. Ariel L. Magpantay"
       ],
       "ninang": [
-        "Mrs. Patricia Ann Martinez",
-        "Cong. Maria Isabel Fernandez",
-        "Mrs. Grace Victoria Lopez",
-        "Atty. Angela Rose Gonzales",
-        "Hon. Catherine Marie Rivera",
-        "Hon. Jennifer Lynn Morales",
-        "Hon. Michelle Anne Castillo",
-        "Hon. Stephanie Joy Ramirez",
-        "Ms. Nicole Beatrice Ocampo",
-        "Mr. Joshua Ryan Mendoza",
-        "Mr. Matthew James Perez",
-        "Mr. Andrew Robert Chavez",
-        "Mr. Jonathan Mark Aquino",
-        "Mr. Christopher John Lim",
-        "Atty. Ryan Patrick De Guzman",
-        "Atty. Brandon Kyle Navarro"
+        "Mrs. Jinky C. Pragas",
+        "Mrs. Rosemarie R. Varona",
+        "Mrs. Mishael L. Sibug",
+        "Mrs. Maribeth D. Arango",
+        "Mrs. Milagros P. Dela Cruz",
+        "Mrs. Rolyn A. Lucero",
+        "Mrs. Cheryl S. Salonga",
+        "Mrs. Imee San Diego",
+        "Mrs. Marilou B. Teves",
+        "Mrs. Emily T. Carillo",
+        "Mrs. Adelfa O. Rodriguez",
+        "Mrs. May Ann D. Estudillo",
+        "Mrs. Nelie H. Animas",
+        "Mrs. Bernadette A. Magpantay"
       ]
     },
     {
       "category": "Secondary Sponsors",
       "groomsmen": [
-        "JASON MICHAEL TAN",
-        "KEVIN RYAN CHUA",
-        "BRYAN CHRISTOPHER ONG",
-        "JUSTIN PATRICK LIM"
+        "Jeremy F. Amante",
+        "Daniel C. Tampipi",
+        "Aljun P. Ignacio"
       ],
       "bridesmaid": [
-        "SARAH MICHELLE CHAN",
-        "RACHEL ANNE WONG",
-        "DIANA GRACE LEE",
-        "AMANDA ROSE TAN"
+        "Pauline C. Gavin",
+        "Faith L. San Diego",
+        "Jelli P. Ignacio",
+        "Rose Constans S. Salonga"
       ]
     },
     {
       "category": "Bestman",
       "names": [
-        "ALEXANDER JAMES TORRES"
+        "Allan P. Ignacio"
       ]
     },
     {
-      "category": "Maid of Honor",
+      "category": "Matron",
       "names": [
-        "VICTORIA MARIE SANTOS"
-      ]
-    },
-    {
-      "category": "Veil Sponsors",
-      "names": [
-        "MICHAEL ANTHONY REYES",
-        "CHRISTINE MARIE REYES"
-      ]
-    },
-    {
-      "category": "Cord Sponsors",
-      "names": [
-        "RYAN PATRICK GARCIA",
-        "NICOLE BEATRICE GARCIA"
+        "Nikki Grace B. Loterina"
       ]
     },
     {
       "category": "Candle Sponsors",
       "names": [
-        "DAVID CHRISTOPHER LOPEZ",
-        "MARIA THERESA LOPEZ"
+        "Kerl Xandrea D. Pabunan",
+        "Lenard Daniell B. Teves"
+      ]
+    },
+    {
+      "category": "Veil Sponsors",
+      "names": [
+        "Claudine P. Ignacio",
+        "Leo F. Pilar"
+      ]
+    },
+    {
+      "category": "Cord Sponsors",
+      "names": [
+        "Dariz P. Ignacio",
+        "Wilmer Pilar"
       ]
     },
     {
       "category": "Ring Bearer",
       "names": [
-        "ETHAN JAMES MARTINEZ"
+        "Kael G. Ignacio"
       ]
     },
     {
       "category": "Bible Bearer",
       "names": [
-        "NOAH ALEXANDER FERNANDEZ"
+        "Kian D. Pabunan"
       ]
     },
     {
       "category": "Coin Bearer",
       "names": [
-        "LOGAN MICHAEL RAMIREZ"
+        "Isaac R. Pilar"
       ]
     },
     {
-      "category": "Junior Flower Girls",
+      "category": "Flower Girls",
       "names": [
-        "SOPHIA GRACE MORALES",
-        "ISABELLA ROSE CASTILLO",
-        "OLIVIA MAE RIVERA",
-        "EMMA JANE AQUINO",
-        "AVA MARIE CHAVEZ",
-        "MIA ANN OCAMPO"
+        "Reine Felize I. Billones",
+        "Yllia Keeana B. Billones"
       ]
     },
     {
-      "category": "Little Flower Girls",
+      "category": "Little Bride",
       "names": [
-        "LILY GRACE MENDOZA",
-        "CHLOE MARIE PEREZ",
-        "ZOEY ROSE LIM",
-        "HANNAH JOY DE GUZMAN"
+        "Yllora Elisse B. Billones"
       ]
     }
   ]

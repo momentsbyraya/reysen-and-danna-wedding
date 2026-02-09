@@ -22,15 +22,15 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #6B8FA3;
+  background: #6B8F5A;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #5B7A85;
+  background: #5A7A4A;
 }
 
-/* RSVP Modal scrollbar - same dusty blue */
+/* RSVP Modal scrollbar - dark sage green */
 .rsvp-modal-content::-webkit-scrollbar {
   width: 8px;
 }
@@ -40,12 +40,12 @@
 }
 
 .rsvp-modal-content::-webkit-scrollbar-thumb {
-  background: #6B8FA3;
+  background: #6B8F5A;
   border-radius: 4px;
 }
 
 .rsvp-modal-content::-webkit-scrollbar-thumb:hover {
-  background: #5B7A85;
+  background: #5A7A4A;
 }
 
 /* Print styles */

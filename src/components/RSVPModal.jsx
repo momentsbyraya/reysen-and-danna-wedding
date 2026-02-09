@@ -1,21 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { gsap } from 'gsap'
 import { X } from 'lucide-react'
 import { themeConfig } from '../config/themeConfig'
-import { couple } from '../data'
 
 const RSVPModal = ({ isOpen, onClose }) => {
   const modalRef = useRef(null)
   const overlayRef = useRef(null)
   const contentRef = useRef(null)
-  const [isIframeLoading, setIsIframeLoading] = useState(true)
 
   useEffect(() => {
     if (isOpen) {
-      // Reset loading state when modal opens
-      setIsIframeLoading(true)
-      
       // Prevent body scroll when modal is open
       document.body.style.overflow = 'hidden'
       // Prevent layout shift from scrollbar
@@ -102,52 +97,10 @@ const RSVPModal = ({ isOpen, onClose }) => {
         
         {/* Content - Scrollable */}
         <div className="p-6 overflow-y-auto flex-1 rsvp-modal-content">
-          {/* Flower, Title, and Description Section */}
-          <div className="text-center relative z-10 mb-6">
-            {/* Single Flower 2 Image */}
-            <div className="flex justify-center mb-4">
-              <img 
-                src="/assets/images/graphics/single-flower-2.png" 
-                alt="Flower decoration" 
-                className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain"
-              />
-            </div>
-            <h3 className="relative inline-block px-6 py-3">
-              <span 
-                className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl inline-block leading-none"
-                style={{ fontStyle: 'italic', color: themeConfig.text.burntOrange }}
-              >
-                RSVP
-              </span>
-            </h3>
-            <div className="w-full max-w-3xl mx-auto mb-4">
-              <div className="w-full h-px bg-[#6B8FA3] opacity-40"></div>
-            </div>
-            <p className="text-sm sm:text-base font-albert font-thin text-[#333333] max-w-3xl mx-auto leading-relaxed text-center">
-              As we count the days with hearts so bright,<br />
-              Your RSVP helps make everything right.<br />
-              Kindly respond on or before<br /><strong className="!font-bold" style={{ fontWeight: 700 }}>{couple.rsvpDeadline ? `${couple.rsvpDeadline.month} ${couple.rsvpDeadline.day}, ${couple.rsvpDeadline.year}` : 'March 7, 2026'}</strong>, we pray.<br />
-              For after this date, arrangements are final and must stay.
+          <div className="w-full rounded-lg relative flex items-center justify-center" style={{ minHeight: '600px' }}>
+            <p className="text-base sm:text-lg font-albert font-thin text-[#6B8FA3]">
+              To be added
             </p>
-          </div>
-          
-          {/* Iframe */}
-          <div className="w-full rounded-lg relative">
-            {isIframeLoading && (
-              <div className="absolute inset-0 flex items-center justify-center bg-[#f4f5ef] rounded-lg">
-                <p className="text-base sm:text-lg font-albert font-thin text-[#6B8FA3]">
-                  Loading the RSVP form...
-                </p>
-              </div>
-            )}
-            <iframe
-              src="https://forms.gle/tnGfeB2LUYEtXcMA9"
-              title="RSVP Form"
-              className="w-full border-0"
-              style={{ minHeight: '600px', height: '100%', width: '100%' }}
-              scrolling="yes"
-              onLoad={() => setIsIframeLoading(false)}
-            />
           </div>
         </div>
       </div>

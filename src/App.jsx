@@ -7,7 +7,7 @@ import RSVPModal from './components/RSVPModal'
 import DynamicTitle from './components/DynamicTitle'
 // import OpeningScreen from './components/OpeningScreen'
 import Loader from './components/Loader'
-// import Watermark from './components/Watermark'
+import Watermark from './components/Watermark'
 import ScrollToTop from './components/ScrollToTop'
 import Details from './components/pages/Details'
 import Entourage from './components/pages/Entourage'
@@ -26,12 +26,12 @@ function AppContent() {
     const preloadImages = async () => {
       const criticalImages = [
         // Hero image - most important
-        '/assets/images/prenup/prenup-1.png',  // Hero image
+        '/assets/images/prenup/Ligawan stage 1.jpg',  // Hero image
         // NavIndex images - all prenup photos used on home page
-        '/assets/images/prenup/prenup-5.jpg',  // Polaroid image
-        '/assets/images/prenup/prenup-6.jpg',  // RSVP container
-        '/assets/images/prenup/prenup-7.jpg',  // Moments polaroid 1
-        '/assets/images/prenup/prenup-4.jpg',  // Moments polaroid 2
+        '/assets/images/prenup/Proposal 5.jpg',  // Polaroid image
+        '/assets/images/prenup/Proposal 1.jpg',  // RSVP container
+        '/assets/images/prenup/Proposal 2.jpg',  // Moments polaroid 1
+        '/assets/images/prenup/Proposal 4.jpg',  // Moments polaroid 2
         // NavIndex graphics - all decorative elements
         '/assets/images/graphics/dusty-blue.png',
         '/assets/images/graphics/flower-1.png',
@@ -114,7 +114,7 @@ function AppContent() {
             // Check if we're on the home page
             if (window.location.pathname === '/' || window.location.pathname === '') {
               // Look for hero image
-              const heroImg = document.querySelector('img[src="/assets/images/prenup/prenup-1.png"]')
+              const heroImg = document.querySelector('img[src="/assets/images/prenup/Ligawan stage 1.jpg"]')
               if (heroImg) {
                 // Check if image is loaded and visible
                 if (heroImg.complete && heroImg.naturalHeight > 0) {
@@ -182,7 +182,7 @@ function AppContent() {
   return (
     <div className="App min-h-screen wedding-gradient">
       <DynamicTitle />
-      {/* <Watermark /> */}
+      <Watermark />
       <ScrollToTop />
       {/* Loader - shows while preloading */}
       {isLoading && (

@@ -20,8 +20,11 @@ const Hero = () => {
   const playButtonRef = useRef(null)
 
   const formatDate = () => {
-    const { month, day, year } = couple.wedding
-    return `${month} ${day}, ${year}`
+    const { day, year, month } = couple.wedding
+    // Format as MONTH.DD.YYYY (APRIL.07.2026)
+    const monthUpper = month.toUpperCase() // Get month name in uppercase (APRIL)
+    const dayFormatted = String(day).padStart(2, '0') // Ensure 2 digits (07)
+    return `${monthUpper}.${dayFormatted}.${year}`
   }
 
   const venueName = venues.ceremony.name
@@ -136,16 +139,36 @@ const Hero = () => {
       />
       
       <img 
-        src="/assets/images/prenup/prenup-1.png" 
+        src="/assets/images/prenup/Ligawan stage 1.jpg" 
         alt="Hero"
         className="w-full h-full object-cover"
       />
       
-      {/* Text Overlay at Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 pb-8 sm:pb-12 md:pb-16 lg:pb-20 px-4 sm:px-6 md:px-8">
+      {/* Blurred White SVG Overlay at Top */}
+      <svg 
+        className="absolute top-0 left-0 w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] z-10 pointer-events-none" 
+        preserveAspectRatio="none" 
+        viewBox="0 0 1200 400" 
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <filter id="blur">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
+          </filter>
+          <linearGradient id="topGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="rgba(255, 255, 255, 0.95)" />
+            <stop offset="40%" stopColor="rgba(255, 255, 255, 0.7)" />
+            <stop offset="70%" stopColor="rgba(255, 255, 255, 0.3)" />
+            <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#topGradient)" filter="url(#blur)" />
+      </svg>
+      
+      {/* Couple Names, Date and Venue at Top */}
+      <div className="absolute top-0 left-0 right-0 pt-8 sm:pt-12 md:pt-16 lg:pt-20 px-4 sm:px-6 md:px-8 z-20">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Couple Names - Styled */}
-          <div className="flex flex-col items-center justify-center mb-4 sm:mb-6">
+          <div className="flex flex-col items-center justify-center">
             {/* Groom's Name */}
             <div>
               <p ref={groomFirstNameRef} className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase leading-tight" style={{ color: '#CC5500' }}>
@@ -168,31 +191,53 @@ const Hero = () => {
               </p>
             </div>
           </div>
+        </div>
+      </div>
 
-          {/* Date and Venue - Plain Text */}
-          <div className="space-y-1 sm:space-y-2 mb-6 sm:mb-8">
-            <p ref={dateRef} className="text-sm sm:text-base md:text-lg font-albert" style={{ color: '#000000' }}>
+      {/* Blurred White SVG Overlay at Bottom */}
+      <svg 
+        className="absolute bottom-0 left-0 w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] z-10 pointer-events-none" 
+        preserveAspectRatio="none" 
+        viewBox="0 0 1200 400" 
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <filter id="blurBottom">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
+          </filter>
+          <linearGradient id="bottomGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="rgba(255, 255, 255, 0)" />
+            <stop offset="30%" stopColor="rgba(255, 255, 255, 0.3)" />
+            <stop offset="60%" stopColor="rgba(255, 255, 255, 0.7)" />
+            <stop offset="100%" stopColor="rgba(255, 255, 255, 0.95)" />
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#bottomGradient)" filter="url(#blurBottom)" />
+      </svg>
+
+      {/* Play/Pause Button - Bottom Right */}
+      <button 
+        ref={playButtonRef}
+        onClick={togglePlayPause}
+        className="absolute bottom-4 sm:bottom-6 md:bottom-8 right-4 sm:right-6 md:right-8 z-20 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full bg-white/90 hover:bg-white transition-colors duration-200 flex items-center justify-center shadow-lg"
+      >
+        {isPlaying ? (
+          <Pause size={18} className="sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#CC5500]" fill="#CC5500" />
+        ) : (
+          <Play size={18} className="sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#CC5500] ml-1" fill="#CC5500" />
+        )}
+      </button>
+
+      {/* Date and Venue at Bottom Center */}
+      <div className="absolute bottom-0 left-0 right-0 pb-8 sm:pb-12 md:pb-16 lg:pb-20 px-4 sm:px-6 md:px-8 z-20">
+        <div className="max-w-4xl mx-auto text-center">
+          <p ref={dateRef} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-foglihten" style={{ color: themeConfig.text.darkSageGreen }}>
               {formatDate()}
             </p>
-            <p ref={venueRef} className="text-xs sm:text-sm md:text-base font-albert" style={{ color: themeConfig.text.lightBlack }}>
+          {/* Venue - Plain Text */}
+          <p ref={venueRef} className="text-xs sm:text-sm md:text-base font-albert mt-2 sm:mt-3" style={{ color: themeConfig.text.lightBlack }}>
               {venueName}
             </p>
-          </div>
-
-          {/* Play/Pause Button */}
-          <div className="flex justify-center">
-            <button 
-              ref={playButtonRef}
-              onClick={togglePlayPause}
-              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-white/90 hover:bg-white transition-colors duration-200 flex items-center justify-center shadow-lg"
-            >
-              {isPlaying ? (
-                <Pause size={24} className="sm:w-7 sm:h-7 md:w-8 md:h-8 text-[#CC5500]" fill="#CC5500" />
-              ) : (
-                <Play size={24} className="sm:w-7 sm:h-7 md:w-8 md:h-8 text-[#CC5500] ml-1" fill="#CC5500" />
-              )}
-            </button>
-          </div>
         </div>
       </div>
     </div>

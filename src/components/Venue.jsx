@@ -111,12 +111,12 @@ const Venue = () => {
             {/* Venue Image and Details - Stacked on mobile, side by side on 768px+ */}
             <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
               {/* Venue Image */}
-              <div className="w-full md:w-2/5">
-                <div className="w-full relative venue-image-container">
+              <div className="w-full md:w-2/5 flex justify-center">
+                <div className="w-full max-w-[220px] sm:max-w-[240px] md:max-w-[260px] aspect-square relative venue-image-container">
                   <img 
-                    src="/assets/images/venues/ceremony.png" 
+                    src="/assets/images/venues/ceremony.JPG" 
                     alt={venue.name} 
-                    className="w-full h-full object-cover rounded"
+                    className="w-full h-full object-cover rounded-full"
                   />
                 </div>
               </div>
