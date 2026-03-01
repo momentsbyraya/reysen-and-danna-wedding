@@ -9,6 +9,18 @@
   animation: rotate 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
 }
 
+/* Spinning heart (cerulean blue) */
+.preloader-heart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.preloader-heart .heart-icon {
+  display: block;
+  fill: #5BAED9;
+  animation: rotate 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+}
+
 @keyframes rotate {
   50% {
     transform: rotate(360deg);
@@ -19,7 +31,7 @@
 }
 
 .preloader span {
-  --c: #CC5500;
+  --c: #5BAED9;
   position: absolute;
   display: block;
   height: 64px;
@@ -77,14 +89,34 @@
   height: 16px;
   width: 64px;
   border-radius: 50%;
-  background-color: #CC5500;
-  border: 1px solid #CC5500;
+  background-color: #5BAED9;
+  border: 1px solid #5BAED9;
   animation: shadow 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
 }
 
 @keyframes shadow {
   50% {
     transform: translateX(-50%) scale(0.5);
-    border-color: #B84A00;
+    border-color: #4A9FD4;
+  }
+}
+
+/* Loader on cerulean background (loading screen) - white shapes for contrast */
+.loader-on-cerulean .preloader span {
+  --c: #ffffff;
+  background: var(--c);
+  border-color: var(--c);
+}
+.loader-on-cerulean .loader-shadow {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.loader-on-cerulean .loader-shadow {
+  animation: shadowCerulean 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+}
+@keyframes shadowCerulean {
+  50% {
+    transform: translateX(-50%) scale(0.5);
+    border-color: rgba(255, 255, 255, 0.3);
   }
 }

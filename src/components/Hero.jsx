@@ -133,7 +133,7 @@ const Hero = () => {
       {/* Audio Element */}
       <audio
         ref={audioRef}
-        src="/assets/music/Canon in D.mp3"
+        src="/assets/music/PALAGI - TJxKZ  LIVE SESSIONS.mp3"
         loop
         onEnded={() => setIsPlaying(false)}
       />
@@ -144,9 +144,10 @@ const Hero = () => {
         className="w-full h-full object-cover"
       />
       
-      {/* Blurred White SVG Overlay at Top */}
+      {/* Top gradient: short strip so it stays in header only; no overlap below */}
       <svg 
-        className="absolute top-0 left-0 w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] z-10 pointer-events-none" 
+        className="absolute top-0 z-10 pointer-events-none h-24 sm:h-28 md:h-32 lg:h-36"
+        style={{ left: '-2.5%', width: '105%' }}
         preserveAspectRatio="none" 
         viewBox="0 0 1200 400" 
         xmlns="http://www.w3.org/2000/svg"
@@ -165,38 +166,80 @@ const Hero = () => {
         <rect width="100%" height="100%" fill="url(#topGradient)" filter="url(#blur)" />
       </svg>
       
-      {/* Couple Names, Date and Venue at Top */}
-      <div className="absolute top-0 left-0 right-0 pt-8 sm:pt-12 md:pt-16 lg:pt-20 px-4 sm:px-6 md:px-8 z-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="flex flex-col items-center justify-center">
-            {/* Groom's Name */}
-            <div>
-              <p ref={groomFirstNameRef} className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase leading-tight" style={{ color: '#CC5500' }}>
-                {couple.groom.firstName}
-              </p>
-              <p ref={groomLastNameRef} className="font-ballet text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight -mt-2 sm:-mt-3" style={{ color: themeConfig.text.light }}>
-                {couple.groom.lastName}
-              </p>
-            </div>
-            <p ref={andRef} className="caudex-bold text-sm sm:text-base md:text-lg lg:text-xl uppercase leading-tight my-2 sm:my-3" style={{ color: '#000000' }}>
-              AND
+      {/* Couple Names - Centered with radial glow and soft blend */}
+      <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6 md:px-8 z-20 pointer-events-none">
+        {/* Radial gradient glow: transparent edges → soft dark center behind text */}
+        <div
+          className="absolute inset-0 flex items-center justify-center"
+          style={{
+            background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.12) 45%, transparent 70%)',
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative flex flex-col items-center justify-center text-center max-w-4xl">
+          {/* Groom's Name */}
+          <div>
+            <p
+              ref={groomFirstNameRef}
+              className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase leading-tight"
+              style={{
+                color: '#FFFFFF',
+                textShadow: '0 0 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.2)',
+              }}
+            >
+              {couple.groom.firstName}
             </p>
-            {/* Bride's Name */}
-            <div>
-              <p ref={brideFirstNameRef} className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase leading-tight" style={{ color: '#CC5500' }}>
-                {couple.bride.firstName}
-              </p>
-              <p ref={brideLastNameRef} className="font-ballet text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight -mt-2 sm:-mt-3" style={{ color: themeConfig.text.light }}>
-                {couple.bride.lastName}
-              </p>
-            </div>
+            <p
+              ref={groomLastNameRef}
+              className="font-ballet text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight -mt-2 sm:-mt-3"
+              style={{
+                color: '#FFFFFF',
+                textShadow: '0 0 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.2)',
+              }}
+            >
+              {couple.groom.lastName}
+            </p>
+          </div>
+          <p
+            ref={andRef}
+            className="caudex-bold text-sm sm:text-base md:text-lg lg:text-xl uppercase leading-tight my-2 sm:my-3"
+            style={{
+              color: '#FFFFFF',
+              textShadow: '0 0 24px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.3)',
+            }}
+          >
+            AND
+          </p>
+          {/* Bride's Name */}
+          <div>
+            <p
+              ref={brideFirstNameRef}
+              className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase leading-tight"
+              style={{
+                color: '#FFFFFF',
+                textShadow: '0 0 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.2)',
+              }}
+            >
+              {couple.bride.firstName}
+            </p>
+            <p
+              ref={brideLastNameRef}
+              className="font-ballet text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight -mt-2 sm:-mt-3"
+              style={{
+                color: '#FFFFFF',
+                textShadow: '0 0 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.2)',
+              }}
+            >
+              {couple.bride.lastName}
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Blurred White SVG Overlay at Bottom */}
+      {/* Bottom gradient: short strip so it ends above the floral banner; no overlap on flowers */}
       <svg 
-        className="absolute bottom-0 left-0 w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] z-10 pointer-events-none" 
+        className="absolute bottom-0 z-10 pointer-events-none h-24 sm:h-28 md:h-32 lg:h-36"
+        style={{ left: '-2.5%', width: '105%' }}
         preserveAspectRatio="none" 
         viewBox="0 0 1200 400" 
         xmlns="http://www.w3.org/2000/svg"
@@ -223,16 +266,16 @@ const Hero = () => {
         style={{ pointerEvents: 'auto' }}
       >
         {isPlaying ? (
-          <Pause size={18} className="sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#CC5500]" fill="#CC5500" />
+          <Pause size={18} className="sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#5BAED9]" fill="#5BAED9" />
         ) : (
-          <Play size={18} className="sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#CC5500] ml-1" fill="#CC5500" />
+          <Play size={18} className="sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#5BAED9] ml-1" fill="#5BAED9" />
         )}
       </button>
 
       {/* Date and Venue at Bottom Center */}
       <div className="absolute bottom-0 left-0 right-0 pb-8 sm:pb-12 md:pb-16 lg:pb-20 px-4 sm:px-6 md:px-8 z-20">
         <div className="max-w-4xl mx-auto text-center">
-          <p ref={dateRef} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-foglihten" style={{ color: themeConfig.text.darkSageGreen }}>
+          <p ref={dateRef} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-foglihten" style={{ color: '#ffffff' }}>
               {formatDate()}
             </p>
           {/* Venue - Plain Text */}

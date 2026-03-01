@@ -3,10 +3,8 @@ import Hero from './Hero'
 import Venue from './Venue'
 import Schedule from './Schedule'
 import RSVPSection from './RSVPSection'
-import GiftRegistry from './GiftRegistry'
 import LoveStory from './LoveStory'
 import DressCode from './DressCode'
-import PhotoUpload from './PhotoUpload'
 import FAQ from './FAQ'
 import SaveTheDateCounter from './SaveTheDateCounter'
 import Divider from './Divider'
@@ -62,14 +60,8 @@ const Home = ({ onOpenRSVP }) => {
           {/* RSVP Section */}
           <RSVPSection onOpenRSVP={onOpenRSVP} />
 
-          {/* Gift Registry Section */}
-          <GiftRegistry />
-
           {/* Love Story Section */}
           <LoveStory />
-
-          {/* Photo Upload Section (Oh Snap) */}
-          <PhotoUpload />
         </div>
       </div>
 

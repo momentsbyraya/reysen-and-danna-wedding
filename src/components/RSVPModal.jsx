@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { gsap } from 'gsap'
 import { X } from 'lucide-react'
@@ -8,13 +8,9 @@ const RSVPModal = ({ isOpen, onClose }) => {
   const modalRef = useRef(null)
   const overlayRef = useRef(null)
   const contentRef = useRef(null)
-  const [isIframeLoading, setIsIframeLoading] = useState(true)
 
   useEffect(() => {
     if (isOpen) {
-      // Reset loading state when modal opens
-      setIsIframeLoading(true)
-      
       // Prevent body scroll when modal is open
       document.body.style.overflow = 'hidden'
       // Prevent layout shift from scrollbar
@@ -99,25 +95,11 @@ const RSVPModal = ({ isOpen, onClose }) => {
           </button>
         </div>
         
-        {/* Content - Scrollable */}
-        <div className="p-6 overflow-y-auto flex-1 rsvp-modal-content">
-          <div className="w-full rounded-lg relative">
-            {isIframeLoading && (
-              <div className="absolute inset-0 flex items-center justify-center bg-[#f4f5ef] rounded-lg">
-                <p className="text-base sm:text-lg font-albert font-thin text-[#6B8FA3]">
-                  Loading the RSVP form...
-                </p>
-              </div>
-            )}
-            <iframe
-              src="https://forms.gle/VYxgeL5Lfpfa6WETA"
-              title="RSVP Form"
-              className="w-full border-0"
-              style={{ minHeight: '600px', height: '100%', width: '100%' }}
-              scrolling="yes"
-              onLoad={() => setIsIframeLoading(false)}
-            />
-          </div>
+        {/* Content - Placeholder until RSVP form is ready */}
+        <div className="p-6 overflow-y-auto flex-1 rsvp-modal-content flex items-center justify-center min-h-[200px]">
+          <p className="text-xl sm:text-2xl font-albert font-thin text-gray-500">
+            To Be Added
+          </p>
         </div>
       </div>
     </div>,

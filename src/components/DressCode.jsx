@@ -18,37 +18,35 @@ const DressCode = () => {
   // State for tooltip visibility
   const [activeTooltip, setActiveTooltip] = useState(null)
   
-  // Color swatches for Principal Sponsors (black for Ninongs, sage green for Ninangs)
+  // Color swatches for Principal Sponsors (gray for Ninongs, Cerulean for Ninangs)
   const sponsorColors = [
-    '#000000',                      // Black (for Ninongs)
-    themeConfig.text.sageGreen      // Sage Green (for Ninangs)
+    '#6B7280',                      // Gray (for Ninongs)
+    themeConfig.text.cerulean       // Cerulean Blue (for Ninangs)
   ]
   
-  // Color swatches for Guests (from the color palette shown)
+  // Color swatches for Guests (blue palette + neutrals)
   const guestColors = [
-    themeConfig.text.burntOrange,   // Deep burnt orange
-    '#E07A5F',                      // Lighter burnt orange/terracotta
-    themeConfig.text.sageGreen,      // Medium sage green
-    '#9CAF88',                      // Lighter sage green/grey-green
-    '#D3D3D3',                      // Light grey with lavender hint
-    '#FFE5D9',                      // Light peach/blush pink
-    '#FFD4C4'                       // Darker peach/blush pink
+    themeConfig.text.royalAzure,    // Royal Azure
+    themeConfig.text.cerulean,     // Cerulean Blue
+    '#B9E3FF',                     // Powder Blue
+    '#7EC8E3',                     // Soft sky blue
+    '#D3D3D3',                     // Light grey
+    '#9CA3AF'                      // Grey
   ]
   
   // Color name mappings
   const colorNames = {
+    '#6B7280': 'Gray',
     '#000000': 'Black',
-    [themeConfig.text.burntOrange]: 'Burnt Orange',
-    '#E07A5F': 'Terracotta',
-    [themeConfig.text.sageGreen]: 'Sage Green',
-    '#9CAF88': 'Garden Green',
+    [themeConfig.text.royalAzure]: 'Royal Azure',
+    [themeConfig.text.cerulean]: 'Cerulean Blue',
+    '#B9E3FF': 'Powder Blue',
+    '#7EC8E3': 'Sky Blue',
     '#D3D3D3': 'Light Grey',
-    '#FFE5D9': 'Blush Pink',
-    '#FFD4C4': 'Peach',
+    '#9CA3AF': 'Grey',
     [themeConfig.text.brown]: 'Brown',
     [themeConfig.text.beige]: 'Beige',
     [themeConfig.text.ivory]: 'Ivory',
-    [themeConfig.text.gardenGreen]: 'Garden Green'
   }
 
   useEffect(() => {

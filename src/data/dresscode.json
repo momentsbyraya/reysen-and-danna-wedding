@@ -1,20 +1,20 @@
 {
   "mainDressCode": {
     "title": "Attire Guide",
-    "description": "Formal attire with these colors on our special day."
+    "description": "Gray or any touch of Blue. We'd love our guests to dress in smart casual or semi-formal attire in this palette. Please avoid wearing white so the bride can shine."
   },
   "sections": [
     {
       "title": "Principal Sponsors",
       "type": "text",
-      "description": "For Ninongs: Formal suit in black. For Ninangs: Floor-length gown in graceful sage green.",
+      "description": "For Ninongs: Formal suit in gray/blue. For Ninangs: Floor-length dress/gown in gray or any touch of blue.",
       "image": "/assets/images/dresscode/sponsors.png"
     },
     {
       "title": "Guests",
       "type": "image",
-      "shortDescription": "Ladies: Modest dress. Men: Long sleeves.",
-      "description": "Ladies: Modest dress. Men: Long sleeves.",
+      "shortDescription": "Gray or any touch of Blue. Smart casual or semi-formal.",
+      "description": "Gray or any touch of Blue. We'd love our guests to dress in smart casual or semi-formal attire in this palette.",
       "image": "/assets/images/dresscode/guests.png"
     }
   ]

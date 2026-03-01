@@ -13,8 +13,6 @@ import PhotoSection from '../PhotoSection'
 import Venue from '../Venue'
 import Schedule from '../Schedule'
 import DressCode from '../DressCode'
-import GiftRegistry from '../GiftRegistry'
-import PhotoUpload from '../PhotoUpload'
 import './Details.css'
 
 // Register ScrollTrigger plugin
@@ -358,7 +356,7 @@ const Details = () => {
         >
           <path 
             d="M0,50 Q300,20 600,50 T1200,50" 
-            stroke="#6B8FA3" 
+            stroke="#5BAED9" 
             strokeWidth="2" 
             fill="none"
             opacity="0.4"
@@ -389,7 +387,7 @@ const Details = () => {
         >
           <path 
             d="M0,50 Q300,20 600,50 T1200,50" 
-            stroke="#6B8FA3" 
+            stroke="#5BAED9" 
             strokeWidth="2" 
             fill="none"
             opacity="0.4"
@@ -402,12 +400,6 @@ const Details = () => {
         <div className="max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto">
           {/* Dress Code Section */}
           <DressCode />
-
-          {/* Gift Registry Section */}
-          <GiftRegistry />
-
-          {/* Photo Upload Section */}
-          <PhotoUpload />
         </div>
       </div>
 

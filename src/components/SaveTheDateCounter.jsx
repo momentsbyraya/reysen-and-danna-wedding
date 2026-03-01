@@ -44,22 +44,13 @@ const SaveTheDateCounter = () => {
       )
     }
 
+    // Countdown numbers: fade in on load (no scroll trigger so they're always visible once loaded)
     if (countdownRef.current) {
+      const numbers = countdownRef.current.querySelectorAll('.countdown-number')
       gsap.fromTo(
-        '.countdown-number',
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power2.out',
-          stagger: 0.2,
-          scrollTrigger: {
-            trigger: countdownRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-          }
-        }
+        numbers,
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1, delay: 0.2 }
       )
     }
 
@@ -78,12 +69,15 @@ const SaveTheDateCounter = () => {
       ref={sectionRef}
       className="relative w-full py-8 sm:py-12 md:py-16 lg:py-20"
       style={{
-        backgroundImage: 'url(/assets/images/prenup/prenup11.png)',
+        backgroundImage: 'url(/assets/images/prenup/prenup2.jpg)',
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundPosition: 'center 30%',
         backgroundRepeat: 'no-repeat'
       }}
     >
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-black/30 z-[5] pointer-events-none" aria-hidden="true" />
+
       {/* SVG Overlay at Top */}
       <svg className="absolute top-0 left-0 w-full h-32 sm:h-40 md:h-48 z-10 pointer-events-none" preserveAspectRatio="none" viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -123,7 +117,7 @@ const SaveTheDateCounter = () => {
         {/* Countdown Timer */}
         <div ref={countdownRef} className="flex justify-center items-center space-x-3 sm:space-x-4 md:space-x-6 px-4">
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl imperial-script-regular mb-1 countdown-number not-italic" style={{ color: themeConfig.text.burntOrange }}>
+            <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl imperial-script-regular mb-1 countdown-number not-italic" style={{ color: '#ffffff', textShadow: '0 1px 3px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.5)' }}>
               {countdown.days}
             </div>
             <div className="text-xs sm:text-sm font-albert opacity-80 font-medium" style={{ color: themeConfig.text.lightBlack }}>Days</div>
@@ -132,7 +126,7 @@ const SaveTheDateCounter = () => {
           <div className="text-2xl sm:text-3xl md:text-4xl font-albert font-thin" style={{ color: themeConfig.text.burntOrange }}>:</div>
           
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl imperial-script-regular mb-1 countdown-number not-italic" style={{ color: themeConfig.text.burntOrange }}>
+            <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl imperial-script-regular mb-1 countdown-number not-italic" style={{ color: '#ffffff', textShadow: '0 1px 3px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.5)' }}>
               {countdown.hours}
             </div>
             <div className="text-xs sm:text-sm font-albert opacity-80 font-medium" style={{ color: themeConfig.text.lightBlack }}>Hours</div>
@@ -141,7 +135,7 @@ const SaveTheDateCounter = () => {
           <div className="text-2xl sm:text-3xl md:text-4xl font-albert font-thin" style={{ color: themeConfig.text.burntOrange }}>:</div>
           
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl imperial-script-regular mb-1 countdown-number not-italic" style={{ color: themeConfig.text.burntOrange }}>
+            <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl imperial-script-regular mb-1 countdown-number not-italic" style={{ color: '#ffffff', textShadow: '0 1px 3px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.5)' }}>
               {countdown.minutes}
             </div>
             <div className="text-xs sm:text-sm font-albert opacity-80 font-medium" style={{ color: themeConfig.text.lightBlack }}>Minutes</div>
@@ -150,7 +144,7 @@ const SaveTheDateCounter = () => {
           <div className="text-2xl sm:text-3xl md:text-4xl font-albert font-thin" style={{ color: themeConfig.text.burntOrange }}>:</div>
           
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl imperial-script-regular mb-1 countdown-number not-italic" style={{ color: themeConfig.text.burntOrange }}>
+            <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl imperial-script-regular mb-1 countdown-number not-italic" style={{ color: '#ffffff', textShadow: '0 1px 3px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.5)' }}>
               {countdown.seconds}
             </div>
             <div className="text-xs sm:text-sm font-albert opacity-80 font-medium" style={{ color: themeConfig.text.lightBlack }}>Seconds</div>

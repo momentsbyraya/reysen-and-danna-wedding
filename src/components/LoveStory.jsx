@@ -22,17 +22,11 @@ const LoveStory = () => {
   // Split content into paragraphs
   const paragraphs = loveStory.content.split('\n\n').filter(p => p.trim())
 
-  // Polaroid images - using prenup images in specific order
+  // Polaroid images - prenup1, prenup2, prenup3 for Our Love Story
   const polaroidImages = [
-    '/assets/images/prenup/prenup1.jpeg',  // 1. akyat ng ligaw
-    '/assets/images/prenup/prenup2.png',   // 2. ligawan stage 2.0
-    '/assets/images/prenup/prenup3.JPG',   // 3. ligawan stage 2.1
-    '/assets/images/prenup/prenup5.png',   // 4. ligawan stage 1
-    '/assets/images/prenup/prenup6.png',   // 5. rest of images
-    '/assets/images/prenup/prenup7.JPG',   // 6. moment 6 image
-    '/assets/images/prenup/prenup9.JPG',
-    '/assets/images/prenup/prenup10.JPG',
-    '/assets/images/prenup/prenup12.png',
+    '/assets/images/prenup/prenup1.jpg',
+    '/assets/images/prenup/prenup2.jpg',
+    '/assets/images/prenup/prenup3.JPG',
   ]
 
   useEffect(() => {
@@ -163,9 +157,10 @@ const LoveStory = () => {
     }
   }, [isModalOpen])
 
-  // Polaroid component
-  const Polaroid = ({ image, rotation = 0, index, size = 'normal' }) => {
+  // Polaroid component (altLabel e.g. 'prenup1', 'prenup2', 'prenup3')
+  const Polaroid = ({ image, rotation = 0, index, size = 'normal', altLabel }) => {
     const maxWidth = size === 'small' ? '150px' : '200px'
+    const alt = altLabel || `Love story moment ${index + 1}`
     return (
     <div 
       className="bg-white shadow-lg relative cursor-pointer"
@@ -182,7 +177,7 @@ const LoveStory = () => {
       <div className="relative">
         <img 
           src={image}
-          alt={`Love story moment ${index + 1}`}
+          alt={alt}
           className="w-full aspect-square object-cover"
           style={{
             border: '2px solid #f5f5f0',
@@ -230,116 +225,50 @@ const LoveStory = () => {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8">
         <div className="relative">
-          {/* Story content */}
-          <div className="relative z-10 space-y-16 sm:space-y-20 md:space-y-24">
-            {paragraphs.map((paragraph, index) => {
-              const isEven = index % 2 === 0
-              // Calculate image indices: even = 2 photos, odd = 1 photo
-              // Pattern: index 0 (2 photos), index 1 (1 photo), index 2 (2 photos), index 3 (1 photo)...
-              // Calculate starting image index based on previous items
-              let startImageIndex
-              if (index === 0) {
-                startImageIndex = 0
-              } else {
-                // Count images used before this index
-                // index 0 uses 2, index 1 uses 1, index 2 uses 2, index 3 uses 1...
-                const pairs = Math.floor(index / 2)
-                const imagesBefore = pairs * 3 + (index % 2 === 0 ? 0 : 2)
-                startImageIndex = imagesBefore
-              }
-              
-              const singleImageIndex = isEven ? null : startImageIndex
-              const imageIndex1 = isEven ? startImageIndex : null
-              const imageIndex2 = isEven ? startImageIndex + 1 : null
-              const isLast = index === paragraphs.length - 1
-
-              return (
-                <div key={index} className="story-item relative">
-                  {/* Curved connecting line and dot */}
-                  {!isLast && (
-                    <div className="absolute left-1/2 transform -translate-x-1/2 pointer-events-none" style={{ 
-                      bottom: '-4rem',
-                      width: '120px',
-                      height: '8rem',
-                      zIndex: 0
-                    }}>
-                      {/* Curved SVG line - S shape */}
-                      <svg 
-                        width="120" 
-                        height="100%" 
-                        viewBox="0 0 120 100" 
-                        preserveAspectRatio="none"
-                        className="absolute inset-0"
-                        style={{ overflow: 'visible' }}
-                      >
-                        <path
-                          d="M 60 0 Q 40 25, 60 50 T 60 100"
-                          stroke={themeConfig.text.burntOrange}
-                          strokeWidth="2"
-                          fill="none"
-                          strokeDasharray="4,4"
-                          opacity="0.4"
-                        />
-                      </svg>
-                      {/* Dot at bottom center */}
-                      <div 
-                        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3 h-3 rounded-full"
-                        style={{ 
-                          backgroundColor: themeConfig.text.burntOrange,
-                          opacity: 0.5
-                        }}
-                      />
-                    </div>
+          {/* Story content: prenup1 & prenup2 above text, story paragraph, prenup3 below */}
+          <div className="relative z-10 space-y-10 sm:space-y-12 md:space-y-16">
+            {paragraphs.map((paragraph, index) => (
+              <div key={index} className="story-item relative flex flex-col items-center gap-10 sm:gap-12 md:gap-16">
+                {/* Row 1: prenup1 and prenup2 above the story text */}
+                <div className="flex gap-4 sm:gap-6 justify-center w-full">
+                  {polaroidImages[0] && (
+                    <Polaroid 
+                      image={polaroidImages[0]} 
+                      rotation={-5} 
+                      index={0} 
+                      altLabel="prenup1"
+                    />
                   )}
-
-                  {isEven ? (
-                    // Even rows (index 0, 2, 4...): 2 polaroids, then paragraph
-                    <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
-                      <div className="flex gap-4 sm:gap-6 justify-center flex-1">
-                        {polaroidImages[imageIndex1] && (
-                          <Polaroid 
-                            image={polaroidImages[imageIndex1]} 
-                            rotation={-5}
-                            index={imageIndex1}
-                          />
-                        )}
-                        {polaroidImages[imageIndex2] && (
-                          <Polaroid 
-                            image={polaroidImages[imageIndex2]} 
-                            rotation={5}
-                            index={imageIndex2}
-                          />
-                        )}
-                      </div>
-                      <div className="flex-1 text-center sm:text-left">
-                        <p className="text-base sm:text-lg font-albert font-thin text-[#333333] leading-relaxed">
-                          {formatParagraph(paragraph)}
-                        </p>
-                      </div>
-                    </div>
-                  ) : (
-                    // Odd rows (index 1, 3, 5...): 1 polaroid, then paragraph
-                    <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
-                      <div className="flex justify-center flex-1 order-1 sm:order-1">
-                        {polaroidImages[singleImageIndex] && (
-                          <Polaroid 
-                            image={polaroidImages[singleImageIndex]} 
-                            rotation={3}
-                            index={singleImageIndex}
-                            size="small"
-                          />
-                        )}
-                      </div>
-                      <div className="flex-1 text-center sm:text-left order-2 sm:order-2">
-                        <p className="text-base sm:text-lg font-albert font-thin text-[#333333] leading-relaxed">
-                          {formatParagraph(paragraph)}
-                        </p>
-                      </div>
-                    </div>
+                  {polaroidImages[1] && (
+                    <Polaroid 
+                      image={polaroidImages[1]} 
+                      rotation={5} 
+                      index={1} 
+                      altLabel="prenup2"
+                    />
                   )}
                 </div>
-              )
-            })}
+
+                {/* Row 2: story text */}
+                <div className="w-full max-w-2xl mx-auto text-center">
+                  <p className="text-base sm:text-lg font-albert font-thin text-[#333333] leading-relaxed">
+                    {formatParagraph(paragraph)}
+                  </p>
+                </div>
+
+                {/* Row 3: prenup3 below the story text */}
+                {polaroidImages[2] && (
+                  <div className="flex justify-center w-full">
+                    <Polaroid 
+                      image={polaroidImages[2]} 
+                      rotation={2} 
+                      index={2} 
+                      altLabel="prenup3"
+                    />
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@
 
 .venue-title-text {
   line-height: 0.8;
-  color: #CC5500;
+  color: #4A9FD4;
 }
 
 /* Venue Image Container */
@@ -60,7 +60,7 @@
 /* Date Selector */
 .date-month-year {
   font-style: italic;
-  color: #6B8FA3;
+  color: #5BAED9;
 }
 
 .heart-day-number {
@@ -83,7 +83,7 @@
 /* Dress Code */
 .dress-code-title-text {
   line-height: 0.8;
-  color: #CC5500;
+  color: #4A9FD4;
   white-space: nowrap;
 }
 
@@ -126,58 +126,13 @@
 }
 }
 
-/* Gift Registry */
-.gift-registry-scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.gift-registry-title-text {
-  line-height: 0.8;
-  color: #CC5500;
-}
-
-.gift-button {
-  min-width: 200px;
-}
-
-.gift-button-border {
-  margin: 4px;
-}
-
-/* Upload Section */
-.upload-title {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
-.upload-title-text {
-  line-height: 0.8;
-  color: #CC5500;
-}
-
-.upload-qr-container {
-  aspect-ratio: 1 / 1;
-}
-
-.upload-content-container {
-  aspect-ratio: 1 / 1;
-}
-
-/* On screens 992px and above, upload content container should fit content height */
-@media (min-width: 992px) {
-  .upload-content-container {
-    aspect-ratio: auto;
-    height: fit-content;
-  }
-}
-
 /* FAQ Section */
 .faq-section {
   padding: 4rem 0;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  background-color: #CC5500;
+  background: linear-gradient(135deg, #4A9FD4 0%, #5BAED9 100%);
 }
 
 .faq-title-text {

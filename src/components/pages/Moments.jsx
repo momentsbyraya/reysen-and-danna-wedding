@@ -547,7 +547,7 @@ const Moments = () => {
               className="stylish-calligraphy text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block ml-2" 
               style={{ 
                 lineHeight: '1.2',
-                color: '#006666',
+                color: '#5BAED9',
                 display: 'inline-block',
                 paddingTop: '0.5rem',
                 paddingBottom: '0.5rem'
@@ -562,7 +562,7 @@ const Moments = () => {
             <div ref={firstParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16 mt-4">
               <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
                 <p className="mb-4">
-                  At just 15 years old, the bride first encountered her future groom, a colleague of her father. On a lively evening, the groom graciously accompanied her father home from his birthday party. That night, as she studied, a gentle knock at the door sent her heart racing. When she opened it and saw him standing there, she flustered and quickly hid, a fleeting moment of magic passing between them, yet unacknowledged.
+                  From the moment our eyes first met, we knew something magical was beginning. What started as a simple conversation on social media – with her in Manila and me in Cavite – has blossomed into a beautiful journey filled with laughter, adventures, and countless precious memories together.
                 </p>
               </div>
            </div>

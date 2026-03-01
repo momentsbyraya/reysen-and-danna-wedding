@@ -76,7 +76,7 @@ const Schedule = () => {
   }, [])
 
   return (
-    <div className="relative program-section bg-[#CC5500]">
+    <div className="relative program-section bg-[#4A9FD4]">
       {/* Program Title */}
       <div ref={scheduleTitleRef} className="relative z-10 mb-12 sm:mb-16 program-title-container">
         <h3 className="px-6 py-3">

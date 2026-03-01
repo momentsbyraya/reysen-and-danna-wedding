@@ -1,64 +1,66 @@
-// Theme Configuration - Easy to customize colors
+// Theme Configuration - Softer Cerulean Blue palette (reduced saturation, increased lightness, sky undertone)
+// Primary: #4A9FD4, Hover: #3B8FCE, Accent: #5BAED9 (WCAG AA text: #2E7BB8 where needed)
 export const themeConfig = {
     // Background Colors
     backgrounds: {
-        primary: 'bg-gray-900',        // Main dark background
-        secondary: 'bg-gray-800',      // Secondary dark background (modals, cards)
-        accent: 'bg-[#CC5500]',        // Accent background (Burnt Orange)
-        light: 'bg-white/50',          // Light overlay backgrounds
-        theme: 'bg-[#F5F5DC]',         // Custom theme color (Beige/Ivory)
-        garden: 'bg-[#F0F8F0]',       // Garden wedding light background
-        crumpledPaper: 'bg-[url("/assets/images/crumpled-paper.png")] bg-cover bg-center bg-no-repeat', // Crumpled paper background
+        primary: 'bg-gray-900',
+        secondary: 'bg-gray-800',
+        accent: 'bg-[#5BAED9]',           // Softer Cerulean - main motif
+        light: 'bg-white/50',
+        theme: 'bg-[#B9E3FF]',             // Powder Blue - light backgrounds
+        garden: 'bg-[#B9E3FF]',           // Powder Blue
+        crumpledPaper: 'bg-[url("/assets/images/crumpled-paper.png")] bg-cover bg-center bg-no-repeat',
     },
 
-    // Text Colors - Garden Wedding Theme
+    // Text Colors
     text: {
-        primary: 'text-[#CC5500]',     // Main heading text color (Burnt Orange)
-        secondary: 'text-gray-300',    // Subheading and body text color
-        accent: 'text-[#CC5500]',      // Accent text color (Burnt Orange)
-        muted: 'text-gray-400',        // Muted text color (icons, small text)
-        dark: 'text-wedding-800',      // Dark text for light backgrounds
-        theme: 'text-[#E07A5F]',       // Custom theme text color (Terracotta)
-        pause: 'text-[#dcdcdc]',       // Pause button text color
-        custom: 'text-[#44484d]',      // Custom text color
-        light: '#6b7280',              // Light shade text color (gray-500)
-        lightBlack: '#4a5568',         // Lighter black shade (gray-600)
-        // Garden Wedding Color Palette
-        terracotta: '#E07A5F',         // Terracotta color
-        burntOrange: '#CC5500',        // Burnt Orange color (main)
-        lightBurntOrange: '#E67E5F',   // Light Burnt Orange color
-        sageGreen: '#87AE73',          // Sage Green color
-        darkSageGreen: '#6B8F5A',       // Dark Sage Green color
-        ivory: '#FFFFF0',              // Ivory color
-        beige: '#F5F5DC',              // Beige color
-        brown: '#8B4513',              // Brown color
-        gardenGreen: '#9CAF88',        // Garden green variant
+        primary: 'text-[#4A9FD4]',         // Softer Cerulean - headings
+        secondary: 'text-gray-300',
+        accent: 'text-[#5BAED9]',         // Softer Cerulean - motif
+        muted: 'text-gray-400',
+        dark: 'text-wedding-800',
+        theme: 'text-[#4A9FD4]',
+        pause: 'text-[#dcdcdc]',
+        custom: 'text-[#44484d]',
+        light: '#6b7280',
+        lightBlack: '#4a5568',
+        cerulean: '#5BAED9',
+        powderBlue: '#B9E3FF',
+        royalAzure: '#4A9FD4',
+        primaryDark: '#2E7BB8',            // Darker for WCAG AA on white (small text)
+        // Aliases for components still using old names
+        burntOrange: '#4A9FD4',
+        sageGreen: '#5BAED9',
+        gardenGreen: '#5BAED9',
+        ivory: '#FFFFF0',
+        beige: '#F5F5DC',
+        brown: '#8B4513',
     },
 
-    // Border Colors - Garden Wedding Theme
+    // Border Colors
     borders: {
-        primary: 'border-gray-700',    // Main border color
-        secondary: 'border-gray-600',  // Secondary border color
-        accent: 'border-[#CC5500]',    // Accent border color (Burnt Orange)
-        theme: 'border-[#E07A5F]',     // Custom theme border color (Terracotta)
-        garden: 'border-[#87AE73]',    // Garden green border
+        primary: 'border-gray-700',
+        secondary: 'border-gray-600',
+        accent: 'border-[#5BAED9]',
+        theme: 'border-[#4A9FD4]',
+        garden: 'border-[#5BAED9]',
     },
 
-    // Button Colors - Garden Wedding Theme
+    // Button Colors - Softer Cerulean, hover slightly darker
     buttons: {
-        primary: 'bg-[#CC5500] hover:bg-[#B84A00]',  // Primary button (Burnt Orange)
-        secondary: 'border border-gray-600 hover:border-gray-400', // Secondary button
-        text: 'text-gray-300 hover:text-white', // Button text color
-        theme: 'bg-[#E07A5F] hover:bg-[#E07A5F]/80', // Custom theme button (Terracotta)
-        garden: 'bg-[#87AE73] hover:bg-[#7A9D66]',   // Garden green button
+        primary: 'bg-[#4A9FD4] hover:bg-[#3B8FCE]',
+        secondary: 'border border-gray-600 hover:border-gray-400',
+        text: 'text-gray-300 hover:text-white',
+        theme: 'bg-[#5BAED9] hover:bg-[#4A9FD4]',
+        garden: 'bg-[#5BAED9] hover:bg-[#4A9FD4]',
     },
 
-    // Hover Effects - Garden Wedding Theme
+    // Hover Effects
     hover: {
-        primary: 'hover:bg-[#B84A00]',     // Primary button hover (Dark Burnt Orange)
-        secondary: 'hover:border-gray-400 hover:text-white', // Secondary button hover
-        theme: 'hover:bg-[#E07A5F]/80',     // Custom theme hover (Terracotta)
-        garden: 'hover:bg-[#7A9D66]',      // Garden green hover
+        primary: 'hover:bg-[#3B8FCE]',
+        secondary: 'hover:border-gray-400 hover:text-white',
+        theme: 'hover:bg-[#4A9FD4]',
+        garden: 'hover:bg-[#4A9FD4]',
     },
 
     // Container Configuration
@@ -68,64 +70,60 @@ export const themeConfig = {
         center: 'mx-auto',
     },
 
-    // Calendar Configuration - Garden Wedding Theme
+    // Calendar Configuration
     calendar: {
-        weddingDate: '2026-04-07',          // Wedding date (YYYY-MM-DD format)
-        highlightColor: 'bg-[#87AE73]',      // Color for wedding date highlight (Sage Green)
-        heartColor: 'text-[#CC5500]',        // Color for heart icon (Burnt Orange)
-        textColor: 'text-gray-700',         // Calendar text color
-        headerColor: 'text-[#CC5500]',       // Month header color (Burnt Orange)
-        dayNamesColor: 'text-[#87AE73]',     // Day names color (Sage Green)
-        background: 'bg-[#F0F8F0]',          // Calendar background color (Garden)
+        weddingDate: '2026-05-05',
+        highlightColor: 'bg-[#5BAED9]',       // Softer Cerulean
+        heartColor: 'text-[#5BAED9]',
+        textColor: 'text-gray-700',
+        headerColor: 'text-[#4A9FD4]',        // Softer Cerulean
+        dayNamesColor: 'text-[#5BAED9]',
+        background: 'bg-[#B9E3FF]',           // Powder Blue
     },
 
-    // Paragraph Configuration - Garden Wedding Theme
+    // Paragraph Configuration
     paragraph: {
-        background: 'bg-[#F5F5DC]',         // Paragraph background color (Beige/Ivory)
-        garden: 'bg-[#F0F8F0]',            // Garden wedding background
+        background: 'bg-[#B9E3FF]',            // Powder Blue
+        garden: 'bg-[#B9E3FF]',
     },
 
-    // Custom CSS Variables - Garden Wedding Theme (for advanced customization)
+    // Custom CSS Variables
     cssVariables: {
-        '--primary-bg': '#111827',           // #111827 (gray-900)
-        '--secondary-bg': '#1f2937',        // #1f2937 (gray-800)
-        '--accent-bg': '#CC5500',           // #CC5500 (Burnt Orange) - Main color
-        '--accent-hover': '#B84A00',        // #B84A00 (Dark Burnt Orange Hover)
-        '--primary-text': '#CC5500',        // #CC5500 (Burnt Orange)
-        '--secondary-text': '#d1d5db',      // #d1d5db (gray-300)
-        '--accent-text': '#CC5500',         // #CC5500 (Burnt Orange)
-        '--muted-text': '#9ca3af',          // #9ca3af (gray-400)
-        '--border-color': '#E07A5F',        // #E07A5F (Terracotta)
-        '--custom-theme': '#E07A5F',        // #E07A5F (Terracotta)
-        // Garden Wedding Color Palette
-        '--terracotta': '#E07A5F',          // Terracotta
-        '--burnt-orange': '#CC5500',        // Burnt Orange (Main)
-        '--sage-green': '#87AE73',          // Sage Green
-        '--garden-green': '#9CAF88',        // Garden Green variant
-        '--ivory': '#FFFFF0',               // Ivory
-        '--beige': '#F5F5DC',               // Beige
-        '--brown': '#8B4513',               // Brown
-        '--garden-bg': '#F0F8F0',           // Garden wedding background
+        '--primary-bg': '#111827',
+        '--secondary-bg': '#1f2937',
+        '--accent-bg': '#4A9FD4',             // Softer Cerulean - buttons, strong accents
+        '--accent-hover': '#3B8FCE',
+        '--primary-text': '#4A9FD4',          // Softer Cerulean - headings
+        '--secondary-text': '#d1d5db',
+        '--accent-text': '#5BAED9',           // Softer Cerulean - motif
+        '--muted-text': '#9ca3af',
+        '--border-color': '#5BAED9',
+        '--custom-theme': '#5BAED9',
+        '--cerulean': '#5BAED9',
+        '--powder-blue': '#B9E3FF',
+        '--royal-azure': '#4A9FD4',
+        '--ivory': '#FFFFF0',
+        '--beige': '#F5F5DC',
+        '--brown': '#8B4513',
+        '--garden-bg': '#B9E3FF',
     }
 }
 
 // Quick color presets for different themes
 export const themePresets = {
-    // Dark Elegant (Current)
     darkElegant: {
         backgrounds: {
             primary: 'bg-gray-900',
             secondary: 'bg-gray-800',
-            accent: 'bg-[#008080]',
+            accent: 'bg-[#5BAED9]',
         },
         text: {
             primary: 'text-white',
             secondary: 'text-gray-300',
-            accent: 'text-[#008080]',
+            accent: 'text-[#5BAED9]',
         }
     },
 
-    // Light Romantic
     lightRomantic: {
         backgrounds: {
             primary: 'bg-rose-50',
@@ -139,7 +137,6 @@ export const themePresets = {
         }
     },
 
-    // Warm Autumn
     warmAutumn: {
         backgrounds: {
             primary: 'bg-amber-50',
@@ -153,19 +150,18 @@ export const themePresets = {
         }
     },
 
-    // Garden Wedding Theme
     gardenWedding: {
         backgrounds: {
-            primary: 'bg-[#F0F8F0]',        // Garden light background
+            primary: 'bg-[#B9E3FF]',
             secondary: 'bg-white',
-            accent: 'bg-[#CC5500]',         // Burnt Orange
-            theme: 'bg-[#F5F5DC]',          // Beige/Ivory
+            accent: 'bg-[#4A9FD4]',
+            theme: 'bg-[#B9E3FF]',
         },
         text: {
-            primary: 'text-[#CC5500]',       // Burnt Orange
+            primary: 'text-[#4A9FD4]',
             secondary: 'text-gray-700',
-            accent: 'text-[#E07A5F]',       // Terracotta
-            garden: 'text-[#87AE73]',       // Sage Green
+            accent: 'text-[#5BAED9]',
+            garden: 'text-[#5BAED9]',
         }
     }
 }
@@ -181,4 +177,4 @@ export const applyThemePreset = (presetName) => {
     if (preset) {
         Object.assign(themeConfig, preset)
     }
-} 
+}
