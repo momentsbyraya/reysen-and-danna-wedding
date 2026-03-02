@@ -141,7 +141,7 @@ const Hero = () => {
       <img 
         src="/assets/images/prenup/prenup3.JPG" 
         alt="Hero"
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover md:object-top"
       />
       
       {/* Top gradient: short strip so it stays in header only; no overlap below */}
