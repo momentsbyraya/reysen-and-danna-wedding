@@ -221,6 +221,35 @@ const LoveStory = () => {
             {loveStory.title}
           </span>
         </h3>
+
+        {/* Thread design divider */}
+        <div className="relative w-full flex justify-center mt-6 mb-8 sm:mt-8 sm:mb-10">
+          <svg
+            className="w-full max-w-md h-12 sm:h-14 md:h-16 px-8"
+            viewBox="0 0 400 60"
+            preserveAspectRatio="xMidYMid meet"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M0,30 Q100,10 200,30 T400,30"
+              fill="none"
+              stroke={themeConfig.text.burntOrange}
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              opacity="0.5"
+            />
+            <path
+              d="M0,35 Q100,15 200,35 T400,35"
+              fill="none"
+              stroke={themeConfig.text.sageGreen}
+              strokeWidth="1"
+              strokeLinecap="round"
+              strokeDasharray="4 6"
+              opacity="0.4"
+            />
+          </svg>
+        </div>
       </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8">
