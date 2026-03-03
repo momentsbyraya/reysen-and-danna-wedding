@@ -97,19 +97,6 @@ const RSVPModal = ({ isOpen, onClose }) => {
         
         {/* Content - Google Form RSVP */}
         <div className="flex-1 flex flex-col min-h-0">
-          <div className="flex-shrink-0 px-6 pt-4 pb-2 flex items-center justify-between gap-4 border-b border-gray-200/60">
-            <p className="text-sm font-albert text-gray-600">
-              RSVP for the Wedding of Rayvin Jerick & Cheche — kindly respond on or before March 30, 2026.
-            </p>
-            <a
-              href="https://forms.gle/ByJFQn2Ccyzyz76h8"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-shrink-0 text-sm font-medium text-blue-600 hover:text-blue-700 underline"
-            >
-              Open in new tab
-            </a>
-          </div>
           <div className="flex-1 overflow-y-auto rsvp-modal-content p-4 min-h-[400px]">
             <iframe
               src="https://forms.gle/ByJFQn2Ccyzyz76h8"
