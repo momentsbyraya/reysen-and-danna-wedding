@@ -2,12 +2,18 @@ import React, { useRef, useEffect, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
-import { venues as venuesData } from '../data'
+import { venues as venuesData, schedule as scheduleData } from '../data'
 import SecondaryButton from './SecondaryButton'
 import './pages/Details.css'
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger)
+
+function orderOfEventsTime(events, label) {
+  const key = label.toLowerCase()
+  const match = events.find((ev) => ev.description.trim().toLowerCase() === key)
+  return match?.time ?? null
+}
 
 const Venue = () => {
   const venueTitleRef = useRef(null)
@@ -18,6 +24,11 @@ const Venue = () => {
   const ceremony = venuesData.ceremony
   const reception = venuesData.reception
 
+  const ceremonyTime =
+    orderOfEventsTime(scheduleData.events, 'Ceremony') ?? ceremony.time
+  const receptionTime =
+    orderOfEventsTime(scheduleData.events, 'Reception') ?? reception.time
+
   // Left = Ceremony (General Trias), Right = Reception (Choco Cabana)
   const venueSlides = [
     {
@@ -25,7 +36,7 @@ const Venue = () => {
       alt: 'St. John Evangelist Parish Church, Guimba Nueva Ecija – Ceremony',
       label: 'Ceremony',
       name: ceremony.name,
-      ceremonyTime: ceremony.time,
+      ceremonyTime,
       receptionTime: null,
       googleMapsUrl: ceremony.googleMapsUrl
     },
@@ -35,7 +46,7 @@ const Venue = () => {
       label: 'Reception',
       name: reception.name,
       ceremonyTime: null,
-      receptionTime: reception.time,
+      receptionTime,
       googleMapsUrl: reception.googleMapsUrl
     }
   ]

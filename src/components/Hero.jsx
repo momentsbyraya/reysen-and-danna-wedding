@@ -177,76 +177,44 @@ const Hero = () => {
         <rect width="100%" height="100%" fill="url(#topGradient)" filter="url(#blur)" />
       </svg>
       
-      {/* Couple Names - Centered with radial glow and soft blend */}
-      <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6 md:px-8 z-20 pointer-events-none">
-        {/* Radial gradient glow: transparent edges → soft dark center behind text */}
+      {/* Couple names at top */}
+      <div className="absolute inset-0 flex items-start justify-center px-4 sm:px-6 md:px-8 pt-16 sm:pt-20 md:pt-24 z-20 pointer-events-none">
+        {/* Soft glow behind top names for readability */}
         <div
-          className="absolute inset-0 flex items-center justify-center"
+          className="absolute top-0 left-0 right-0 h-56 sm:h-64 md:h-72"
           style={{
-            background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.12) 45%, transparent 70%)',
+            background: 'radial-gradient(ellipse 70% 60% at 50% 22%, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.12) 45%, transparent 80%)',
           }}
           aria-hidden="true"
         />
-        <div className="relative flex flex-col items-center justify-center text-center max-w-4xl">
-          {/* Groom's Name */}
-          <div>
-            <p
-              ref={groomFirstNameRef}
-              className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase leading-tight"
-              style={{
-                color: '#FFFFFF',
-                textShadow: '0 0 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.2)',
-              }}
-            >
-              {couple.groom.firstName}
-            </p>
-            {groomLastName && (
-              <p
-                ref={groomLastNameRef}
-                className="font-ballet text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight -mt-2 sm:-mt-3"
-                style={{
-                  color: '#FFFFFF',
-                  textShadow: '0 0 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.2)',
-                }}
-              >
-                {couple.groom.lastName}
-              </p>
-            )}
-          </div>
-          <p
-            ref={andRef}
-            className="caudex-bold text-sm sm:text-base md:text-lg lg:text-xl uppercase leading-tight my-2 sm:my-3"
+        <div className="relative max-w-4xl mx-auto flex justify-center">
+          <div
+            className="inline-flex flex-col items-center text-center gap-0 sm:gap-0.5"
+            role="group"
+            aria-label={`${couple.groom.firstName} and ${couple.bride.firstName}`}
             style={{
               color: '#FFFFFF',
-              textShadow: '0 0 24px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.3)',
+              textShadow: '0 0 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.2)',
             }}
           >
-            AND
-          </p>
-          {/* Bride's Name */}
-          <div>
-            <p
+            <span
+              ref={groomFirstNameRef}
+              className="font-dancing-script uppercase text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-none block w-full text-center"
+            >
+              {couple.groom.firstName}
+            </span>
+            <span
+              ref={andRef}
+              className="caudex-bold block text-center text-lg sm:text-xl md:text-2xl lg:text-3xl leading-none -my-0.5 sm:my-0"
+            >
+              &
+            </span>
+            <span
               ref={brideFirstNameRef}
-              className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase leading-tight"
-              style={{
-                color: '#FFFFFF',
-                textShadow: '0 0 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.2)',
-              }}
+              className="font-dancing-script uppercase text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-none block w-full text-center"
             >
               {couple.bride.firstName}
-            </p>
-            {brideLastName && (
-              <p
-                ref={brideLastNameRef}
-                className="font-ballet text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight -mt-2 sm:-mt-3"
-                style={{
-                  color: '#FFFFFF',
-                  textShadow: '0 0 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.2)',
-                }}
-              >
-                {couple.bride.lastName}
-              </p>
-            )}
+            </span>
           </div>
         </div>
       </div>

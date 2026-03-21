@@ -5,8 +5,13 @@
   },
   "sections": [
     {
-      "title": "Principal Sponsors and Guests",
-      "type": "text"
+      "title": "Principal Sponsors",
+      "description": "For Ninang: formal Filipiniana in peach or beige. For Ninong: Barong Tagalog.",
+      "type": "principalSponsors"
+    },
+    {
+      "title": "Guests",
+      "type": "guests"
     }
   ]
-} 
+}

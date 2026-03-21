@@ -489,7 +489,7 @@ const Entourage = () => {
             </div>
 
             {/* Parents Section */}
-            <div ref={parentsRef} className="mb-6 flex flex-row gap-4 sm:gap-6 justify-center items-center">
+            <div ref={parentsRef} className="mb-6 flex flex-row gap-4 sm:gap-6 justify-center items-start">
               {/* Groom's Parents */}
               <div className="flex-1">
                 <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-right uppercase" style={{ color: '#5BAED9' }}>Groom's Parents</p>
@@ -554,7 +554,7 @@ const Entourage = () => {
             })()}
 
             {/* Bestman and Maid of Honor */}
-            <div className="mb-6 flex flex-row gap-4 sm:gap-6 justify-center items-center">
+            <div className="mb-6 flex flex-row gap-4 sm:gap-6 justify-center items-start">
               {/* Bestman */}
               {bestman && (
                 <div ref={bestmanRef} className="flex-1">

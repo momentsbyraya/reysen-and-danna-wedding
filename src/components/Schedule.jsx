@@ -2,11 +2,80 @@ import React, { useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { couple, schedule as scheduleData } from '../data'
+import { schedule as scheduleData } from '../data'
 import './pages/Details.css'
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger)
+
+const iconClass = 'w-7 h-7 sm:w-8 sm:h-8 text-[#f8f4ec]'
+
+function eventIconKey(description) {
+  const d = description.toLowerCase()
+  if (d.includes('ceremony')) return 'ceremony'
+  if (d.includes('photo') || d.includes('video')) return 'media'
+  if (d.includes('reception')) return 'reception'
+  if (d.includes('dinner')) return 'dinner'
+  if (d.includes('party')) return 'party'
+  return 'default'
+}
+
+function TimelineEventIcon({ description }) {
+  const key = eventIconKey(description)
+  const svgProps = {
+    className: iconClass,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    xmlns: 'http://www.w3.org/2000/svg',
+    'aria-hidden': true,
+  }
+  const stroke = { stroke: 'currentColor', strokeWidth: 1.35, strokeLinecap: 'round', strokeLinejoin: 'round' }
+
+  switch (key) {
+    case 'ceremony':
+      return (
+        <svg {...svgProps}>
+          <circle cx="9" cy="12" r="4.25" {...stroke} />
+          <circle cx="15" cy="12" r="4.25" {...stroke} />
+        </svg>
+      )
+    case 'media':
+      return (
+        <svg {...svgProps}>
+          <rect x="3" y="7" width="18" height="12" rx="2" {...stroke} />
+          <circle cx="12" cy="13" r="3" {...stroke} />
+          <path d="M8 7V6a1 1 0 011-1h6a1 1 0 011 1v1" {...stroke} />
+        </svg>
+      )
+    case 'reception':
+      return (
+        <svg {...svgProps}>
+          <path d="M4 20h16M6 20V10l6-4 6 4v10" {...stroke} />
+          <path d="M9 20v-6h6v6" {...stroke} />
+        </svg>
+      )
+    case 'dinner':
+      return (
+        <svg {...svgProps}>
+          <path d="M7.5 21V9m0 0L5.5 5.5M7.5 9L7.5 5.5M7.5 9L9.5 5.5" {...stroke} />
+          <path d="M17 4v17M17 4c2.2 0 3.5 1.6 3.5 4v6.5c0 1.4-1 2.5-2.5 2.5" {...stroke} />
+        </svg>
+      )
+    case 'party':
+      return (
+        <svg {...svgProps}>
+          <path d="M11 17V5h5.5v9.5" {...stroke} />
+          <ellipse cx="7.5" cy="17.5" rx="2.4" ry="3" transform="rotate(-18 7.5 17.5)" {...stroke} />
+        </svg>
+      )
+    default:
+      return (
+        <svg {...svgProps}>
+          <circle cx="12" cy="12" r="4" {...stroke} />
+        </svg>
+      )
+  }
+}
 
 const Schedule = () => {
   const navigate = useNavigate()
@@ -79,9 +148,18 @@ const Schedule = () => {
 
   return (
     <>
-      <div className="relative program-section bg-[#6685A4]">
+      <div className="relative program-section schedule-moody overflow-hidden">
+        <div className="schedule-bokeh" aria-hidden="true">
+          <div className="schedule-bokeh-vignette" />
+          <div className="schedule-bokeh-glow" />
+          <div className="schedule-bokeh-orb schedule-bokeh-orb--1" />
+          <div className="schedule-bokeh-orb schedule-bokeh-orb--2" />
+          <div className="schedule-bokeh-orb schedule-bokeh-orb--3" />
+          <div className="schedule-bokeh-orb schedule-bokeh-orb--4" />
+        </div>
+
         {/* Program Title */}
-        <div ref={scheduleTitleRef} className="relative z-10 mb-12 sm:mb-16 program-title-container">
+        <div ref={scheduleTitleRef} className="relative z-10 mb-12 sm:mb-16 program-title-container schedule-moody-title">
           <h3 className="px-6 py-3">
             <span 
               className="font-foglihten text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-none capitalize program-title-text"
@@ -89,15 +167,14 @@ const Schedule = () => {
               Order of Events
             </span>
           </h3>
-          <p className="text-sm sm:text-base md:text-lg font-albert text-[#f5f5f0] text-center mt-4 mx-auto px-4 program-description">
+          <p className="text-sm sm:text-base md:text-lg font-albert text-center mt-4 mx-auto px-4 program-description schedule-moody-lede">
             Join us as we celebrate this special day together
           </p>
         </div>
 
         {/* Vertical Timeline */}
-        <div ref={timelineRef} className="relative max-w-md sm:max-w-xl lg:max-w-2xl w-full mx-auto z-10 timeline-container">
-          {/* Central Vertical Line - Light Grey */}
-          <div ref={lineRef} className="absolute left-1/2 top-0 bottom-0 w-px bg-[#f5f5f0] opacity-50 transform -translate-x-1/2"></div>
+        <div ref={timelineRef} className="relative max-w-md sm:max-w-xl lg:max-w-2xl w-full mx-auto z-10 timeline-container schedule-moody-timeline">
+          <div ref={lineRef} className="schedule-timeline-line absolute left-1/2 top-0 bottom-0 w-px transform -translate-x-1/2" />
 
           {/* Timeline Events */}
           <div ref={eventsRef} className="space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-24">
@@ -108,27 +185,37 @@ const Schedule = () => {
                    {isLeft ? (
                      <>
               <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
-                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time schedule-moody-time">
                            {event.time}
                 </div>
-                <div className="border-b border-dashed border-[#f5f5f0] opacity-50 mb-1"></div>
-                <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
+                <div className="border-b border-dashed schedule-moody-dash mb-1"></div>
+                <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description schedule-moody-desc">
                            {event.description}
                 </div>
               </div>
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#f5f5f0] rounded-full z-10"></div>
+              <div
+                className="schedule-timeline-node absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center"
+                aria-hidden="true"
+              >
+                <TimelineEventIcon description={event.description} />
+              </div>
                        <div className="w-1/2 pl-6 text-left"></div>
                      </>
                    ) : (
                      <>
                        <div className="w-1/2 pr-6 text-right"></div>
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#f5f5f0] rounded-full z-10"></div>
+              <div
+                className="schedule-timeline-node absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center"
+                aria-hidden="true"
+              >
+                <TimelineEventIcon description={event.description} />
+              </div>
               <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
-                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1 timeline-event-time schedule-moody-time">
                            {event.time}
                 </div>
-                <div className="border-b border-dashed border-[#f5f5f0] opacity-50 mb-1"></div>
-                <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description">
+                <div className="border-b border-dashed schedule-moody-dash mb-1"></div>
+                <div className="text-sm sm:text-base md:text-lg font-albert timeline-event-description schedule-moody-desc">
                            {event.description}
                 </div>
               </div>

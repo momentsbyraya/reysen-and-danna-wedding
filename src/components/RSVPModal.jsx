@@ -4,6 +4,9 @@ import { gsap } from 'gsap'
 import { X } from 'lucide-react'
 import { themeConfig } from '../config/themeConfig'
 
+const RSVP_FORM_EMBED_SRC =
+  'https://docs.google.com/forms/d/e/1FAIpQLSc6SKj6zB3H-oukZgiKxpeHVVHJCItUxyVWqGEOe6Dm0FSySw/viewform?embedded=true'
+
 const RSVPModal = ({ isOpen, onClose }) => {
   const modalRef = useRef(null)
   const overlayRef = useRef(null)
@@ -82,7 +85,7 @@ const RSVPModal = ({ isOpen, onClose }) => {
       {/* Modal Content */}
       <div
         ref={contentRef}
-        className={`relative ${themeConfig.paragraph.background} rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden`}
+        className={`relative ${themeConfig.paragraph.background} rounded-2xl shadow-2xl max-w-5xl w-full max-h-[92vh] flex flex-col overflow-hidden`}
       >
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-300/50 flex-shrink-0">
@@ -97,10 +100,25 @@ const RSVPModal = ({ isOpen, onClose }) => {
         
         {/* Content */}
         <div className="flex-1 flex flex-col min-h-0">
-          <div className="flex-1 overflow-y-auto rsvp-modal-content p-6 min-h-[200px] flex items-center justify-center">
-            <div className="text-center text-gray-900/70 font-albert">
-              To be added
-            </div>
+          <div className="flex-1 overflow-y-auto rsvp-modal-content p-4 sm:p-6 min-h-0 w-full">
+            <iframe
+              title="RSVP — The Wedding of Dennis & Marvilyn"
+              src={RSVP_FORM_EMBED_SRC}
+              className="w-full rounded-lg border border-gray-200/80 bg-white"
+              style={{ minHeight: 'min(72vh, 880px)', height: '72vh' }}
+              loading="lazy"
+            />
+            <p className="mt-3 text-center text-xs text-gray-500 font-albert">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSc6SKj6zB3H-oukZgiKxpeHVVHJCItUxyVWqGEOe6Dm0FSySw/viewform?usp=header"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-gray-700"
+              >
+                Open form in a new tab
+              </a>
+              {' '}if it doesn’t load here.
+            </p>
           </div>
         </div>
       </div>

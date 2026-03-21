@@ -1,1 +1,25 @@
-{"ceremony":{"name":"St. John Evangelist Parish Church, Guimba Nueva Ecija","address":"","city":"","state":"","zip":"","time":"9:00 AM","details":"Schedule: 9:00 AM","googleMapsUrl":"https://share.google/8WyJ3Wq3SbfN6p8f0","directionsUrl":"https://share.google/8WyJ3Wq3SbfN6p8f0"},"reception":{"name":"Family Farm Resort, Brgy. Pacac, Guimba Nueva Ecija","address":"","city":"","state":"","zip":"","time":"10:00 AM","details":"Schedule: 10:00 AM onwards","landmark":"Reception venue","googleMapsUrl":"https://maps.app.goo.gl/4UvhXYp9JVSeNr1x8","directionsUrl":"https://maps.app.goo.gl/4UvhXYp9JVSeNr1x8"}}
+{
+  "ceremony": {
+    "name": "St. John Evangelist Parish Church, Guimba Nueva Ecija",
+    "address": "",
+    "city": "",
+    "state": "",
+    "zip": "",
+    "time": "2:00 PM",
+    "details": "Schedule: 2:00 PM",
+    "googleMapsUrl": "https://share.google/8WyJ3Wq3SbfN6p8f0",
+    "directionsUrl": "https://share.google/8WyJ3Wq3SbfN6p8f0"
+  },
+  "reception": {
+    "name": "Family Farm Resort, Brgy. Pacac, Guimba Nueva Ecija",
+    "address": "",
+    "city": "",
+    "state": "",
+    "zip": "",
+    "time": "4:30 PM",
+    "details": "Schedule: 4:30 PM onwards",
+    "landmark": "Reception venue",
+    "googleMapsUrl": "https://maps.app.goo.gl/4UvhXYp9JVSeNr1x8",
+    "directionsUrl": "https://maps.app.goo.gl/4UvhXYp9JVSeNr1x8"
+  }
+}

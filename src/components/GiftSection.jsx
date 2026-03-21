@@ -23,10 +23,14 @@ const GiftSection = () => {
             Your presence is the greatest gift. If you wish to bless us, you may use this QR.
           </p>
 
-          <div className="w-full aspect-square rounded-xl border border-dashed border-[#b8c6d8] bg-[#f8fbff] flex items-center justify-center">
-            <p className="font-albert text-base sm:text-lg text-[#6685A4]">
-              QR to be added
-            </p>
+          <div className="w-full aspect-square rounded-xl border border-dashed border-[#b8c6d8] bg-white flex items-center justify-center p-3 sm:p-4 overflow-hidden">
+            <img
+              src="/assets/images/qr/qr.png"
+              alt="InstaPay QR code for monetary gift"
+              className="w-full h-full object-contain"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
       </div>

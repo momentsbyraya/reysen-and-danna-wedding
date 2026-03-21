@@ -335,6 +335,12 @@ body {
   font-style: normal;
 }
 
+.font-dancing-script {
+  font-family: "Dancing Script", cursive;
+  font-weight: 600;
+  font-style: normal;
+}
+
 .font-canterbury {
   font-family: "Canterbury", serif;
   font-weight: 400;
