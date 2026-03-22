@@ -267,12 +267,19 @@ const EntourageSection = () => {
       <div className="relative z-20 flex items-center justify-center py-12">
         <div className="max-w-xs sm:max-w-md lg:max-w-4xl w-full mx-auto px-4 sm:px-6 md:px-6 lg:px-8">
           {/* Header Section */}
-          <div className="text-center mb-12">
-            <h2 ref={headerRef} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-8">
-              {/* ENTOURAGE */}
-              <div className="caudex-bold text-base sm:text-lg md:text-xl lg:text-2xl block leading-none uppercase" style={{ lineHeight: '0.8', color: themeConfig.text.burntOrange }}>
-                ENTOURAGE
-              </div>
+          <div ref={headerRef} className="text-center mb-12">
+            <div className="flex justify-center mb-4">
+              <img
+                src="/assets/images/graphics/single-flower-1.png"
+                alt=""
+                className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain"
+                aria-hidden={true}
+              />
+            </div>
+            <h2 className="mb-8">
+              <span className="font-foglihten text-2xl sm:text-3xl md:text-4xl leading-none capitalize text-[#333333]">
+                Entourage
+              </span>
             </h2>
           </div>
 

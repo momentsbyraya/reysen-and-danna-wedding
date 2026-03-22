@@ -232,6 +232,14 @@ const Schedule = () => {
       <div className="bg-white pb-14 sm:pb-16">
         <div className="max-w-md sm:max-w-xl lg:max-w-2xl w-full mx-auto px-4">
           <div className="border-t border-gray-300/50 pt-10 sm:pt-12 text-center">
+            <div className="flex justify-center mb-4">
+              <img
+                src="/assets/images/graphics/single-flower-1.png"
+                alt=""
+                className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain"
+                aria-hidden={true}
+              />
+            </div>
             <div className="font-foglihten text-2xl sm:text-3xl md:text-4xl leading-none capitalize text-[#333333]">
               Entourage
             </div>

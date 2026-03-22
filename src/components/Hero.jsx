@@ -1,9 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { Play, Pause } from 'lucide-react'
-import { couple } from '../data'
-import { venues } from '../data'
-import { themeConfig } from '../config/themeConfig'
+import { couple, venues } from '../data'
+import { HERO_IMAGE_PATH } from '../constants/shareMetadata'
 
 const Hero = () => {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -27,7 +26,25 @@ const Hero = () => {
     return `${monthUpper}.${dayFormatted}.${year}`
   }
 
-  const venueName = venues.ceremony.name
+  /** First letter capital, rest lowercase (per word) */
+  const formatHeroName = (name) => {
+    if (!name || typeof name !== 'string') return ''
+    return name
+      .trim()
+      .split(/\s+/)
+      .map((word) =>
+        word.length === 0 ? '' : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+      )
+      .join(' ')
+  }
+
+  const groomDisplayName = formatHeroName(couple.groom.firstName)
+  const brideDisplayName = formatHeroName(couple.bride.firstName)
+
+  const receptionVenueShortName =
+    venues.reception.heroName ??
+    venues.reception.name.split(',')[0]?.trim() ??
+    venues.reception.name
 
   const togglePlayPause = () => {
     if (audioRef.current) {
@@ -73,7 +90,7 @@ const Hero = () => {
       }, "-=0.4")
     }
 
-    // 2. "AND"
+    // 2. "and"
     if (andRef.current) {
       tl.to(andRef.current, {
         opacity: 1,
@@ -111,7 +128,7 @@ const Hero = () => {
       }, "-=0.2")
     }
 
-    // 5. Venue
+    // 5. Reception venue name (under date, short — no address)
     if (venueRef.current) {
       tl.to(venueRef.current, {
         opacity: 1,
@@ -147,8 +164,8 @@ const Hero = () => {
       
       {/* Use a high-resolution image (e.g. 1920px+ wide) so it doesn't upscale and look blurry at full viewport */}
       <img
-        src="/assets/images/prenup/DSC6528.webp"
-        alt="Hero"
+        src={HERO_IMAGE_PATH}
+        alt="Dennis and Marvilyn"
         className="w-full h-full object-cover object-center md:object-top"
         fetchPriority="high"
         decoding="async"
@@ -181,7 +198,7 @@ const Hero = () => {
       <div className="absolute inset-0 flex items-start justify-center px-4 sm:px-6 md:px-8 pt-16 sm:pt-20 md:pt-24 z-20 pointer-events-none">
         {/* Soft glow behind top names for readability */}
         <div
-          className="absolute top-0 left-0 right-0 h-56 sm:h-64 md:h-72"
+          className="absolute top-0 left-0 right-0 h-64 sm:h-72 md:h-80"
           style={{
             background: 'radial-gradient(ellipse 70% 60% at 50% 22%, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.12) 45%, transparent 80%)',
           }}
@@ -189,9 +206,9 @@ const Hero = () => {
         />
         <div className="relative max-w-4xl mx-auto flex justify-center">
           <div
-            className="inline-flex flex-col items-center text-center gap-0 sm:gap-0.5"
+            className="text-center"
             role="group"
-            aria-label={`${couple.groom.firstName} and ${couple.bride.firstName}`}
+            aria-label={`${groomDisplayName} and ${brideDisplayName}`}
             style={{
               color: '#FFFFFF',
               textShadow: '0 0 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.2)',
@@ -199,21 +216,23 @@ const Hero = () => {
           >
             <span
               ref={groomFirstNameRef}
-              className="font-dancing-script uppercase text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-none block w-full text-center"
+              className="font-dancing-script text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-none"
             >
-              {couple.groom.firstName}
+              {groomDisplayName}
             </span>
+            <br />
             <span
               ref={andRef}
-              className="caudex-bold block text-center text-lg sm:text-xl md:text-2xl lg:text-3xl leading-none -my-0.5 sm:my-0"
+              className="caudex-bold inline-block text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-none my-1 sm:my-1.5"
             >
-              &
+              and
             </span>
+            <br />
             <span
               ref={brideFirstNameRef}
-              className="font-dancing-script uppercase text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-none block w-full text-center"
+              className="font-dancing-script text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-none"
             >
-              {couple.bride.firstName}
+              {brideDisplayName}
             </span>
           </div>
         </div>
@@ -255,16 +274,19 @@ const Hero = () => {
         )}
       </button>
 
-      {/* Date and Venue at Bottom Center */}
+      {/* Date and reception venue (name only) at bottom center */}
       <div className="absolute bottom-0 left-0 right-0 pb-8 sm:pb-12 md:pb-16 lg:pb-20 px-4 sm:px-6 md:px-8 z-20">
         <div className="max-w-4xl mx-auto text-center">
-          <p ref={dateRef} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-foglihten" style={{ color: '#ffffff' }}>
+          <p ref={dateRef} className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-foglihten" style={{ color: '#ffffff' }}>
               {formatDate()}
             </p>
-          {/* Venue - Plain Text */}
-          <p ref={venueRef} className="text-xs sm:text-sm md:text-base font-albert mt-2 sm:mt-3" style={{ color: '#FFFFFF' }}>
-              {venueName}
-            </p>
+          <p
+            ref={venueRef}
+            className="text-sm sm:text-base md:text-lg font-albert mt-2 sm:mt-3 px-1"
+            style={{ color: '#FFFFFF' }}
+          >
+            {receptionVenueShortName}
+          </p>
         </div>
       </div>
     </div>

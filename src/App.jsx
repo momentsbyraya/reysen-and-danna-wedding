@@ -12,6 +12,7 @@ import Details from './components/pages/Details'
 import Entourage from './components/pages/Entourage'
 import Moments from './components/pages/Moments'
 import { AudioProvider, useAudio } from './contexts/AudioContext'
+import { HERO_IMAGE_PATH } from './constants/shareMetadata'
 
 function AppContent() {
   const [isRSVPModalOpen, setIsRSVPModalOpen] = useState(false)
@@ -25,7 +26,7 @@ function AppContent() {
     const preloadImages = async () => {
       const criticalImages = [
         // Hero image - most important
-        '/assets/images/prenup/DSC6528.webp',  // Hero image
+        HERO_IMAGE_PATH,
         // NavIndex images - all prenup photos used on home page
         '/assets/images/prenup/DSC6186.jpg',  // Polaroid image
         '/assets/images/prenup/DSC6203.jpg',  // RSVP container
@@ -113,7 +114,7 @@ function AppContent() {
             // Check if we're on the home page
             if (window.location.pathname === '/' || window.location.pathname === '') {
               // Look for hero image
-              const heroImg = document.querySelector('img[src="/assets/images/prenup/DSC6528.webp"]')
+              const heroImg = document.querySelector(`img[src="${HERO_IMAGE_PATH}"]`)
               if (heroImg) {
                 // Check if image is loaded and visible
                 if (heroImg.complete && heroImg.naturalHeight > 0) {

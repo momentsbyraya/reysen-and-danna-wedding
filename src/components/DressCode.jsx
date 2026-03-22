@@ -194,10 +194,10 @@ const DressCode = () => {
       {/* Dress Code Title */}
       <div ref={dressCodeTitleRef} className="text-center mb-6 sm:mb-8">
         <div>
-          {/* Single Flower 1 Image */}
+          {/* Single Flower 2 Image */}
           <div className="flex justify-center mb-4">
             <img 
-              src="/assets/images/graphics/single-flower-1.png" 
+              src="/assets/images/graphics/single-flower-2.png" 
               alt="Flower decoration" 
               className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 object-contain"
             />
