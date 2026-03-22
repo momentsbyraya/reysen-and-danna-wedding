@@ -190,12 +190,12 @@ const EntourageSection = () => {
       }
     }
     
-    // Animate all collected rows sequentially when any section comes into view
+    let nameRowsScrollTrigger = null
     if (allNameRows.length > 0 && parentsRef.current) {
-        ScrollTrigger.create({
+      nameRowsScrollTrigger = ScrollTrigger.create({
         trigger: parentsRef.current,
-          start: "top 80%",
-          onEnter: () => {
+        start: "top 80%",
+        onEnter: () => {
           const masterTl = gsap.timeline()
           allNameRows.forEach(({ elements, time }) => {
             masterTl.to(elements, {
@@ -204,15 +204,14 @@ const EntourageSection = () => {
               duration: 0.6,
               ease: "power2.out"
             }, time)
-            })
-          },
-          toggleActions: "play none none reverse"
-        })
+          })
+        },
+        toggleActions: "play none none reverse"
+      })
     }
 
-    // Cleanup function
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+      nameRowsScrollTrigger?.kill()
     }
   }, [])
 

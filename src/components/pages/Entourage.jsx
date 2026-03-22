@@ -374,11 +374,12 @@ const Entourage = ({ embedded = false, onClose }) => {
     }
     
     // Animate all collected rows sequentially when any section comes into view
+    let nameRowsScrollTrigger = null
     if (allNameRows.length > 0 && parentsRef.current) {
-        ScrollTrigger.create({
+      nameRowsScrollTrigger = ScrollTrigger.create({
         trigger: parentsRef.current,
-          start: "top 80%",
-          onEnter: () => {
+        start: "top 80%",
+        onEnter: () => {
           const masterTl = gsap.timeline()
           allNameRows.forEach(({ elements, time }) => {
             masterTl.to(elements, {
@@ -387,19 +388,26 @@ const Entourage = ({ embedded = false, onClose }) => {
               duration: 0.6,
               ease: "power2.out"
             }, time)
-            })
-          },
-          toggleActions: "play none none reverse"
-        })
+          })
+        },
+        toggleActions: "play none none reverse"
+      })
     }
 
     if (embedded) {
       requestAnimationFrame(() => ScrollTrigger.refresh())
     }
 
-    // Cleanup function
+    // Only kill ScrollTriggers created in this effect — never ScrollTrigger.getAll()
+    // (getAll would destroy Dress Code, FAQ, Gallery, etc. when the modal unmounts)
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+      nameRowsScrollTrigger?.kill()
+      const headerScrollTrigger = tl.scrollTrigger
+      if (headerScrollTrigger) headerScrollTrigger.kill()
+      tl.kill()
+      if (embedded) {
+        requestAnimationFrame(() => ScrollTrigger.refresh())
+      }
     }
   }, [embedded])
 
