@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { schedule as scheduleData } from '../data'
@@ -77,8 +76,7 @@ function TimelineEventIcon({ description }) {
   }
 }
 
-const Schedule = () => {
-  const navigate = useNavigate()
+const Schedule = ({ onOpenEntourage }) => {
   const scheduleTitleRef = useRef(null)
   const timelineRef = useRef(null)
   const lineRef = useRef(null)
@@ -249,7 +247,7 @@ const Schedule = () => {
             <div className="mt-6 flex justify-center">
               <button
                 type="button"
-                onClick={() => navigate('/entourage')}
+                onClick={() => onOpenEntourage?.()}
                 className="px-6 py-3 rounded-full bg-[#6685A4] text-white font-albert font-semibold hover:opacity-90 transition-opacity duration-200"
               >
                 View Entourage

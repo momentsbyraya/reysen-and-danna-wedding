@@ -18,7 +18,7 @@ import './Details.css'
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger)
 
-const Details = () => {
+const Details = ({ onOpenEntourage }) => {
   const navigate = useNavigate()
   const [openFaqIndex, setOpenFaqIndex] = useState(null)
   const [copiedIndex, setCopiedIndex] = useState(null)
@@ -342,7 +342,7 @@ const Details = () => {
       <div className="relative z-20 flex items-center justify-center pt-12">
         <div className="max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto">
           {/* Schedule Section */}
-          <Schedule />
+          <Schedule onOpenEntourage={onOpenEntourage} />
                     </div>
                 </div>
 

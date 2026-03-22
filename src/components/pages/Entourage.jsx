@@ -10,10 +10,11 @@ import './Entourage.css'
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger)
 
-const Entourage = () => {
+const Entourage = ({ embedded = false, onClose }) => {
   const navigate = useNavigate()
   const sectionRef = useRef(null)
   const backButtonRef = useRef(null)
+  const closeButtonRef = useRef(null)
   const headerRef = useRef(null)
   const groomRef = useRef(null)
   const brideRef = useRef(null)
@@ -151,34 +152,47 @@ const Entourage = () => {
   }, [])
 
   useEffect(() => {
-    // Set initial hidden states to prevent glimpse
     if (sectionRef.current) {
-      gsap.set(sectionRef.current, { x: '100%', opacity: 0 })
+      if (embedded) {
+        gsap.set(sectionRef.current, { x: 0, opacity: 1 })
+      } else {
+        gsap.set(sectionRef.current, { x: '100%', opacity: 0 })
+      }
     }
-    if (backButtonRef.current) {
+    if (!embedded && backButtonRef.current) {
       gsap.set(backButtonRef.current, { opacity: 0, scale: 0 })
     }
-    
+    if (embedded && closeButtonRef.current) {
+      gsap.set(closeButtonRef.current, { opacity: 0, scale: 0.9 })
+    }
+
     // Set initial hidden states for all name elements to prevent flash
     const allNameElements = sectionRef.current?.querySelectorAll('p.font-poppins, .ninong-item, .ninang-item, .groomsmen-item, .bridesmaids-item')
     if (allNameElements && allNameElements.length > 0) {
       gsap.set(allNameElements, { opacity: 0, y: 20 })
     }
-    
-    // Page slide-in animation on mount
-    if (sectionRef.current) {
+
+    if (!embedded && sectionRef.current) {
       gsap.fromTo(sectionRef.current,
         { x: '100%', opacity: 0 },
         { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" }
       )
     }
 
-    // Back button fade-in animation after page slides in
-    if (backButtonRef.current) {
+    if (!embedded && backButtonRef.current) {
       gsap.fromTo(backButtonRef.current,
         { opacity: 0, scale: 0 },
         { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)", delay: 0.6 }
       )
+    }
+    if (embedded && closeButtonRef.current) {
+      gsap.to(closeButtonRef.current, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.35,
+        ease: 'back.out(1.7)',
+        delay: 0.15,
+      })
     }
 
     // Scroll-triggered animations
@@ -379,11 +393,15 @@ const Entourage = () => {
         })
     }
 
+    if (embedded) {
+      requestAnimationFrame(() => ScrollTrigger.refresh())
+    }
+
     // Cleanup function
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill())
     }
-  }, [])
+  }, [embedded])
 
   const principalSponsors = entourage.entourageList.find(item => item.category === "Principal Sponsors")
   const secondarySponsors = entourage.entourageList.find(item => item.category === "Secondary Sponsors")
@@ -438,10 +456,11 @@ const Entourage = () => {
         id="entourage"
         data-section="entourage"
         className="relative w-full overflow-hidden px-6 py-32 sm:py-40 md:py-44 lg:py-52"
-        style={{ 
-          opacity: 0, 
-          transform: 'translateX(100%)'
-        }}
+        style={
+          embedded
+            ? { opacity: 1 }
+            : { opacity: 0, transform: 'translateX(100%)' }
+        }
       >
         {/* Flower Banner - Top (absolute, full viewport width, container matches image size) */}
         <div
@@ -769,31 +788,47 @@ const Entourage = () => {
         </div>
       </section>
       
-      {/* Back Button - Circular, Bottom Right - Outside section to avoid transform issues */}
-      <button
-        ref={backButtonRef}
-        onClick={() => {
-          // Slide out page to the left before navigating
-          if (sectionRef.current) {
-            gsap.to(sectionRef.current, {
-              x: '-100%',
-              opacity: 0,
-              duration: 0.5,
-              ease: "power2.in",
-              onComplete: () => {
-                navigate('/')
-              }
-            })
-          } else {
-            navigate('/')
-          }
-        }}
-        className="fixed bottom-12 right-6 z-[100] w-14 h-14 bg-[#333333] text-white rounded-full shadow-lg hover:bg-[#333333]/80 hover:scale-110 transition-all duration-300 flex items-center justify-center group"
-        aria-label="Back to home"
-        style={{ pointerEvents: 'auto' }}
-      >
-        <ArrowLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform duration-300" />
-      </button>
+      {/* Back — modal and full page both use bottom-right arrow */}
+      {embedded ? (
+        <button
+          ref={closeButtonRef}
+          type="button"
+          onClick={() => onClose?.()}
+          className="group fixed right-4 z-[100] flex h-14 w-14 items-center justify-center rounded-full bg-[#333333] text-white shadow-lg transition-all duration-300 hover:bg-[#333333]/80 hover:scale-110 sm:right-6"
+          style={{
+            pointerEvents: 'auto',
+            bottom: 'max(3rem, calc(0.75rem + env(safe-area-inset-bottom)))',
+          }}
+          aria-label="Back"
+        >
+          <ArrowLeft className="h-6 w-6 transition-transform duration-300 group-hover:-translate-x-1" />
+        </button>
+      ) : (
+        <button
+          ref={backButtonRef}
+          type="button"
+          onClick={() => {
+            if (sectionRef.current) {
+              gsap.to(sectionRef.current, {
+                x: '-100%',
+                opacity: 0,
+                duration: 0.5,
+                ease: "power2.in",
+                onComplete: () => {
+                  navigate('/')
+                }
+              })
+            } else {
+              navigate('/')
+            }
+          }}
+          className="fixed bottom-12 right-6 z-[100] flex h-14 w-14 items-center justify-center rounded-full bg-[#333333] text-white shadow-lg transition-all duration-300 hover:bg-[#333333]/80 hover:scale-110 group"
+          aria-label="Back to home"
+          style={{ pointerEvents: 'auto' }}
+        >
+          <ArrowLeft className="h-6 w-6 group-hover:-translate-x-1 transition-transform duration-300" />
+        </button>
+      )}
     </>
   )
 }

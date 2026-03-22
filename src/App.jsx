@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import './App.css'
 import Home from './components/Home'
@@ -9,13 +9,24 @@ import DynamicTitle from './components/DynamicTitle'
 import Loader from './components/Loader'
 import ScrollToTop from './components/ScrollToTop'
 import Details from './components/pages/Details'
-import Entourage from './components/pages/Entourage'
+import EntourageModal from './components/EntourageModal'
 import Moments from './components/pages/Moments'
 import { AudioProvider, useAudio } from './contexts/AudioContext'
 import { HERO_IMAGE_PATH } from './constants/shareMetadata'
 
+function EntourageDeepLink({ onOpenEntourage }) {
+  const navigate = useNavigate()
+  useEffect(() => {
+    onOpenEntourage()
+    navigate('/', { replace: true })
+  }, [navigate, onOpenEntourage])
+  return null
+}
+
 function AppContent() {
   const [isRSVPModalOpen, setIsRSVPModalOpen] = useState(false)
+  const [isEntourageModalOpen, setIsEntourageModalOpen] = useState(false)
+  const openEntourageModal = useCallback(() => setIsEntourageModalOpen(true), [])
   const [showInvitation, setShowInvitation] = useState(false) // Set to false to show opening screen
   const [isLoading, setIsLoading] = useState(true)
   const { play } = useAudio()
@@ -197,15 +208,24 @@ function AppContent() {
       {!isLoading && (
         <>
           <Routes>
-            <Route path="/" element={<Home onOpenRSVP={() => setIsRSVPModalOpen(true)} />} />
-            <Route path="/details" element={<Details />} />
-            <Route path="/entourage" element={<Entourage />} />
+            <Route
+              path="/"
+              element={
+                <Home
+                  onOpenRSVP={() => setIsRSVPModalOpen(true)}
+                  onOpenEntourage={openEntourageModal}
+                />
+              }
+            />
+            <Route path="/details" element={<Details onOpenEntourage={openEntourageModal} />} />
+            <Route path="/entourage" element={<EntourageDeepLink onOpenEntourage={openEntourageModal} />} />
             <Route path="/moments" element={<Moments />} />
           </Routes>
           <Footer />
         </>
       )}
       <RSVPModal isOpen={isRSVPModalOpen} onClose={() => setIsRSVPModalOpen(false)} />
+      <EntourageModal isOpen={isEntourageModalOpen} onClose={() => setIsEntourageModalOpen(false)} />
     </div>
   )
 }

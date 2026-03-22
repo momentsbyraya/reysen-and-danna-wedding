@@ -10,7 +10,7 @@ import SaveTheDateCounter from './SaveTheDateCounter'
 import Divider from './Divider'
 import './pages/Details.css'
 
-const Home = ({ onOpenRSVP }) => {
+const Home = ({ onOpenRSVP, onOpenEntourage }) => {
   return (
     <div className="relative w-full bg-white">
       {/* Hero Section */}
@@ -47,7 +47,7 @@ const Home = ({ onOpenRSVP }) => {
       <div className="relative z-20 flex items-center justify-center">
         <div className="max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto">
           {/* Schedule Section */}
-          <Schedule />
+          <Schedule onOpenEntourage={onOpenEntourage} />
         </div>
       </div>
 
