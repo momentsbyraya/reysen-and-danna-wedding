@@ -5,6 +5,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowLeft, ArrowRight, X, ChevronLeft, ChevronRight, Play } from 'lucide-react'
 import { useAudio } from '../../contexts/AudioContext'
+import GiftSection from '../GiftSection'
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger)
@@ -689,7 +690,12 @@ const Moments = () => {
              />
            </div>
 
-           {/* Story text before final photo */}
+           {/* Gift Section - under gallery */}
+          <div className="relative z-20 w-full mt-8">
+            <GiftSection />
+          </div>
+
+          {/* Story text before final photo */}
            <div ref={finalParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8 mx-auto">
              <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
                <p className="mb-4">
