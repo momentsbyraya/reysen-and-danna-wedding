@@ -1,146 +1,146 @@
 {
   "couple": {
     "groom": {
-      "name": "DENNIS"
+      "name": "REYSEN"
     },
     "bride": {
-      "name": "MARVILYN"
+      "name": "DANNA"
     }
   },
   "parents": {
     "groom": {
-      "father": "Danilo Realon Fernandez",
-      "mother": "Mary Jane Astrero Fernandez"
+      "father": "Lorem Ipsum",
+      "mother": "Lorem Ipsum"
     },
     "bride": {
-      "father": "",
-      "mother": "Marilou Mararang"
+      "father": "Lorem Ipsum",
+      "mother": "Lorem Ipsum"
     }
   },
   "entourageList": [
     {
       "category": "Principal Sponsors",
       "ninong": [
-        "Daisy Cayog",
-        "Rhemia Embuido",
-        "Yolanda Gallarde",
-        "Margie Esteban",
-        "Carmelita Gozun",
-        "Imelda Mercader",
-        "Marilou Gubat",
-        "Ma. Elena Mayhira",
-        "Gerlinda Diola",
-        "Marites Dinglasan",
-        "Violy Comia",
-        "Marly Comia",
-        "Imelda Brinoza",
-        "Jocelyn Serrano",
-        "Lita Fabros",
-        "Gema Soriano",
-        "Sheree Ann Alcantara",
-        "Ernalyn May Belo",
-        "Mhiles Tabio German",
-        "Dionisio Villanueva"
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum"
       ],
       "ninang": [
-        "Roderick Astrero",
-        "Herman Embuido",
-        "Joel Garcia",
-        "Roberto Astrero",
-        "Virgilio Ganuelas",
-        "Reynante Flores",
-        "Ronald Javarta",
-        "Romeo Mayhira",
-        "Alfonso P. Alfonso",
-        "Dominador Comia",
-        "Victorio Vilchez",
-        "Jorge Comia",
-        "Ian Ramos",
-        "Arnold Punzal",
-        "Fernando Gagarin",
-        "Francisco Co",
-        "Joeward Mallari",
-        "Cris Dionisio Dazo",
-        "Elorde Seguin",
-        "Sol Palomo"
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum"
       ]
     },
     {
       "category": "Bestman",
       "names": [
-        "Daniel Fernandez"
+        "Lorem Ipsum"
       ]
     },
     {
       "category": "Maid of Honor",
       "names": [
-        "Gertrude Aubrey Declines"
+        "Lorem Ipsum"
       ]
     },
     {
       "category": "Secondary Sponsors",
       "groomsmen": [
-        "Reymark Rick Astrero",
-        "Joseph Ellorenco",
-        "Jhon Paul Villaruel"
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum"
       ],
       "bridesmaid": [
-        "Kristin Ayla Mercado",
-        "Wiloisa Tabio",
-        "Aja Estoesta"
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum"
       ]
     },
     {
       "category": "Candle Sponsors",
       "names": [
-        "Quiven Buntas",
-        "Bhaby Jerica Reyes"
+        "Lorem Ipsum",
+        "Lorem Ipsum"
       ]
     },
     {
       "category": "Veil Sponsors",
       "names": [
-        "Mark Ghian Mararang",
-        "Daisy Fernandez"
+        "Lorem Ipsum",
+        "Lorem Ipsum"
       ]
     },
     {
       "category": "Cord Sponsors",
       "names": [
-        "Dickson Fernandez",
-        "Erika Raotrot"
+        "Lorem Ipsum",
+        "Lorem Ipsum"
       ]
     },
     {
       "category": "Ring Bearer",
       "names": [
-        "Zairus Mararang"
+        "Lorem Ipsum"
       ]
     },
     {
       "category": "Coin Bearer",
       "names": [
-        "Zach Aiden Mararang"
+        "Lorem Ipsum"
       ]
     },
     {
       "category": "Bible Bearer",
       "names": [
-        "Yiel Fraze Manas"
+        "Lorem Ipsum"
       ]
     },
     {
       "category": "Flower Boys",
       "names": [
-        "Noah Mararang"
+        "Lorem Ipsum"
       ]
     },
     {
       "category": "Junior Flower Girls",
       "names": [
-        "Annika Manuel",
-        "Xia Chunza Limpin",
-        "Georgene Harley Fernandez"
+        "Lorem Ipsum",
+        "Lorem Ipsum",
+        "Lorem Ipsum"
       ]
     }
   ]

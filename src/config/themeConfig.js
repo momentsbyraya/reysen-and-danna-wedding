@@ -72,7 +72,7 @@ export const themeConfig = {
 
     // Calendar Configuration
     calendar: {
-        weddingDate: '2026-04-11',
+        weddingDate: '2026-04-18',
         highlightColor: 'bg-[#7092BE]',       // Medium Denim
         heartColor: 'text-[#7092BE]',
         textColor: 'text-gray-700',

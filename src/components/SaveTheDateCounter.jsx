@@ -69,14 +69,16 @@ const SaveTheDateCounter = () => {
       ref={sectionRef}
       className="relative w-full py-8 sm:py-12 md:py-16 lg:py-20"
       style={{
-        backgroundImage: 'url(/assets/images/prenup/DSC6555.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center 30%',
-        backgroundRepeat: 'no-repeat'
+        backgroundImage: 'none',
+        backgroundColor: '#94AFC3'
       }}
     >
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-black/30 z-[5] pointer-events-none" aria-hidden="true" />
+      {/* Background placeholder */}
+      <div className="absolute inset-0 z-[6] pointer-events-none flex items-center justify-center">
+        <div className="font-albert text-[#333333] opacity-80">TO BE ADDED</div>
+      </div>
 
       {/* SVG Overlay at Top */}
       <svg className="absolute top-0 left-0 w-full h-32 sm:h-40 md:h-48 z-10 pointer-events-none" preserveAspectRatio="none" viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">

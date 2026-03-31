@@ -151,12 +151,9 @@ const LoveStory = () => {
         onClick={() => handleImageClick(index)}
         aria-label={`Open gallery image ${index + 1}`}
       >
-        <img
-          src={image}
-          alt={alt}
-          className="w-full aspect-square object-cover"
-          style={{ display: 'block' }}
-        />
+        <div className="w-full aspect-square flex items-center justify-center bg-[#94AFC3] text-[#333333]">
+          <span className="font-albert text-sm sm:text-base">TO BE ADDED</span>
+        </div>
       </button>
     )
   }
@@ -164,7 +161,7 @@ const LoveStory = () => {
   return (
     <div ref={sectionRef} className="relative pb-8 sm:pb-12 md:pb-16">
       <div className="text-center mb-12 sm:mb-16">
-        {/* Heart Image */}
+        {/* Heart Placeholder */}
         <div className="flex justify-center mb-4">
           <img 
             src="/assets/images/graphics/heart.png" 
@@ -282,11 +279,14 @@ const LoveStory = () => {
             className="relative z-10 max-w-[90vw] max-h-[90vh] flex items-center justify-center"
             style={{ pointerEvents: 'none' }}
           >
-            <img 
-              src={polaroidImages[currentImageIndex]}
-              alt={`Love story image ${currentImageIndex + 1}`}
-              className="max-w-full max-h-[90vh] object-contain"
-            />
+            <div className="w-full h-full min-h-[200px] bg-[#94AFC3] flex items-center justify-center">
+              <div className="px-6 text-center">
+                <div className="font-foglihten text-[#333333] text-2xl sm:text-3xl">TO BE ADDED</div>
+                <div className="font-albert text-[#333333] opacity-80 text-sm mt-2">
+                  Gallery image {currentImageIndex + 1} / {polaroidImages.length}
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Image Counter */}

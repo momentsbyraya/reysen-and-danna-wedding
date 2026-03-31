@@ -2,10 +2,6 @@ import React, { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { gsap } from 'gsap'
 import { X } from 'lucide-react'
-import { RSVP_MODAL_BG_IMAGE } from '../constants/shareMetadata'
-
-const RSVP_FORM_EMBED_SRC =
-  'https://docs.google.com/forms/d/e/1FAIpQLSc6SKj6zB3H-oukZgiKxpeHVVHJCItUxyVWqGEOe6Dm0FSySw/viewform?embedded=true'
 
 const RSVPModal = ({ isOpen, onClose }) => {
   const modalRef = useRef(null)
@@ -45,21 +41,11 @@ const RSVPModal = ({ isOpen, onClose }) => {
   return createPortal(
     <div
       ref={modalRef}
-      className="fixed inset-0 z-50 flex h-[100dvh] w-full max-w-none flex-col overflow-hidden"
+      className="fixed inset-0 z-50 flex h-[100dvh] w-full max-w-none flex-col overflow-hidden bg-white"
       role="dialog"
       aria-modal="true"
       aria-labelledby="rsvp-modal-title"
     >
-      <div
-        className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${RSVP_MODAL_BG_IMAGE})` }}
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0 bg-white/80 backdrop-blur-[3px]"
-        aria-hidden
-      />
-
       <header
         className="relative z-10 flex flex-shrink-0 items-center justify-between border-b border-[#5a7390]/80 bg-[#6685A4] px-4 py-4 sm:px-6 sm:py-5"
         style={{ paddingTop: 'max(1rem, env(safe-area-inset-top))' }}
@@ -78,25 +64,11 @@ const RSVPModal = ({ isOpen, onClose }) => {
       </header>
 
       <div
-        className="rsvp-modal-content relative z-10 flex min-h-0 flex-1 flex-col overflow-hidden px-3 pb-3 pt-2 sm:px-4 sm:pb-4"
-        style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}
+        className="rsvp-modal-content relative z-10 flex min-h-0 flex-1 flex-col items-center justify-center overflow-auto px-4 py-8 sm:px-6"
+        style={{ paddingBottom: 'max(2rem, env(safe-area-inset-bottom))' }}
       >
-        <iframe
-          title="RSVP — The Wedding of Dennis & Marvilyn"
-          src={RSVP_FORM_EMBED_SRC}
-          className="min-h-0 w-full flex-1 rounded-none border-0 bg-white"
-          loading="lazy"
-        />
-        <p className="mt-2 flex-shrink-0 text-center text-xs text-gray-600 font-albert">
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSc6SKj6zB3H-oukZgiKxpeHVVHJCItUxyVWqGEOe6Dm0FSySw/viewform?usp=header"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-gray-800"
-          >
-            Open form in a new tab
-          </a>{' '}
-          if it doesn’t load here.
+        <p className="text-center font-albert text-xl text-[#333333] sm:text-2xl md:text-3xl">
+          To be added
         </p>
       </div>
     </div>,

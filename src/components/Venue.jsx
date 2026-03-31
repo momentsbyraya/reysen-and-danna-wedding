@@ -32,22 +32,22 @@ const Venue = () => {
   // Left = Ceremony (General Trias), Right = Reception (Choco Cabana)
   const venueSlides = [
     {
-      src: '/assets/images/venues/ceremony.webp',
-      alt: 'St. John Evangelist Parish Church, Guimba Nueva Ecija – Ceremony',
+      src: '',
+      alt: '',
       label: 'Ceremony',
-      name: ceremony.name,
-      ceremonyTime,
+      name: 'TO BE ADDED',
+      ceremonyTime: 'TO BE ADDED',
       receptionTime: null,
-      googleMapsUrl: ceremony.googleMapsUrl
+      googleMapsUrl: null
     },
     {
-      src: '/assets/images/venues/reception.webp',
-      alt: 'Family Farm Resort, Brgy. Pacac, Guimba Nueva Ecija – Reception',
+      src: '',
+      alt: '',
       label: 'Reception',
-      name: reception.name,
+      name: 'TO BE ADDED',
       ceremonyTime: null,
-      receptionTime,
-      googleMapsUrl: reception.googleMapsUrl
+      receptionTime: 'TO BE ADDED',
+      googleMapsUrl: null
     }
   ]
 
@@ -124,16 +124,18 @@ const Venue = () => {
         {ceremonyTime && <p>Ceremony: {ceremonyTime}</p>}
         {receptionTime && <p>Reception: {receptionTime} onwards</p>}
       </div>
-      <div className="flex justify-center items-center pt-1">
-        <SecondaryButton
-          href={googleMapsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          icon={ArrowRight}
-        >
-          Get Direction
-        </SecondaryButton>
-      </div>
+      {googleMapsUrl ? (
+        <div className="flex justify-center items-center pt-1">
+          <SecondaryButton
+            href={googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            icon={ArrowRight}
+          >
+            Get Direction
+          </SecondaryButton>
+        </div>
+      ) : null}
     </div>
   )
 
@@ -171,11 +173,9 @@ const Venue = () => {
                     >
                       {venueSlides.map((slide, index) => (
                         <div key={index} className="min-w-full aspect-square flex-shrink-0">
-                          <img
-                            src={slide.src}
-                            alt={slide.alt}
-                            className="w-full h-full object-cover rounded-full"
-                          />
+                          <div className="w-full h-full bg-[#94AFC3] rounded-full flex items-center justify-center text-[#333333]">
+                            <span className="font-albert text-sm sm:text-base">TO BE ADDED</span>
+                          </div>
                         </div>
                       ))}
                     </div>
@@ -218,11 +218,9 @@ const Venue = () => {
                 {venueSlides.map((slide, index) => (
                   <div key={index} className="flex flex-col items-center gap-4">
                     <div className="w-full max-w-[220px] sm:max-w-[260px] lg:max-w-[280px] aspect-square relative venue-image-container flex-shrink-0">
-                      <img
-                        src={slide.src}
-                        alt={slide.alt}
-                        className="w-full h-full object-cover rounded-full"
-                      />
+                      <div className="w-full h-full bg-[#94AFC3] rounded-full flex items-center justify-center text-[#333333]">
+                        <span className="font-albert text-sm sm:text-base">TO BE ADDED</span>
+                      </div>
                     </div>
                     <LocationBlock
                       name={slide.name}

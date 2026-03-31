@@ -24,13 +24,11 @@ const GiftSection = () => {
           </p>
 
           <div className="w-full aspect-square rounded-xl border border-dashed border-[#b8c6d8] bg-white flex items-center justify-center p-3 sm:p-4 overflow-hidden">
-            <img
-              src="/assets/images/qr/qr-code.png"
-              alt="InstaPay QR code for monetary gift"
-              className="w-full h-full object-contain"
-              loading="lazy"
-              decoding="async"
-            />
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="font-albert text-[#333333] opacity-80 text-center">
+                TO BE ADDED
+              </div>
+            </div>
           </div>
         </div>
       </div>

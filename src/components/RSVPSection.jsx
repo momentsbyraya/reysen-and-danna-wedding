@@ -76,10 +76,8 @@ const RSVPSection = ({ onOpenRSVP }) => {
         width: '100vw',
         marginLeft: 'calc(-50vw + 50%)',
         marginRight: 'calc(-50vw + 50%)',
-        backgroundImage: 'url(/assets/images/graphics/sage-bg.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundImage: 'none',
+        backgroundColor: '#94AFC3'
       }}
     >
       <div className="relative z-10 flex items-center justify-center py-16 sm:py-20 md:py-24">

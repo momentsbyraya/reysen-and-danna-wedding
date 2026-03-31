@@ -38,6 +38,8 @@ const Details = ({ onOpenEntourage }) => {
   const getFaqIconAndText = (question) => {
     // Map question text patterns to icons
     const questionIconMap = {
+      'When is the wedding?': Clock,
+      'What should I wear?': Palette,
       'Wedding Ceremony Location': MapPin,
       'Wedding Reception Location': UtensilsCrossed,
       'What time is the wedding?': Clock,

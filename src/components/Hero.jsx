@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
-import { Play, Pause } from 'lucide-react'
 import { couple, venues } from '../data'
-import { HERO_IMAGE_PATH } from '../constants/shareMetadata'
 
 const Hero = () => {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -16,7 +14,6 @@ const Hero = () => {
   const brideLastNameRef = useRef(null)
   const dateRef = useRef(null)
   const venueRef = useRef(null)
-  const playButtonRef = useRef(null)
 
   const formatDate = () => {
     const { day, year, month } = couple.wedding
@@ -67,7 +64,6 @@ const Hero = () => {
     if (brideLastNameRef.current) gsap.set(brideLastNameRef.current, { opacity: 0, y: 30 })
     if (dateRef.current) gsap.set(dateRef.current, { opacity: 0, y: 20 })
     if (venueRef.current) gsap.set(venueRef.current, { opacity: 0, y: 20 })
-    if (playButtonRef.current) gsap.set(playButtonRef.current, { opacity: 0, scale: 0.8 })
 
     // Create timeline for sequential animations
     const tl = gsap.timeline({ delay: 0.3 })
@@ -138,15 +134,6 @@ const Hero = () => {
       }, "-=0.3")
     }
 
-    // 6. Play button
-    if (playButtonRef.current) {
-      tl.to(playButtonRef.current, {
-        opacity: 1,
-        scale: 1,
-        duration: 0.5,
-        ease: "back.out(1.7)"
-      }, "-=0.2")
-    }
   }, [])
 
   const groomLastName = couple.groom.lastName?.trim()
@@ -163,14 +150,12 @@ const Hero = () => {
       />
       
       {/* Use a high-resolution image (e.g. 1920px+ wide) so it doesn't upscale and look blurry at full viewport */}
-      <img
-        src={HERO_IMAGE_PATH}
-        alt="Dennis and Marvilyn"
-        className="w-full h-full object-cover object-center md:object-top"
-        fetchPriority="high"
-        decoding="async"
-        style={{ imageRendering: 'auto' }}
-      />
+      <div className="w-full h-full bg-[#94AFC3] flex items-center justify-center">
+        <div className="px-6 text-center font-albert" style={{ color: '#333333' }}>
+          <div style={{ fontSize: 'clamp(18px, 2vw, 28px)', fontWeight: 600 }}>TO BE ADDED</div>
+          <div className="text-xs sm:text-sm mt-2 opacity-80">Hero image</div>
+        </div>
+      </div>
       
       {/* Top gradient: short strip so it stays in header only; no overlap below */}
       <svg 
@@ -216,7 +201,7 @@ const Hero = () => {
           >
             <span
               ref={groomFirstNameRef}
-              className="font-dancing-script text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-none"
+              className="font-foglihten uppercase text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-none block w-full text-center"
             >
               {groomDisplayName}
             </span>
@@ -230,7 +215,7 @@ const Hero = () => {
             <br />
             <span
               ref={brideFirstNameRef}
-              className="font-dancing-script text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-none"
+              className="font-foglihten uppercase text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-none block w-full text-center"
             >
               {brideDisplayName}
             </span>
@@ -260,20 +245,6 @@ const Hero = () => {
         <rect width="100%" height="100%" fill="url(#bottomGradient)" filter="url(#blurBottom)" />
       </svg>
 
-      {/* Play/Pause Button - Bottom Right */}
-      <button 
-        ref={playButtonRef}
-        onClick={togglePlayPause}
-        className="absolute bottom-4 sm:bottom-6 md:bottom-8 right-4 sm:right-6 md:right-8 z-30 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full bg-white/90 hover:bg-white transition-colors duration-200 flex items-center justify-center shadow-lg cursor-pointer"
-        style={{ pointerEvents: 'auto' }}
-      >
-        {isPlaying ? (
-          <Pause size={18} className="sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#7092BE]" fill="#7092BE" />
-        ) : (
-          <Play size={18} className="sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#7092BE] ml-1" fill="#7092BE" />
-        )}
-      </button>
-
       {/* Date and reception venue (name only) at bottom center */}
       <div className="absolute bottom-0 left-0 right-0 pb-8 sm:pb-12 md:pb-16 lg:pb-20 px-4 sm:px-6 md:px-8 z-20">
         <div className="max-w-4xl mx-auto text-center">
@@ -285,7 +256,7 @@ const Hero = () => {
             className="text-sm sm:text-base md:text-lg font-albert mt-2 sm:mt-3 px-1"
             style={{ color: '#FFFFFF' }}
           >
-            {receptionVenueShortName}
+            Reception to be added
           </p>
         </div>
       </div>
