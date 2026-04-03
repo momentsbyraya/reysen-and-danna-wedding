@@ -2,8 +2,16 @@ import React, { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { couple } from '../data'
 import { weddingConfig } from '../config/weddingConfig'
+import './OpeningScreen.css'
 
-function OpeningScreen({ onEnvelopeOpen }) {
+/** Prenup photos: top → middle → bottom, full-bleed B&W background */
+const OPENING_BACKGROUND_IMAGES = [
+  '/assets/images/prenup/1.jpg',
+  '/assets/images/prenup/2.jpg',
+  '/assets/images/prenup/3.jpg',
+]
+
+function OpeningScreen({ onActivateAudio, onEnvelopeOpen }) {
   const envelopeRef = useRef(null)
   const openingSectionRef = useRef(null)
   const clickMeRef = useRef(null)
@@ -51,6 +59,9 @@ function OpeningScreen({ onEnvelopeOpen }) {
   }, [])
 
   const handleEnvelopeClick = () => {
+    // Start audio in the same user-gesture tick (browsers block play() after long delays)
+    onActivateAudio?.()
+
     const envelope = envelopeRef.current
     const openingSection = openingSectionRef.current
     
@@ -73,20 +84,30 @@ function OpeningScreen({ onEnvelopeOpen }) {
   }
 
   return (
-    <div 
+    <div
       ref={openingSectionRef}
-      className="fixed inset-0 z-[9999] flex items-center justify-center opening-section"
-        style={{
-        backgroundImage: 'url(/assets/images/graphics/textured-bg-2.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
+      className="fixed inset-0 z-[9999] flex items-center justify-center opening-section opening-screen"
     >
-      <section className="cssletter flex flex-col items-center relative z-10 w-full py-8" style={{ minHeight: 'auto', height: 'auto' }}>
+      <div className="opening-screen-bg-stack" aria-hidden="true">
+        {OPENING_BACKGROUND_IMAGES.map((src, index) => (
+          <div key={src} className="opening-screen-bg-row">
+            <img src={src} alt="" loading="eager" decoding="async" data-bg-row={index + 1} />
+          </div>
+        ))}
+      </div>
+      <div className="opening-screen-bg-scrim" aria-hidden="true" />
+
+      <section className="cssletter relative z-10 flex w-full flex-col items-center py-8" style={{ minHeight: 'auto', height: 'auto' }}>
         {/* Click me text */}
         <div ref={clickMeRef} className="mb-12 sm:mb-16 md:mb-20 lg:mb-24 text-center click-me-container">
-          <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold" style={{ fontFamily: 'var(--letter-font)', color: '#333333' }}>
+          <p
+            className="text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl"
+            style={{
+              fontFamily: 'var(--letter-font)',
+              color: '#ffffff',
+              textShadow: '0 2px 12px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.8)',
+            }}
+          >
             Click me!
           </p>
         </div>
@@ -131,20 +152,20 @@ function OpeningScreen({ onEnvelopeOpen }) {
         <div ref={coupleNameRef} className="mt-12 sm:mt-16 md:mt-20 text-center couple-name-container">
           <h2 
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-script leading-tight"
-            style={{ 
-              color: '#333333', 
+            style={{
+              color: '#ffffff',
               fontSize: 'clamp(1.5rem, 4vw, 48px)',
-              textShadow: 'none'
+              textShadow: '0 2px 14px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.85)',
             }}
           >
             {couple.nickname}
           </h2>
           <p 
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-script mt-1"
-            style={{ 
-              color: '#333333', 
+            style={{
+              color: '#ffffff',
               fontSize: 'clamp(1rem, 2.5vw, 30px)',
-              textShadow: 'none'
+              textShadow: '0 2px 12px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.85)',
             }}
           >
             {new Date(weddingConfig.wedding.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}

@@ -1,1 +1,32 @@
-{"events":[{"time":"2:00 PM","description":"Ceremony","image":"/assets/images/graphics/ceremony-2.png","imageAlt":"Ceremony","position":"left"},{"time":"3:30 PM","description":"Photos & Video","image":"/assets/images/graphics/ceremony-2.png","imageAlt":"Photos & Video","position":"right"},{"time":"4:30 PM","description":"Reception","image":"/assets/images/graphics/dinner-2.png","imageAlt":"Reception","position":"left"},{"time":"6:00 PM","description":"Dinner","image":"/assets/images/graphics/dinner-2.png","imageAlt":"Dinner","position":"right"},{"time":"7:00 PM","description":"Party","image":"/assets/images/graphics/dinner-2.png","imageAlt":"Party","position":"left"}]}
+{
+  "events": [
+    {
+      "time": "10:00 AM",
+      "description": "Wedding",
+      "image": "/assets/images/graphics/ceremony-2.png",
+      "imageAlt": "Wedding",
+      "position": "left"
+    },
+    {
+      "time": "11:00 AM",
+      "description": "Photoshoot",
+      "image": "/assets/images/graphics/ceremony-2.png",
+      "imageAlt": "Photoshoot",
+      "position": "right"
+    },
+    {
+      "time": "12:00 PM",
+      "description": "Reception Lunch",
+      "image": "/assets/images/graphics/dinner-2.png",
+      "imageAlt": "Reception Lunch",
+      "position": "left"
+    },
+    {
+      "time": "1:00 PM",
+      "description": "Wedding Program — onwards",
+      "image": "/assets/images/graphics/dinner-2.png",
+      "imageAlt": "Wedding Program",
+      "position": "right"
+    }
+  ]
+}

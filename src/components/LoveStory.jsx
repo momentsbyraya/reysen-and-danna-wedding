@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { createPortal } from 'react-dom'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 import { loveStory } from '../data'
+import { getPrenupObjectPosition, PRENUP_GALLERY_SRCS } from '../constants/prenupImages'
 import { themeConfig } from '../config/themeConfig'
 import './pages/Details.css'
 
@@ -19,17 +20,7 @@ const LoveStory = () => {
   const overlayRef = useRef(null)
   const contentRef = useRef(null)
 
-  // Gallery images for Our Moments
-  const polaroidImages = [
-    '/assets/images/prenup/DSC6186.jpg',
-    '/assets/images/prenup/DSC6203.jpg',
-    '/assets/images/prenup/DSC6233.jpg',
-    '/assets/images/prenup/DSC6243.jpg',
-    '/assets/images/prenup/DSC6279.jpg',
-    '/assets/images/prenup/DSC6290.jpg',
-    '/assets/images/prenup/DSC6335.jpg',
-    '/assets/images/prenup/DSC6361.jpg',
-  ]
+  const polaroidImages = PRENUP_GALLERY_SRCS.slice(0, 8)
 
   useEffect(() => {
     // Title animation
@@ -59,15 +50,10 @@ const LoveStory = () => {
       })
     })
 
-    // Cleanup function
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => {
-        if (trigger.vars && (
-          trigger.vars.trigger === titleRef.current ||
-          trigger.vars.trigger === sectionRef.current
-        )) {
-          trigger.kill()
-        }
+      ScrollTrigger.getAll().forEach((trigger) => {
+        const el = trigger.vars?.trigger
+        if (el && sectionRef.current?.contains(el)) trigger.kill()
       })
     }
   }, [])
@@ -151,8 +137,15 @@ const LoveStory = () => {
         onClick={() => handleImageClick(index)}
         aria-label={`Open gallery image ${index + 1}`}
       >
-        <div className="w-full aspect-square flex items-center justify-center bg-[#94AFC3] text-[#333333]">
-          <span className="font-albert text-sm sm:text-base">TO BE ADDED</span>
+        <div className="aspect-square w-full overflow-hidden bg-[#94AFC3]">
+          <img
+            src={image}
+            alt={alt}
+            className="h-full w-full object-cover"
+            style={{ objectPosition: getPrenupObjectPosition(image) }}
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </button>
     )
@@ -208,9 +201,41 @@ const LoveStory = () => {
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 md:px-8">
         <div className="relative z-10">
-          <div className="story-item grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 w-full max-w-4xl mx-auto">
+          {loveStory.content ? (
+            <div className="story-item mx-auto mb-10 max-w-3xl text-center sm:mb-12 md:mb-14">
+              <p className="font-albert text-base font-thin leading-relaxed text-[#333333] sm:text-lg">
+                {loveStory.content}
+              </p>
+            </div>
+          ) : null}
+
+          {Array.isArray(loveStory.timeline) && loveStory.timeline.length > 0 ? (
+            <div className="story-item mx-auto mb-10 max-w-3xl space-y-8 sm:mb-12 md:mb-14">
+              {loveStory.timeline.map((item, i) => (
+                <div key={`${item.title}-${i}`} className="text-center">
+                  {item.title ? (
+                    <h4
+                      className="font-boska mb-2 text-lg text-[#333333] sm:text-xl"
+                    >
+                      {item.title}
+                    </h4>
+                  ) : null}
+                  {item.date ? (
+                    <p className="font-albert mb-2 text-sm text-[#666666]">{item.date}</p>
+                  ) : null}
+                  {item.description ? (
+                    <p className="font-albert text-sm font-thin leading-relaxed text-[#333333] sm:text-base">
+                      {item.description}
+                    </p>
+                  ) : null}
+                </div>
+              ))}
+            </div>
+          ) : null}
+
+          <div className="story-item mx-auto grid w-full max-w-4xl grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3">
             {polaroidImages.map((image, index) => (
               <Polaroid
                 key={image}
@@ -276,17 +301,19 @@ const LoveStory = () => {
           {/* Image Container */}
           <div
             ref={contentRef}
-            className="relative z-10 max-w-[90vw] max-h-[90vh] flex items-center justify-center"
+            className="relative z-10 flex max-h-[90vh] max-w-[90vw] items-center justify-center"
             style={{ pointerEvents: 'none' }}
           >
-            <div className="w-full h-full min-h-[200px] bg-[#94AFC3] flex items-center justify-center">
-              <div className="px-6 text-center">
-                <div className="font-foglihten text-[#333333] text-2xl sm:text-3xl">TO BE ADDED</div>
-                <div className="font-albert text-[#333333] opacity-80 text-sm mt-2">
-                  Gallery image {currentImageIndex + 1} / {polaroidImages.length}
-                </div>
-              </div>
-            </div>
+            <img
+              src={polaroidImages[currentImageIndex]}
+              alt={`Gallery image ${currentImageIndex + 1}`}
+              className="max-h-[85vh] max-w-[90vw] bg-[#94AFC3] object-contain"
+              style={{
+                objectPosition: getPrenupObjectPosition(polaroidImages[currentImageIndex]),
+              }}
+              loading="eager"
+              decoding="async"
+            />
           </div>
 
           {/* Image Counter */}

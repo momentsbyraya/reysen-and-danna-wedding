@@ -18,6 +18,9 @@ const FAQ = () => {
   const getFaqIconAndText = (question) => {
     // Map question text patterns to icons
     const questionIconMap = {
+      'Do I need to confirm RSVP?': Mail,
+      'What is the dress code?': Palette,
+      'Ceremony time and venue?': Clock,
       'When is the wedding?': Clock,
       'What should I wear?': Palette,
       'Wedding Ceremony Location': MapPin,

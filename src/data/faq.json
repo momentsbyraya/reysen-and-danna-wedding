@@ -1,16 +1,16 @@
 {
   "faqData": [
     {
-      "question": "When is the wedding?",
-      "answer": "Saturday, April 18, 2026. Ceremony at 2:00 PM, followed by the reception at 4:30 PM."
+      "question": "Do I need to confirm RSVP?",
+      "answer": "Yes — so we can count how many guests are coming and plan seating and meals. Please RSVP by April 16, 2026."
     },
     {
-      "question": "What should I wear?",
-      "answer": "We kindly ask guests to wear formal or semi-formal attire in our wedding colors. Please avoid white so the bride can stand out."
+      "question": "What is the dress code?",
+      "answer": "We kindly ask guests to wear formal or semi-formal attire. Please avoid white so the bride can stand out."
     },
     {
-      "question": "Is RSVP required?",
-      "answer": "Yes. Please RSVP by April 1, 2026 so we can confirm seating and final details. If you received an invite, your response helps us plan for you."
+      "question": "Ceremony time and venue?",
+      "answer": "Ceremony at 10:00 AM — St. James the Greater Parish. Reception lunch at 12:00 PM — Missio Dei Hotel. Wedding program continues from 1:00 PM onwards."
     }
   ]
 }

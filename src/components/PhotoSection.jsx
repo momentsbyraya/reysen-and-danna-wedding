@@ -19,9 +19,9 @@ const PhotoSection = ({
   
   // Default images if none provided
   const defaultImages = [
-    { src: '/assets/images/prenup/DSC6186.jpg', alt: 'Photo 1', label: 'Memories' },
-    { src: '/assets/images/prenup/DSC6233.jpg', alt: 'Photo 2', label: 'Together' },
-    { src: '/assets/images/prenup/DSC6290.jpg', alt: 'Photo 3', label: 'Love' }
+    { src: '/assets/images/prenup/1.jpg', alt: 'Photo 1', label: 'Memories' },
+    { src: '/assets/images/prenup/2.jpg', alt: 'Photo 2', label: 'Together' },
+    { src: '/assets/images/prenup/3.jpg', alt: 'Photo 3', label: 'Love' }
   ]
   const displayImages = images.length > 0 ? images : defaultImages
   

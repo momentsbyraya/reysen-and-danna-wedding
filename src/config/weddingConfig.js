@@ -22,11 +22,11 @@ export const weddingConfig = {
 
   // RSVP Information
   rsvp: {
-    deadline: "2026-03-07",
+    deadline: "2026-04-16",
     email: "",
     phone: "",
     website: "",
-    message: "Please RSVP by March 7th, 2026"
+    message: "Please RSVP by April 16th, 2026"
   },
 
   // Theme and Styling
@@ -40,7 +40,7 @@ export const weddingConfig = {
 
   // Photos and Media
   photos: {
-    hero: "/assets/images/hero-couple.jpg",
+    hero: "/assets/images/prenup/hero.jpg",
     gallery: [
       "/assets/images/couple-1.jpg",
       "/assets/images/couple-2.jpg",

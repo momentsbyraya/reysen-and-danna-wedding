@@ -1,7 +1,5 @@
 {
-  "background": "/assets/music/PALAGI - TJxKZ  LIVE SESSIONS.mp3",
+  "background": "/assets/music/Sugar - Maroon 5 - Violin Cover - Daniel Jang.mp3",
   "volume": 0.5,
-  "loop": false,
-  "loopStart": 2,
-  "loopEnd": 159
-} 
+  "loop": true
+}

@@ -5,7 +5,7 @@ import Home from './components/Home'
 import Footer from './components/Footer'
 import RSVPModal from './components/RSVPModal'
 import DynamicTitle from './components/DynamicTitle'
-// import OpeningScreen from './components/OpeningScreen'
+import OpeningScreen from './components/OpeningScreen'
 import Loader from './components/Loader'
 import ScrollToTop from './components/ScrollToTop'
 import Details from './components/pages/Details'
@@ -27,7 +27,7 @@ function AppContent() {
   const [isRSVPModalOpen, setIsRSVPModalOpen] = useState(false)
   const [isEntourageModalOpen, setIsEntourageModalOpen] = useState(false)
   const openEntourageModal = useCallback(() => setIsEntourageModalOpen(true), [])
-  const [showInvitation, setShowInvitation] = useState(false) // Set to false to show opening screen
+  const [showInvitation, setShowInvitation] = useState(false) // false = show opening screen first; true = skip to invitation
   const [isLoading, setIsLoading] = useState(true)
   const { play } = useAudio()
   const navigate = useNavigate()
@@ -38,11 +38,10 @@ function AppContent() {
       const criticalImages = [
         // Hero image - most important
         HERO_IMAGE_PATH,
-        // NavIndex images - all prenup photos used on home page
-        '/assets/images/prenup/DSC6186.jpg',  // Polaroid image
-        '/assets/images/prenup/DSC6203.jpg',  // RSVP container
-        '/assets/images/prenup/DSC6233.jpg',  // Moments polaroid 1
-        '/assets/images/prenup/DSC6243.jpg',  // Moments polaroid 2
+        '/assets/images/prenup/1.jpg',
+        '/assets/images/prenup/2.jpg',
+        '/assets/images/prenup/3.jpg',
+        '/assets/images/prenup/4.jpg',
         // NavIndex graphics - all decorative elements
         '/assets/images/graphics/dusty-blue.png',
         '/assets/images/graphics/flower-1.png',
@@ -183,12 +182,14 @@ function AppContent() {
     preloadImages()
   }, [])
 
-  const handleEnvelopeOpen = async () => {
-    // Start playing music when invitation is revealed (user interaction allows auto-play)
-    await play()
+  const handleActivateAudio = useCallback(() => {
+    void play()
+  }, [play])
+
+  const handleEnvelopeOpen = useCallback(() => {
     setShowInvitation(true)
     navigate('/')
-  }
+  }, [navigate])
 
   return (
     <div className="App min-h-screen wedding-gradient">
@@ -201,11 +202,14 @@ function AppContent() {
         </div>
       )}
       {/* OpeningScreen - shows after loading, before invitation */}
-      {/* {!isLoading && !showInvitation && (
-        <OpeningScreen onEnvelopeOpen={handleEnvelopeOpen} />
-      )} */}
+      {!isLoading && !showInvitation && (
+        <OpeningScreen
+          onActivateAudio={handleActivateAudio}
+          onEnvelopeOpen={handleEnvelopeOpen}
+        />
+      )}
       {/* Main content - shows after invitation is opened (stamp clicked) */}
-      {!isLoading && (
+      {!isLoading && showInvitation && (
         <>
           <Routes>
             <Route

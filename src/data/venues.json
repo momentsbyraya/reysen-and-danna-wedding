@@ -1,26 +1,28 @@
 {
   "ceremony": {
-    "name": "St. John Evangelist Parish Church, Guimba Nueva Ecija",
+    "image": "/assets/images/venues/ceremony.jpg",
+    "name": "St. James the Greater Parish",
     "address": "",
     "city": "",
     "state": "",
     "zip": "",
-    "time": "2:00 PM",
-    "details": "Schedule: 2:00 PM",
-    "googleMapsUrl": "https://share.google/8WyJ3Wq3SbfN6p8f0",
-    "directionsUrl": "https://share.google/8WyJ3Wq3SbfN6p8f0"
+    "time": "10:00 AM",
+    "details": "Ceremony at 10:00 AM",
+    "googleMapsUrl": "https://maps.app.goo.gl/fjZ3kFTjuAnHBE4x5?g_st=ipc",
+    "directionsUrl": "https://maps.app.goo.gl/fjZ3kFTjuAnHBE4x5?g_st=ipc"
   },
   "reception": {
-    "name": "Family Farm Resort, Brgy. Pacac, Guimba Nueva Ecija",
-    "heroName": "Family Farm Resort",
+    "image": "/assets/images/venues/reception.jpg",
+    "name": "Missio Dei Hotel",
+    "heroName": "Missio Dei Hotel",
     "address": "",
     "city": "",
     "state": "",
     "zip": "",
-    "time": "4:30 PM",
-    "details": "Schedule: 4:30 PM onwards",
+    "time": "12:00 PM",
+    "details": "Reception lunch at 12:00 PM · program 1:00 PM onwards",
     "landmark": "Reception venue",
-    "googleMapsUrl": "https://maps.app.goo.gl/4UvhXYp9JVSeNr1x8",
-    "directionsUrl": "https://maps.app.goo.gl/4UvhXYp9JVSeNr1x8"
+    "googleMapsUrl": "https://maps.app.goo.gl/X3XZ233Qwd6upUGN7?g_st=ic",
+    "directionsUrl": "https://maps.app.goo.gl/X3XZ233Qwd6upUGN7?g_st=ic"
   }
 }

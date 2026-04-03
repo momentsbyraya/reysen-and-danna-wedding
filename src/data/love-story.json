@@ -1,11 +1,11 @@
 {
-  "title": "Our Moments",
-  "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  "title": "Our Story",
+  "content": "We met at work—Reysen as branch manager and Danna as loan officer. Coworkers teased us when they saw what was growing between us. What started as colleagues became friendship, then love—and now we’re ready to celebrate with everyone who cheered us on.",
   "timeline": [
     {
       "title": "The Beginning",
       "date": "",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "description": "Same branch, different roles: branch manager and loan officer. The team noticed before we did—and the teasing became part of our story.",
       "image": "couple2"
     }
   ]

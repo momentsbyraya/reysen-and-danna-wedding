@@ -5,6 +5,7 @@ import { Mail } from 'lucide-react'
 import SecondaryButton from './SecondaryButton'
 import { couple } from '../data'
 import { themeConfig } from '../config/themeConfig'
+import { PRENUP_HERO_SRC, HERO_IMAGE_OBJECT_POSITION } from '../constants/prenupImages'
 import './pages/Details.css'
 
 // Register ScrollTrigger plugin
@@ -69,20 +70,36 @@ const RSVPSection = ({ onOpenRSVP }) => {
   }, [])
 
   return (
-    <div 
-      ref={rsvpSectionRef} 
-      className="relative my-20 sm:my-24 md:my-32 px-4 sm:px-6 md:px-8"
+    <div
+      ref={rsvpSectionRef}
+      className="relative my-20 overflow-hidden sm:my-24 md:my-32 px-4 sm:px-6 md:px-8"
       style={{
         width: '100vw',
         marginLeft: 'calc(-50vw + 50%)',
         marginRight: 'calc(-50vw + 50%)',
-        backgroundImage: 'none',
-        backgroundColor: '#94AFC3'
       }}
     >
+      <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
+        <img
+          src={PRENUP_HERO_SRC}
+          alt=""
+          className="h-full w-full object-cover"
+          style={{ objectPosition: HERO_IMAGE_OBJECT_POSITION }}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <div
+        className="pointer-events-none absolute inset-0 z-[1]"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(148, 175, 195, 0.72) 0%, rgba(107, 143, 163, 0.78) 100%)',
+        }}
+        aria-hidden="true"
+      />
       <div className="relative z-10 flex items-center justify-center py-16 sm:py-20 md:py-24">
-        <div className="bg-white px-6 py-8 sm:px-8 sm:py-10 md:px-12 md:py-12 max-w-3xl mx-auto">
-      <div className="text-center mb-12 sm:mb-16">
+        <div className="mx-auto max-w-3xl rounded-xl border border-white/55 bg-white/55 px-6 py-8 shadow-lg backdrop-blur-sm sm:px-8 sm:py-10 md:px-12 md:py-12">
+          <div className="mb-12 text-center sm:mb-16">
             {/* Single Flower 3 Image */}
         <div className="flex justify-center mb-4">
           <img 
@@ -100,29 +117,29 @@ const RSVPSection = ({ onOpenRSVP }) => {
           </span>
         </h3>
         <div className="w-full max-w-3xl mx-auto mb-4">
-          <div className="w-full h-px bg-[#6B8FA3] opacity-40"></div>
+          <div className="h-px w-full bg-[#6B8FA3]"></div>
         </div>
         <div ref={rsvpContentRef}>
           <p className="text-sm sm:text-base font-albert font-thin text-[#333333] max-w-3xl mx-auto leading-relaxed text-center mb-6">
-                Kindly respond on or before<br /><strong className="!font-bold" style={{ fontWeight: 700 }}>{couple.rsvpDeadline ? `${couple.rsvpDeadline.month} ${couple.rsvpDeadline.day}, ${couple.rsvpDeadline.year}` : 'March 7, 2026'}</strong>.<br />
+                Kindly respond on or before<br /><strong className="!font-bold" style={{ fontWeight: 700 }}>{couple.rsvpDeadline ? `${couple.rsvpDeadline.month} ${couple.rsvpDeadline.day}, ${couple.rsvpDeadline.year}` : 'April 16, 2026'}</strong>.<br />
                 After this date, arrangements are final.
           </p>
           {onOpenRSVP && (
             <div className="flex flex-col items-center gap-4">
               <button
                 onClick={onOpenRSVP}
-                    className="px-6 py-3 bg-[#333333] text-white rounded-full hover:bg-[#333333]/80 transition-colors duration-200 font-albert flex items-center gap-2"
+                    className="flex items-center gap-2 rounded-full bg-[#6BB7E5] px-6 py-3 font-albert text-white shadow-sm transition-colors duration-200 hover:bg-[#5aaee0] active:bg-[#4fa3d4]"
               >
                     Respond
                     <Mail size={18} />
               </button>
             </div>
           )}
-            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   )
 }
 

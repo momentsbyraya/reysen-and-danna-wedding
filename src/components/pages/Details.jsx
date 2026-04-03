@@ -38,6 +38,9 @@ const Details = ({ onOpenEntourage }) => {
   const getFaqIconAndText = (question) => {
     // Map question text patterns to icons
     const questionIconMap = {
+      'Do I need to confirm RSVP?': Mail,
+      'What is the dress code?': Palette,
+      'Ceremony time and venue?': Clock,
       'When is the wedding?': Clock,
       'What should I wear?': Palette,
       'Wedding Ceremony Location': MapPin,
@@ -370,9 +373,9 @@ const Details = ({ onOpenEntourage }) => {
       {/* <div ref={photoSectionRef}>
       <PhotoSection
         images={[
-          { src: '/assets/images/prenup/DSC6186.jpg', alt: 'Photo 1', label: 'Memories' },
-          { src: '/assets/images/prenup/DSC6233.jpg', alt: 'Photo 2', label: 'Together' },
-          { src: '/assets/images/prenup/DSC6290.jpg', alt: 'Photo 3', label: 'Love' }
+          { src: '/assets/images/prenup/1.jpg', alt: 'Photo 1', label: 'Memories' },
+          { src: '/assets/images/prenup/2.jpg', alt: 'Photo 2', label: 'Together' },
+          { src: '/assets/images/prenup/3.jpg', alt: 'Photo 3', label: 'Love' }
         ]}
         paragraph="This is where our journey began, a moment captured in time that will forever hold a special place in our hearts."
         backgroundTexts={['Forever', 'Always', 'Together', 'Love', 'Us']}

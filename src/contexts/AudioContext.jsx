@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useRef, useState, useEffect } from 'react'
+import React, { createContext, useContext, useRef, useState, useEffect, useCallback } from 'react'
 import { audio } from '../data'
 
 const AudioContext = createContext(null)
@@ -11,21 +11,22 @@ export const AudioProvider = ({ children }) => {
     // Initialize audio - handle special characters in filename
     // Create a proper URL that handles emoji and special characters
     try {
-      // Use URL constructor to properly handle special characters
       const baseUrl = window.location.origin
-      const audioPath = audio.background.startsWith('/') ? audio.background : '/' + audio.background
-      const audioUrl = new URL(audioPath, baseUrl).href
+      const raw = audio.background.startsWith('/') ? audio.background : `/${audio.background}`
+      const pathOnly = raw.startsWith('/') ? raw.slice(1) : raw
+      const encodedPath = pathOnly.split('/').map(encodeURIComponent).join('/')
+      const audioUrl = `${baseUrl}/${encodedPath}`
       audioRef.current = new Audio(audioUrl)
     } catch (error) {
-      // Fallback to direct path if URL constructor fails
       console.warn('Failed to create URL for audio, using direct path:', error)
       audioRef.current = new Audio(audio.background)
     }
-    audioRef.current.loop = false
+    const loopEnd = typeof audio.loopEnd === 'number' ? audio.loopEnd : null
+    // Full-track loop when loop:true and no A–B loop window; otherwise segment loop uses loopStart/loopEnd
+    audioRef.current.loop = loopEnd == null && audio.loop === true
     audioRef.current.volume = audio.volume
 
     const loopStart = typeof audio.loopStart === 'number' ? audio.loopStart : 0
-    const loopEnd = typeof audio.loopEnd === 'number' ? audio.loopEnd : null
 
     const handleTimeUpdate = () => {
       if (!audioRef.current || loopEnd == null) return
@@ -57,7 +58,7 @@ export const AudioProvider = ({ children }) => {
     }
   }, [])
 
-  const play = async () => {
+  const play = useCallback(async () => {
     if (audioRef.current) {
       try {
         const loopStart = typeof audio.loopStart === 'number' ? audio.loopStart : 0
@@ -65,10 +66,10 @@ export const AudioProvider = ({ children }) => {
         await audioRef.current.play()
         setIsPlaying(true)
       } catch (error) {
-        console.log('Could not play music:', error)
+        console.warn('Could not play music:', error)
       }
     }
-  }
+  }, [])
 
   const pause = () => {
     if (audioRef.current) {

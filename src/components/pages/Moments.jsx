@@ -6,6 +6,16 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowLeft, ArrowRight, X, ChevronLeft, ChevronRight, Play } from 'lucide-react'
 import { useAudio } from '../../contexts/AudioContext'
 import GiftSection from '../GiftSection'
+import {
+  PRENUP_GALLERY,
+  PRENUP_GALLERY_SRCS,
+  getPrenupObjectPosition,
+  PRENUP_STORY_PHOTO_1,
+  PRENUP_STORY_PHOTO_2,
+  PRENUP_STORY_PHOTO_3,
+  MOMENTS_VIDEO_COVER_SRC,
+  HERO_IMAGE_OBJECT_POSITION,
+} from '../../constants/prenupImages'
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger)
@@ -32,7 +42,6 @@ const Moments = () => {
   const galleryScrollContainerRef = useRef(null)
   const galleryImagesRef = useRef(null)
   const endPhoto4Ref = useRef(null)
-  const ry211ImageRef = useRef(null)
   const photo2013Ref = useRef(null)
   const finalParagraphRef = useRef(null)
   const [selectedImage, setSelectedImage] = useState(null)
@@ -48,57 +57,7 @@ const Moments = () => {
   const [startXThreePhotos, setStartXThreePhotos] = useState(0)
   const [scrollLeftThreePhotos, setScrollLeftThreePhotos] = useState(0)
 
-  // All prenup images
-  const allPrenupImages = [
-    '/assets/images/prenup/DSC6186.jpg',
-    '/assets/images/prenup/DSC6203.jpg',
-    '/assets/images/prenup/DSC6233.jpg',
-    '/assets/images/prenup/DSC6243.jpg',
-    '/assets/images/prenup/DSC6279.jpg',
-    '/assets/images/prenup/DSC6290.jpg',
-    '/assets/images/prenup/DSC6335.jpg',
-    '/assets/images/prenup/DSC6361.jpg',
-    '/assets/images/prenup/DSC6528.jpg',
-    '/assets/images/prenup/DSC6555.jpg'
-  ]
-
-  // Images array for the lightbox (includes all images in same order)
-  const lightboxImages = [
-    '/assets/images/prenup/DSC6186.jpg',
-    '/assets/images/prenup/DSC6203.jpg',
-    '/assets/images/prenup/DSC6233.jpg',
-    '/assets/images/prenup/DSC6243.jpg',
-    '/assets/images/prenup/DSC6279.jpg',
-    '/assets/images/prenup/DSC6290.jpg',
-    '/assets/images/prenup/DSC6335.jpg',
-    '/assets/images/prenup/DSC6361.jpg',
-    '/assets/images/prenup/DSC6528.jpg',
-    '/assets/images/prenup/DSC6555.jpg'
-  ]
-
-  // Gallery images for horizontal scroll (all unused images + top and bottom from love story)
-  const galleryImages = [
-    '/assets/images/prenup/DSC6186.jpg',
-    '/assets/images/prenup/DSC6203.jpg',
-    '/assets/images/prenup/DSC6233.jpg',
-    '/assets/images/prenup/DSC6243.jpg',
-    '/assets/images/prenup/DSC6279.jpg',
-    '/assets/images/prenup/DSC6290.jpg',
-    '/assets/images/prenup/DSC6335.jpg',
-    '/assets/images/prenup/DSC6361.jpg',
-    '/assets/images/prenup/DSC6528.jpg',
-    '/assets/images/prenup/DSC6555.jpg'
-  ]
-
-  // Polaroid images for the scrollable container
-  const polaroidImages = [
-    { src: '/assets/images/prenup/DSC6335.jpg', rotation: -5, index: 0 },
-    { src: '/assets/images/prenup/DSC6361.jpg', rotation: 5, index: 1 },
-    { src: '/assets/images/prenup/DSC6528.jpg', rotation: -3, index: 2 },
-    { src: '/assets/images/prenup/DSC6555.jpg', rotation: 3, index: 3 },
-    { src: '/assets/images/prenup/DSC6279.jpg', rotation: -4, index: 4 },
-    { src: '/assets/images/prenup/DSC6290.jpg', rotation: 2, index: 5 }
-  ]
+  const galleryImages = PRENUP_GALLERY_SRCS
 
   useEffect(() => {
     // Set initial hidden states to prevent glimpse
@@ -416,15 +375,6 @@ const Moments = () => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  // Apply object-position to R&Y-211 image on desktop
-  useEffect(() => {
-    if (ry211ImageRef.current && !isMobile) {
-      ry211ImageRef.current.style.objectPosition = '15% center'
-    } else if (ry211ImageRef.current && isMobile) {
-      ry211ImageRef.current.style.objectPosition = 'center center'
-    }
-  }, [isMobile])
-
   // Video modal rotation animation (only on screens smaller than 768px)
   useEffect(() => {
     if (isVideoOpen && videoModalRef.current) {
@@ -470,9 +420,10 @@ const Moments = () => {
         <div className="relative z-20 w-full flex flex-col items-center">
           <div className="relative w-screen group cursor-pointer" onClick={handleVideoOpen}>
             <img 
-              src="/assets/images/prenup/DSC6528.jpg" 
-              alt="Index image" 
-              className="w-full h-auto object-cover"
+              src={MOMENTS_VIDEO_COVER_SRC} 
+              alt="" 
+              className="w-full min-h-[45vh] max-h-[85vh] object-cover sm:min-h-[50vh]"
+              style={{ objectPosition: HERO_IMAGE_OBJECT_POSITION }}
               loading="eager"
               fetchPriority="high"
               decoding="async"
@@ -507,7 +458,7 @@ const Moments = () => {
             <div ref={firstParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16 mt-4">
               <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
                 <p className="mb-4">
-                  From the moment our eyes first met, we knew something magical was beginning. What started as a simple conversation on social media – with her in Manila and me in Cavite – has blossomed into a beautiful journey filled with laughter, adventures, and countless precious memories together.
+                  We met at work—Reysen was assigned as our branch manager, and Danna was the loan officer on the same team. Sharing the same branch day after day, we worked side by side, and a simple, steady friendship began to grow.
                 </p>
               </div>
            </div>
@@ -517,14 +468,15 @@ const Moments = () => {
            {/* FERL1949 Photo */}
            <div ref={ferl1949Ref} className="relative z-20 w-full max-w-2xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8 flex justify-center">
              <img
-               src="/assets/images/prenup/DSC6186.jpg"
+               src={PRENUP_STORY_PHOTO_1}
                alt="Love story photo"
-               className="w-full h-auto object-cover cursor-pointer"
+               className="w-full h-auto max-h-[90vh] object-cover cursor-pointer"
+               style={{ objectPosition: getPrenupObjectPosition(PRENUP_STORY_PHOTO_1) }}
                loading="lazy"
                decoding="async"
                onClick={() => {
-                 const imageIndex = galleryImages.indexOf('/assets/images/prenup/DSC6186.jpg')
-                 setSelectedImage('/assets/images/prenup/DSC6186.jpg')
+                 const imageIndex = galleryImages.indexOf(PRENUP_STORY_PHOTO_1)
+                 setSelectedImage(PRENUP_STORY_PHOTO_1)
                  setSelectedImageIndex(imageIndex !== -1 ? imageIndex : 0)
                }}
              />
@@ -534,7 +486,7 @@ const Moments = () => {
            <div ref={secondParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8">
              <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
                <p className="mb-4">
-                 Life led them down separate journeys but fate had other plans. Many years later, as she prepared to drive her first car, her father called upon the groom to lend a hand.
+                 Our coworkers noticed us long before we made anything official. They teased us, joked about us, and laughed with us—and looking back, that good-natured ribbing was part of how our story became everyone’s little open secret at the office.
                </p>
              </div>
            </div>
@@ -542,14 +494,15 @@ const Moments = () => {
             {/* FERL2103 Photo */}
             <div ref={photo2013Ref} className="relative z-20 w-full max-w-2xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8 flex justify-center mx-auto">
               <img
-                src="/assets/images/prenup/DSC6203.jpg"
-                alt="2013 Photo"
-                className="w-full h-auto object-cover cursor-pointer"
+                src={PRENUP_STORY_PHOTO_2}
+                alt="Love story photo"
+                className="w-full h-auto max-h-[90vh] object-cover cursor-pointer"
+                style={{ objectPosition: getPrenupObjectPosition(PRENUP_STORY_PHOTO_2) }}
                 loading="lazy"
                 decoding="async"
                 onClick={() => {
-                  const imageIndex = galleryImages.indexOf('/assets/images/prenup/DSC6203.jpg')
-                  setSelectedImage('/assets/images/prenup/DSC6203.jpg')
+                  const imageIndex = galleryImages.indexOf(PRENUP_STORY_PHOTO_2)
+                  setSelectedImage(PRENUP_STORY_PHOTO_2)
                   setSelectedImageIndex(imageIndex !== -1 ? imageIndex : 0)
                 }}
               />
@@ -559,7 +512,7 @@ const Moments = () => {
            <div ref={thirdParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8">
              <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
                <p className="mb-4">
-                 That driving lesson blossomed into a beautiful connection filled with laughter, shared dreams, and rediscovery. Over the past five years, they have not only celebrated milestones but have also faced challenges that have made them better individuals. Supporting one another through thick and thin, they have both grown stronger and more compassionate, embodying the true essence of partnership.
+                 What began as colleagues who got along turned into trust, then into love. We never needed a dramatic plot—just the same workplace, the same people rooting (and teasing) us on, and the quiet certainty that we were better together.
                </p>
              </div>
            </div>
@@ -652,16 +605,17 @@ const Moments = () => {
                      }
                    `}</style>
                    <div className="flex gap-4 px-4" style={{ minHeight: '300px' }}>
-                     {galleryImages.map((image, index) => (
+                     {PRENUP_GALLERY.map((item, index) => (
                        <img
-                         key={index}
-                         src={image}
+                         key={item.src}
+                         src={item.src}
                          alt={`Gallery ${index + 1}`}
                          className="flex-shrink-0 object-cover cursor-pointer"
                          style={{
                            width: '300px',
                            height: '300px',
-                           borderRadius: '0'
+                           borderRadius: '0',
+                           objectPosition: item.objectPosition,
                          }}
                          width="300"
                          height="300"
@@ -670,7 +624,7 @@ const Moments = () => {
                          fetchPriority={index < 4 ? "high" : index < 8 ? "auto" : "low"}
                          decoding="async"
                          onClick={() => {
-                           handleGalleryImageClick(image, index)
+                           handleGalleryImageClick(item.src, index)
                          }}
                        />
                      ))}
@@ -699,7 +653,7 @@ const Moments = () => {
            <div ref={finalParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8 mx-auto">
              <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
                <p className="mb-4">
-                 Join us in celebrating their extraordinary journey—a tale of serendipity, unexpected love, and the joy of two hearts making each other better. Together, they are thrilled to say, "I do," as they embrace a future full of promise and adventure.
+                 We would be so happy to have you with us on our wedding day—as we say “I do” and say thank you to every friend and coworker who was part of our story along the way.
                </p>
              </div>
            </div>
@@ -708,14 +662,15 @@ const Moments = () => {
            <div ref={endPhoto4Ref} className="relative z-20 w-screen mt-8">
              <div className="relative">
                <img
-                 src="/assets/images/prenup/DSC6233.jpg"
+                 src={PRENUP_STORY_PHOTO_3}
                  alt="Love story photo"
-                 className="w-full h-auto object-cover cursor-pointer"
+                 className="w-full h-auto max-h-[90vh] object-cover cursor-pointer"
+                 style={{ objectPosition: getPrenupObjectPosition(PRENUP_STORY_PHOTO_3) }}
                  loading="lazy"
                  decoding="async"
                  onClick={() => {
-                   const imageIndex = galleryImages.indexOf('/assets/images/prenup/DSC6233.jpg')
-                   setSelectedImage('/assets/images/prenup/DSC6233.jpg')
+                   const imageIndex = galleryImages.indexOf(PRENUP_STORY_PHOTO_3)
+                   setSelectedImage(PRENUP_STORY_PHOTO_3)
                    setSelectedImageIndex(imageIndex !== -1 ? imageIndex : 0)
                  }}
                />

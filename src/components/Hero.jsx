@@ -1,6 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { couple, venues } from '../data'
+import { HERO_IMAGE_OBJECT_POSITION, PRENUP_HERO_SRC } from '../constants/prenupImages'
+
+const heroTextColor = '#FFFFFF'
+const heroTextShadow =
+  '0 0 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.2)'
 
 const Hero = () => {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -8,10 +13,8 @@ const Hero = () => {
   
   // Refs for animated elements
   const groomFirstNameRef = useRef(null)
-  const groomLastNameRef = useRef(null)
   const andRef = useRef(null)
   const brideFirstNameRef = useRef(null)
-  const brideLastNameRef = useRef(null)
   const dateRef = useRef(null)
   const venueRef = useRef(null)
 
@@ -58,10 +61,8 @@ const Hero = () => {
   useEffect(() => {
     // Set initial hidden states
     if (groomFirstNameRef.current) gsap.set(groomFirstNameRef.current, { opacity: 0, y: 30 })
-    if (groomLastNameRef.current) gsap.set(groomLastNameRef.current, { opacity: 0, y: 30 })
     if (andRef.current) gsap.set(andRef.current, { opacity: 0, y: 20 })
     if (brideFirstNameRef.current) gsap.set(brideFirstNameRef.current, { opacity: 0, y: 30 })
-    if (brideLastNameRef.current) gsap.set(brideLastNameRef.current, { opacity: 0, y: 30 })
     if (dateRef.current) gsap.set(dateRef.current, { opacity: 0, y: 20 })
     if (venueRef.current) gsap.set(venueRef.current, { opacity: 0, y: 20 })
 
@@ -77,15 +78,6 @@ const Hero = () => {
         ease: "power2.out"
       })
     }
-    if (groomLastNameRef.current) {
-      tl.to(groomLastNameRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power2.out"
-      }, "-=0.4")
-    }
-
     // 2. "and"
     if (andRef.current) {
       tl.to(andRef.current, {
@@ -105,15 +97,6 @@ const Hero = () => {
         ease: "power2.out"
       })
     }
-    if (brideLastNameRef.current) {
-      tl.to(brideLastNameRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power2.out"
-      }, "-=0.4")
-    }
-
     // 4. Date
     if (dateRef.current) {
       tl.to(dateRef.current, {
@@ -136,86 +119,66 @@ const Hero = () => {
 
   }, [])
 
-  const groomLastName = couple.groom.lastName?.trim()
-  const brideLastName = couple.bride.lastName?.trim()
-
   return (
     <div className="relative w-full" style={{ height: '100vh' }}>
       {/* Audio Element */}
       <audio
         ref={audioRef}
-        src="/assets/music/PALAGI - TJxKZ  LIVE SESSIONS.mp3"
+        src="/assets/music/Sugar - Maroon 5 - Violin Cover - Daniel Jang.mp3"
         loop
         onEnded={() => setIsPlaying(false)}
       />
       
-      {/* Use a high-resolution image (e.g. 1920px+ wide) so it doesn't upscale and look blurry at full viewport */}
-      <div className="w-full h-full bg-[#94AFC3] flex items-center justify-center">
-        <div className="px-6 text-center font-albert" style={{ color: '#333333' }}>
-          <div style={{ fontSize: 'clamp(18px, 2vw, 28px)', fontWeight: 600 }}>TO BE ADDED</div>
-          <div className="text-xs sm:text-sm mt-2 opacity-80">Hero image</div>
-        </div>
+      <div className="absolute inset-0 z-0 bg-[#94AFC3]">
+        <img
+          src={PRENUP_HERO_SRC}
+          alt=""
+          className="h-full w-full object-cover"
+          style={{ objectPosition: HERO_IMAGE_OBJECT_POSITION }}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          width={1920}
+          height={1080}
+        />
       </div>
       
-      {/* Top gradient: short strip so it stays in header only; no overlap below */}
-      <svg 
-        className="absolute top-0 z-10 pointer-events-none h-24 sm:h-28 md:h-32 lg:h-36"
-        style={{ left: '-2.5%', width: '105%' }}
-        preserveAspectRatio="none" 
-        viewBox="0 0 1200 400" 
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <filter id="blur">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
-          </filter>
-          <linearGradient id="topGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(255, 255, 255, 0.95)" />
-            <stop offset="40%" stopColor="rgba(255, 255, 255, 0.7)" />
-            <stop offset="70%" stopColor="rgba(255, 255, 255, 0.3)" />
-            <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
-          </linearGradient>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#topGradient)" filter="url(#blur)" />
-      </svg>
-      
-      {/* Couple names at top */}
-      <div className="absolute inset-0 flex items-start justify-center px-4 sm:px-6 md:px-8 pt-16 sm:pt-20 md:pt-24 z-20 pointer-events-none">
+      {/* Couple names at top — mobile: stacked; md+: one row, spread to edges so faces stay clear */}
+      <div className="absolute inset-0 flex items-start justify-center px-4 sm:px-6 md:px-10 lg:px-14 pt-16 sm:pt-20 md:pt-14 lg:pt-16 z-20 pointer-events-none">
         {/* Soft glow behind top names for readability */}
         <div
-          className="absolute top-0 left-0 right-0 h-64 sm:h-72 md:h-80"
+          className="absolute top-0 left-0 right-0 h-64 sm:h-72 md:h-28 lg:h-32"
           style={{
-            background: 'radial-gradient(ellipse 70% 60% at 50% 22%, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.12) 45%, transparent 80%)',
+            background:
+              'radial-gradient(ellipse 70% 60% at 50% 22%, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.12) 45%, transparent 80%)',
           }}
           aria-hidden="true"
         />
-        <div className="relative max-w-4xl mx-auto flex justify-center">
+        <div className="relative w-full max-w-6xl mx-auto flex justify-center">
           <div
-            className="text-center"
+            className="flex w-full flex-col items-center text-center md:flex-row md:items-baseline md:justify-between md:gap-6 lg:gap-10 md:text-left"
             role="group"
             aria-label={`${groomDisplayName} and ${brideDisplayName}`}
             style={{
-              color: '#FFFFFF',
-              textShadow: '0 0 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.2)',
+              color: heroTextColor,
+              textShadow: heroTextShadow,
             }}
           >
             <span
               ref={groomFirstNameRef}
-              className="font-foglihten uppercase text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-none block w-full text-center"
+              className="font-foglihten uppercase text-5xl sm:text-6xl md:text-5xl lg:text-6xl xl:text-7xl leading-none md:flex-1 md:min-w-0 md:text-right md:pr-2"
             >
               {groomDisplayName}
             </span>
-            <br />
             <span
               ref={andRef}
-              className="caudex-bold inline-block text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-none my-1 sm:my-1.5"
+              className="caudex-bold text-xl sm:text-2xl md:text-2xl lg:text-3xl leading-none my-1 sm:my-1.5 md:my-0 md:shrink-0 md:px-2"
             >
               and
             </span>
-            <br />
             <span
               ref={brideFirstNameRef}
-              className="font-foglihten uppercase text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-none block w-full text-center"
+              className="font-foglihten uppercase text-5xl sm:text-6xl md:text-5xl lg:text-6xl xl:text-7xl leading-none md:flex-1 md:min-w-0 md:text-left md:pl-2"
             >
               {brideDisplayName}
             </span>
@@ -223,40 +186,22 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Bottom gradient: short strip so it ends above the floral banner; no overlap on flowers */}
-      <svg 
-        className="absolute bottom-0 z-10 pointer-events-none h-24 sm:h-28 md:h-32 lg:h-36"
-        style={{ left: '-2.5%', width: '105%' }}
-        preserveAspectRatio="none" 
-        viewBox="0 0 1200 400" 
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <filter id="blurBottom">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
-          </filter>
-          <linearGradient id="bottomGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(255, 255, 255, 0)" />
-            <stop offset="30%" stopColor="rgba(255, 255, 255, 0.3)" />
-            <stop offset="60%" stopColor="rgba(255, 255, 255, 0.7)" />
-            <stop offset="100%" stopColor="rgba(255, 255, 255, 0.95)" />
-          </linearGradient>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#bottomGradient)" filter="url(#blurBottom)" />
-      </svg>
-
       {/* Date and reception venue (name only) at bottom center */}
       <div className="absolute bottom-0 left-0 right-0 pb-8 sm:pb-12 md:pb-16 lg:pb-20 px-4 sm:px-6 md:px-8 z-20">
         <div className="max-w-4xl mx-auto text-center">
-          <p ref={dateRef} className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-foglihten" style={{ color: '#ffffff' }}>
+          <p
+            ref={dateRef}
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-foglihten"
+            style={{ color: heroTextColor, textShadow: heroTextShadow }}
+          >
               {formatDate()}
             </p>
           <p
             ref={venueRef}
             className="text-sm sm:text-base md:text-lg font-albert mt-2 sm:mt-3 px-1"
-            style={{ color: '#FFFFFF' }}
+            style={{ color: heroTextColor, textShadow: heroTextShadow }}
           >
-            Reception to be added
+            {receptionVenueShortName}
           </p>
         </div>
       </div>

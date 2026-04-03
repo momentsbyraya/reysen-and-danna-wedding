@@ -11,6 +11,18 @@ gsap.registerPlugin(ScrollTrigger)
 
 function orderOfEventsTime(events, label) {
   const key = label.toLowerCase()
+  if (key === 'ceremony') {
+    const wedding = events.find(
+      (ev) => ev.description.trim().toLowerCase() === 'wedding'
+    )
+    if (wedding) return wedding.time
+  }
+  if (key === 'reception') {
+    const reception = events.find((ev) =>
+      ev.description.toLowerCase().includes('reception')
+    )
+    if (reception) return reception.time
+  }
   const match = events.find((ev) => ev.description.trim().toLowerCase() === key)
   return match?.time ?? null
 }
@@ -29,26 +41,25 @@ const Venue = () => {
   const receptionTime =
     orderOfEventsTime(scheduleData.events, 'Reception') ?? reception.time
 
-  // Left = Ceremony (General Trias), Right = Reception (Choco Cabana)
   const venueSlides = [
     {
-      src: '',
-      alt: '',
+      src: ceremony.image || '/assets/images/venues/ceremony.jpg',
+      alt: `Wedding ceremony — ${ceremony.name}`,
       label: 'Ceremony',
-      name: 'TO BE ADDED',
-      ceremonyTime: 'TO BE ADDED',
+      name: ceremony.name,
+      ceremonyTime,
       receptionTime: null,
-      googleMapsUrl: null
+      googleMapsUrl: ceremony.googleMapsUrl || null,
     },
     {
-      src: '',
-      alt: '',
+      src: reception.image || '/assets/images/venues/reception.jpg',
+      alt: `Wedding reception — ${reception.name}`,
       label: 'Reception',
-      name: 'TO BE ADDED',
+      name: reception.name,
       ceremonyTime: null,
-      receptionTime: 'TO BE ADDED',
-      googleMapsUrl: null
-    }
+      receptionTime,
+      googleMapsUrl: reception.googleMapsUrl || null,
+    },
   ]
 
   const nextImage = () => {
@@ -122,7 +133,7 @@ const Venue = () => {
       </div>
       <div className="text-sm sm:text-base font-albert font-thin text-[#333333] space-y-1">
         {ceremonyTime && <p>Ceremony: {ceremonyTime}</p>}
-        {receptionTime && <p>Reception: {receptionTime} onwards</p>}
+        {receptionTime && <p>Reception: {receptionTime}</p>}
       </div>
       {googleMapsUrl ? (
         <div className="flex justify-center items-center pt-1">
@@ -173,8 +184,16 @@ const Venue = () => {
                     >
                       {venueSlides.map((slide, index) => (
                         <div key={index} className="min-w-full aspect-square flex-shrink-0">
-                          <div className="w-full h-full bg-[#94AFC3] rounded-full flex items-center justify-center text-[#333333]">
-                            <span className="font-albert text-sm sm:text-base">TO BE ADDED</span>
+                          <div className="h-full w-full overflow-hidden rounded-full bg-[#94AFC3] ring-1 ring-black/10">
+                            <img
+                              src={slide.src}
+                              alt={slide.alt}
+                              className="h-full w-full object-cover"
+                              style={{ objectPosition: 'center' }}
+                              loading={index === 0 ? 'eager' : 'lazy'}
+                              decoding="async"
+                              draggable={false}
+                            />
                           </div>
                         </div>
                       ))}
@@ -217,9 +236,17 @@ const Venue = () => {
               <div className="hidden md:grid md:grid-cols-2 md:gap-6 lg:gap-8 md:w-full md:max-w-4xl mx-auto">
                 {venueSlides.map((slide, index) => (
                   <div key={index} className="flex flex-col items-center gap-4">
-                    <div className="w-full max-w-[220px] sm:max-w-[260px] lg:max-w-[280px] aspect-square relative venue-image-container flex-shrink-0">
-                      <div className="w-full h-full bg-[#94AFC3] rounded-full flex items-center justify-center text-[#333333]">
-                        <span className="font-albert text-sm sm:text-base">TO BE ADDED</span>
+                    <div className="venue-image-container relative aspect-square w-full max-w-[220px] flex-shrink-0 sm:max-w-[260px] lg:max-w-[280px]">
+                      <div className="h-full w-full overflow-hidden rounded-full bg-[#94AFC3] ring-1 ring-black/10">
+                        <img
+                          src={slide.src}
+                          alt={slide.alt}
+                          className="h-full w-full object-cover"
+                          style={{ objectPosition: 'center' }}
+                          loading={index === 0 ? 'eager' : 'lazy'}
+                          decoding="async"
+                          draggable={false}
+                        />
                       </div>
                     </div>
                     <LocationBlock

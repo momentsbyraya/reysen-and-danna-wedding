@@ -64,7 +64,7 @@ const Home = ({ onOpenRSVP, onOpenEntourage }) => {
           {/* Love Story Section */}
           <LoveStory />
 
-          {/* Gift Section - under Our Moments */}
+          {/* Gift Section - under Our Story */}
           <GiftSection />
         </div>
       </div>

@@ -25,7 +25,7 @@ const DynamicTitle = () => {
       <meta property="og:title" content={`${couple.nickname}'s Wedding`} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={ogImage} />
-      <meta property="og:image:type" content="image/webp" />
+      <meta property="og:image:type" content="image/jpeg" />
       <meta property="og:image:alt" content={`${couple.nickname} — wedding invitation`} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={`${couple.nickname}'s Wedding`} />
