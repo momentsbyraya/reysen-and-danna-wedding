@@ -43,7 +43,7 @@ const Venue = () => {
 
   const venueSlides = [
     {
-      src: ceremony.image || '/assets/images/venues/ceremony.jpg',
+      src: ceremony.image || '/assets/images/venues/ceremony.JPG',
       alt: `Wedding ceremony — ${ceremony.name}`,
       label: 'Ceremony',
       name: ceremony.name,
@@ -52,7 +52,7 @@ const Venue = () => {
       googleMapsUrl: ceremony.googleMapsUrl || null,
     },
     {
-      src: reception.image || '/assets/images/venues/reception.jpg',
+      src: reception.image || '/assets/images/venues/reception.JPG',
       alt: `Wedding reception — ${reception.name}`,
       label: 'Reception',
       name: reception.name,

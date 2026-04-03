@@ -1,6 +1,6 @@
 {
   "ceremony": {
-    "image": "/assets/images/venues/ceremony.jpg",
+    "image": "/assets/images/venues/ceremony.JPG",
     "name": "St. James the Greater Parish",
     "address": "",
     "city": "",
@@ -12,7 +12,7 @@
     "directionsUrl": "https://maps.app.goo.gl/fjZ3kFTjuAnHBE4x5?g_st=ipc"
   },
   "reception": {
-    "image": "/assets/images/venues/reception.jpg",
+    "image": "/assets/images/venues/reception.JPG",
     "name": "Missio Dei Hotel",
     "heroName": "Missio Dei Hotel",
     "address": "",
