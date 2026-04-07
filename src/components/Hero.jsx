@@ -124,7 +124,7 @@ const Hero = () => {
       {/* Audio Element */}
       <audio
         ref={audioRef}
-        src="/assets/music/Sugar - Maroon 5 - Violin Cover - Daniel Jang.mp3"
+        src="/assets/music/Man I Need - Olivia Dean (Harp and Violin Instrumental Cover) [bNg-aZjw7fU].mp3"
         loop
         onEnded={() => setIsPlaying(false)}
       />

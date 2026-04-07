@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { createPortal } from 'react-dom'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 import { loveStory } from '../data'
-import { getPrenupObjectPosition, PRENUP_GALLERY_SRCS } from '../constants/prenupImages'
+import { getPrenupObjectPosition } from '../constants/prenupImages'
 import { themeConfig } from '../config/themeConfig'
 import './pages/Details.css'
 
@@ -20,7 +20,12 @@ const LoveStory = () => {
   const overlayRef = useRef(null)
   const contentRef = useRef(null)
 
-  const polaroidImages = PRENUP_GALLERY_SRCS.slice(0, 8)
+  const storySections = (loveStory.timeline || []).map((item, index) => ({
+    ...item,
+    image: item.image || '/assets/images/prenup/5.jpg',
+    index,
+  }))
+  const storyImages = storySections.map((item) => item.image)
 
   useEffect(() => {
     // Title animation
@@ -66,11 +71,11 @@ const LoveStory = () => {
 
   // Modal navigation functions
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % polaroidImages.length)
+    setCurrentImageIndex((prev) => (prev + 1) % storyImages.length)
   }
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + polaroidImages.length) % polaroidImages.length)
+    setCurrentImageIndex((prev) => (prev - 1 + storyImages.length) % storyImages.length)
   }
 
   const closeModal = () => {
@@ -85,15 +90,15 @@ const LoveStory = () => {
       if (e.key === 'Escape') {
         setIsModalOpen(false)
       } else if (e.key === 'ArrowLeft') {
-        setCurrentImageIndex((prev) => (prev - 1 + polaroidImages.length) % polaroidImages.length)
+        setCurrentImageIndex((prev) => (prev - 1 + storyImages.length) % storyImages.length)
       } else if (e.key === 'ArrowRight') {
-        setCurrentImageIndex((prev) => (prev + 1) % polaroidImages.length)
+        setCurrentImageIndex((prev) => (prev + 1) % storyImages.length)
       }
     }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [isModalOpen, polaroidImages.length])
+  }, [isModalOpen, storyImages.length])
 
   // Modal animations
   useEffect(() => {
@@ -127,21 +132,22 @@ const LoveStory = () => {
     }
   }, [isModalOpen])
 
-  // Gallery item component
-  const Polaroid = ({ image, index, altLabel }) => {
-    const alt = altLabel || `Gallery image ${index + 1}`
+  // Polaroid item component (old-style thick white frame)
+  const StoryPolaroid = ({ image, index, altLabel }) => {
+    const alt = altLabel || `Story image ${index + 1}`
+    const rotateClass = index % 2 === 0 ? '-rotate-[2.5deg]' : 'rotate-[2.5deg]'
     return (
       <button
         type="button"
-        className="relative w-full overflow-hidden rounded-xl shadow-md cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+        className={`relative w-full max-w-[360px] cursor-pointer shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl ${rotateClass}`}
         onClick={() => handleImageClick(index)}
-        aria-label={`Open gallery image ${index + 1}`}
+        aria-label={`Open story image ${index + 1}`}
       >
-        <div className="aspect-square w-full overflow-hidden bg-[#94AFC3]">
+        <div className="w-full overflow-hidden border-[10px] border-b-[44px] border-white bg-white">
           <img
             src={image}
             alt={alt}
-            className="h-full w-full object-cover"
+            className="aspect-square h-full w-full object-cover"
             style={{ objectPosition: getPrenupObjectPosition(image) }}
             loading="lazy"
             decoding="async"
@@ -211,40 +217,42 @@ const LoveStory = () => {
             </div>
           ) : null}
 
-          {Array.isArray(loveStory.timeline) && loveStory.timeline.length > 0 ? (
-            <div className="story-item mx-auto mb-10 max-w-3xl space-y-8 sm:mb-12 md:mb-14">
-              {loveStory.timeline.map((item, i) => (
-                <div key={`${item.title}-${i}`} className="text-center">
-                  {item.title ? (
-                    <h4
-                      className="font-boska mb-2 text-lg text-[#333333] sm:text-xl"
-                    >
-                      {item.title}
-                    </h4>
-                  ) : null}
-                  {item.date ? (
-                    <p className="font-albert mb-2 text-sm text-[#666666]">{item.date}</p>
-                  ) : null}
-                  {item.description ? (
-                    <p className="font-albert text-sm font-thin leading-relaxed text-[#333333] sm:text-base">
-                      {item.description}
-                    </p>
-                  ) : null}
-                </div>
+          {storySections.length > 0 ? (
+            <div className="mx-auto mb-10 flex max-w-5xl flex-col gap-10 sm:mb-12 sm:gap-12 md:mb-14">
+              {storySections.map((item, i) => (
+                <article
+                  key={`${item.title}-${i}`}
+                  className={`story-item flex flex-col items-center gap-5 md:gap-8 ${
+                    i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                  }`}
+                >
+                  <div className="w-full md:w-[42%] flex justify-center">
+                    <StoryPolaroid
+                      image={item.image}
+                      index={i}
+                      altLabel={item.title || `story-${i + 1}`}
+                    />
+                  </div>
+
+                  <div className="w-full md:w-[58%] text-center md:text-left">
+                    {item.title ? (
+                      <h4 className="mb-2 font-boska text-xl text-[#333333] sm:text-2xl">
+                        {item.title}
+                      </h4>
+                    ) : null}
+                    {item.date ? (
+                      <p className="mb-2 font-albert text-sm text-[#666666]">{item.date}</p>
+                    ) : null}
+                    {item.description ? (
+                      <p className="whitespace-pre-line font-albert text-sm font-thin leading-relaxed text-[#333333] sm:text-base">
+                        {item.description}
+                      </p>
+                    ) : null}
+                  </div>
+                </article>
               ))}
             </div>
           ) : null}
-
-          <div className="story-item mx-auto grid w-full max-w-4xl grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3">
-            {polaroidImages.map((image, index) => (
-              <Polaroid
-                key={image}
-                image={image}
-                index={index}
-                altLabel={`gallery-${index + 1}`}
-              />
-            ))}
-          </div>
         </div>
       </div>
 
@@ -305,11 +313,11 @@ const LoveStory = () => {
             style={{ pointerEvents: 'none' }}
           >
             <img
-              src={polaroidImages[currentImageIndex]}
+              src={storyImages[currentImageIndex]}
               alt={`Gallery image ${currentImageIndex + 1}`}
               className="max-h-[85vh] max-w-[90vw] bg-[#94AFC3] object-contain"
               style={{
-                objectPosition: getPrenupObjectPosition(polaroidImages[currentImageIndex]),
+                objectPosition: getPrenupObjectPosition(storyImages[currentImageIndex]),
               }}
               loading="eager"
               decoding="async"
@@ -319,7 +327,7 @@ const LoveStory = () => {
           {/* Image Counter */}
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm">
             <span className="text-white text-sm font-albert">
-              {currentImageIndex + 1} / {polaroidImages.length}
+              {currentImageIndex + 1} / {storyImages.length}
             </span>
           </div>
         </div>,

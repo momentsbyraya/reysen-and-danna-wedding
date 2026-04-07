@@ -2,6 +2,9 @@ import React, { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { gsap } from 'gsap'
 import { X } from 'lucide-react'
+import { weddingConfig } from '../config/weddingConfig'
+
+const { website: rsvpFormUrl, embedUrl } = weddingConfig.rsvp
 
 const RSVPModal = ({ isOpen, onClose }) => {
   const modalRef = useRef(null)
@@ -64,12 +67,32 @@ const RSVPModal = ({ isOpen, onClose }) => {
       </header>
 
       <div
-        className="rsvp-modal-content relative z-10 flex min-h-0 flex-1 flex-col items-center justify-center overflow-auto px-4 py-8 sm:px-6"
-        style={{ paddingBottom: 'max(2rem, env(safe-area-inset-bottom))' }}
+        className="rsvp-modal-content relative z-10 flex min-h-0 flex-1 flex-col overflow-auto"
+        style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}
       >
-        <p className="text-center font-albert text-xl text-[#333333] sm:text-2xl md:text-3xl">
-          To be added
-        </p>
+        {embedUrl ? (
+          <iframe
+            title="RSVP — Google Form"
+            src={embedUrl}
+            className="block min-h-[min(70dvh,560px)] w-full flex-1 border-0 bg-white"
+          />
+        ) : (
+          <p className="px-4 py-8 text-center font-albert text-lg text-[#333333]">
+            RSVP form link is not configured.
+          </p>
+        )}
+        {rsvpFormUrl && (
+          <p className="flex-shrink-0 px-4 py-3 text-center font-albert text-sm text-[#5a7390]">
+            <a
+              href={rsvpFormUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-[#6685A4]/60 underline-offset-2 transition-colors hover:text-[#6685A4]"
+            >
+              Open RSVP form in a new tab
+            </a>
+          </p>
+        )}
       </div>
     </div>,
     document.body

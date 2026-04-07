@@ -1,12 +1,36 @@
 {
   "title": "Our Story",
-  "content": "We met at work—Reysen as branch manager and Danna as loan officer. Coworkers teased us when they saw what was growing between us. What started as colleagues became friendship, then love—and now we’re ready to celebrate with everyone who cheered us on.",
+  "content": "Just a quiet crossing of paths,\n\ntwo lives moving in their own rhythm,\n\nuntil somehow... they began to move as one.",
   "timeline": [
     {
-      "title": "The Beginning",
+      "title": "A Quiet Beginning",
       "date": "",
-      "description": "Same branch, different roles: branch manager and loan officer. The team noticed before we did—and the teasing became part of our story.",
-      "image": "couple2"
+      "description": "Reysen was the kind of presence you do not notice all at once, but slowly and surely, like a calm that settles in your soul.\n\nDanna, steady and warm, carried a light of her own, the kind that does not try to shine, but simply does.",
+      "image": "/assets/images/prenup/5.jpg"
+    },
+    {
+      "title": "In Perfect Balance",
+      "date": "",
+      "description": "They were different in ways that did not clash, but instead completed something unspoken.\n\nWhere one was quiet, the other brought sound. Where one was still, the other brought motion.",
+      "image": "/assets/images/prenup/6.jpg"
+    },
+    {
+      "title": "Something Rare",
+      "date": "",
+      "description": "And in that balance, they found something rare: a love that did not need to be loud to be real.\n\nDays turned into memories, and simple moments into something sacred.",
+      "image": "/assets/images/prenup/7.jpg"
+    },
+    {
+      "title": "Gently Written",
+      "date": "",
+      "description": "Laughter came easily, and silence felt full, not empty.\n\nSomewhere between the ordinary and the unexpected, their story unfolded, not rushed, not forced, but written gently, as if it was always meant to be.",
+      "image": "/assets/images/prenup/8.jpg"
+    },
+    {
+      "title": "A Shared Becoming",
+      "date": "",
+      "description": "Now, what they have is more than just love. It is a quiet certainty, a shared becoming, and a promise that whatever comes next, they will face it together.",
+      "image": "/assets/images/prenup/9.jpg"
     }
   ]
 }

@@ -25,8 +25,11 @@ export const weddingConfig = {
     deadline: "2026-04-16",
     email: "",
     phone: "",
-    website: "",
-    message: "Please RSVP by April 16th, 2026"
+    website: "https://forms.gle/xaLEFzXSMePW7cWa6",
+    /** Google Forms embed src (?embedded=true) */
+    embedUrl:
+      "https://docs.google.com/forms/d/e/1FAIpQLSeo69lKpgcs1TQ2oXLmFyjdLpVUUgDUZ3sZdiCoXV4gcxk6BA/viewform?embedded=true",
+    message: "Please RSVP by April 16, 2026"
   },
 
   // Theme and Styling

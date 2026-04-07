@@ -6,9 +6,9 @@ import './OpeningScreen.css'
 
 /** Prenup photos: top → middle → bottom, full-bleed B&W background */
 const OPENING_BACKGROUND_IMAGES = [
-  '/assets/images/prenup/1.jpg',
+  '/assets/images/prenup/663786614_1516102123269533_1674279658680711658_n.jpg',
   '/assets/images/prenup/2.jpg',
-  '/assets/images/prenup/3.jpg',
+  '/assets/images/prenup/666292573_1508228547357381_7262970699818167847_n.jpg',
 ]
 
 function OpeningScreen({ onActivateAudio, onEnvelopeOpen }) {

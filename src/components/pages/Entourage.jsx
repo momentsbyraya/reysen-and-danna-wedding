@@ -594,10 +594,10 @@ const Entourage = ({ embedded = false, onClose }) => {
                 </div>
               )}
 
-              {/* Maid of Honor */}
+              {/* Matron of Honor */}
               {maidOfHonor && (
                 <div ref={maidOfHonorRef} className="flex-1">
-                  <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-left uppercase" style={{ color: '#5BAED9' }}>Maid Of Honor</p>
+                  <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-left uppercase" style={{ color: '#5BAED9' }}>Matron Of Honor</p>
                   {maidOfHonor.names && maidOfHonor.names.map((name, index) => (
                     <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-left">
                       {name}
@@ -612,15 +612,15 @@ const Entourage = ({ embedded = false, onClose }) => {
               <div ref={secondarySponsorsRef} className="mb-6">
                 <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl imperial-script-regular mb-6 text-center capitalize whitespace-nowrap" style={{ color: '#5BAED9' }}>Secondary Sponsors</h3>
 
-                {/* Three Sponsors in One Row */}
-                <div className="flex flex-row gap-4 sm:gap-6 justify-center items-start mb-6">
+                {/* Portrait/mobile: stack; wider screens: 3 columns */}
+                <div className="mb-6 flex flex-col gap-6 sm:gap-6 md:flex-row justify-center items-start">
                   {/* Candle Sponsors */}
                   {candleSponsors && (
-                    <div className="flex-1">
+                    <div className="w-full md:flex-1">
                       <div ref={candleSponsorsRef} className="flex flex-col gap-2 justify-center items-center">
                         <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#5BAED9' }}>Candle Sponsors</p>
                         {candleSponsors.names && candleSponsors.names.map((name, index) => (
-                          <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
+                          <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] text-center whitespace-normal break-words">
                             {name}
                           </p>
                         ))}
@@ -630,11 +630,11 @@ const Entourage = ({ embedded = false, onClose }) => {
 
                   {/* Veil Sponsors */}
                   {veilSponsors && (
-                    <div className="flex-1">
+                    <div className="w-full md:flex-1">
                       <div ref={veilSponsorsRef} className="flex flex-col gap-2 justify-center items-center">
                         <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#5BAED9' }}>Veil Sponsors</p>
                         {veilSponsors.names && veilSponsors.names.map((name, index) => (
-                          <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
+                          <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] text-center whitespace-normal break-words">
                             {name}
                           </p>
                         ))}
@@ -644,11 +644,11 @@ const Entourage = ({ embedded = false, onClose }) => {
 
                   {/* Cord Sponsors */}
                   {cordSponsors && (
-                    <div className="flex-1">
+                    <div className="w-full md:flex-1">
                       <div ref={cordSponsorsRef} className="flex flex-col gap-2 justify-center items-center">
                         <p className="text-[10px] sm:text-[13px] md:text-[15px] lg:text-[17px] caudex-bold mb-2 whitespace-nowrap text-center uppercase" style={{ color: '#5BAED9' }}>Cord Sponsors</p>
                         {cordSponsors.names && cordSponsors.names.map((name, index) => (
-                          <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
+                          <p key={index} className="text-[8.5px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-poppins uppercase text-[#333333] text-center whitespace-normal break-words">
                             {name}
                           </p>
                         ))}

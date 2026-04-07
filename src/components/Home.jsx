@@ -4,11 +4,11 @@ import Venue from './Venue'
 import Schedule from './Schedule'
 import RSVPSection from './RSVPSection'
 import LoveStory from './LoveStory'
+import Gallery from './Gallery'
 import GiftSection from './GiftSection'
 import DressCode from './DressCode'
 import FAQ from './FAQ'
 import SaveTheDateCounter from './SaveTheDateCounter'
-import Divider from './Divider'
 import './pages/Details.css'
 
 const Home = ({ onOpenRSVP, onOpenEntourage }) => {
@@ -63,6 +63,9 @@ const Home = ({ onOpenRSVP, onOpenEntourage }) => {
 
           {/* Love Story Section */}
           <LoveStory />
+
+          {/* Gallery Section */}
+          <Gallery />
 
           {/* Gift Section - under Our Story */}
           <GiftSection />

@@ -23,12 +23,18 @@ const GiftSection = () => {
             Your presence is the greatest gift. If you wish to bless us, you may use this QR.
           </p>
 
+          <p className="font-albert text-center text-sm sm:text-base text-[#333333] mb-3">
+            BDO
+          </p>
+
           <div className="w-full aspect-square rounded-xl border border-dashed border-[#b8c6d8] bg-white flex items-center justify-center p-3 sm:p-4 overflow-hidden">
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="font-albert text-[#333333] opacity-80 text-center">
-                TO BE ADDED
-              </div>
-            </div>
+            <img
+              src="/assets/images/qr/qr-code.png"
+              alt="Gift QR code"
+              className="h-full w-full object-contain"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
       </div>

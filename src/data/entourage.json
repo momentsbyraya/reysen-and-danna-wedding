@@ -9,138 +9,151 @@
   },
   "parents": {
     "groom": {
-      "father": "Lorem Ipsum",
-      "mother": "Lorem Ipsum"
+      "father": "Rolando T. Flores, Jr.",
+      "mother": "Cresilda S. Flores"
     },
     "bride": {
-      "father": "Lorem Ipsum",
-      "mother": "Lorem Ipsum"
+      "father": "Peter Paul P. Obordo",
+      "mother": "Helen Q. Obordo"
     }
   },
   "entourageList": [
     {
       "category": "Principal Sponsors",
       "ninong": [
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum"
+        "Mr. Peter Arcete",
+        "Mr. Paul Boligao",
+        "Mr. Victor Operario Jr.",
+        "Mr. Victor Obordo",
+        "Mr. Albert Aniñon",
+        "Mr. Souvenir Hope Osorio",
+        "Mr. Decoroso Elumbaring",
+        "Mr. Joel Lomocso",
+        "Mr. Ryian P. Benitez",
+        "Mr. Joseph Faith M. Borlaza",
+        "Mr. Mark Y. Ramirez",
+        "Mr. Philips F. Adasa",
+        "Mr. Vincent Tanjay",
+        "Mr. & Mrs. Haidee O. Diagmel",
+        "Mr. Celso V. Marquez",
+        "Mr. Roy V. Bacon",
+        "Mr. Jervy M. Labores",
+        "Mr. Higino T. Alano"
       ],
       "ninang": [
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum"
+        "Mrs. Michelle Arcete",
+        "Mrs. Mercy Boligao",
+        "Mrs. Maria Elvie Operaio",
+        "Mrs. Sarah Obordo",
+        "Mrs. Irish Mae T. Osorio",
+        "Mrs. Charmaine I. Elumbaring",
+        "Mrs. Melanie P. Lomocso",
+        "Mrs. Lily P. Benitez",
+        "Mrs. Maribeth A. Borlaza",
+        "Mrs. Betsy Q. Ramirez",
+        "Ms. Christine C. Andus",
+        "Mrs. Zeneth F. Tanjay",
+        "Mrs. Georgee V. Marquez",
+        "Mrs. Ester D. Bacon",
+        "Mrs. Christine Joy S. Labores",
+        "Mrs. Janet Gladys C. Alano",
+        "Mrs. Arceli Palmero"
       ]
     },
     {
       "category": "Bestman",
       "names": [
-        "Lorem Ipsum"
+        "Rolando T. Flores III"
       ]
     },
     {
       "category": "Maid of Honor",
       "names": [
-        "Lorem Ipsum"
+        "Jessca Marie Obordo-Dulang"
       ]
     },
     {
       "category": "Secondary Sponsors",
       "groomsmen": [
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum"
+        "Zedley Laput",
+        "Chivy John Enguito",
+        "John Francis F. Colcol",
+        "Joshue F. Requina",
+        "Bobby S. Dumadag",
+        "Jericho L. Villaroman",
+        "Jan-riel P. Flores",
+        "Roland Sebastian F. Colcol"
       ],
       "bridesmaid": [
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum"
+        "Mary Ryavienne Lexi A. Obordo",
+        "Adriel Eunice Obordo",
+        "Edcel Marie Laput",
+        "Herlyn Laput",
+        "Jinky Marie Quizo",
+        "Shaneia Kane Q. Sanoy",
+        "Kea Mae D. Solivio",
+        "Merlycar D. Solivio",
+        "Kristine S. Flores",
+        "Jashley Jaye F. Acas",
+        "Charlene Tagantan",
+        "Rishaynne khaye A. Flores"
       ]
     },
     {
       "category": "Candle Sponsors",
       "names": [
-        "Lorem Ipsum",
-        "Lorem Ipsum"
+        "Mr. Rolando S. Flores III",
+        "Mrs. Eva May T. Flores"
       ]
     },
     {
       "category": "Veil Sponsors",
       "names": [
-        "Lorem Ipsum",
-        "Lorem Ipsum"
+        "Mr. Christian Roy Dulang",
+        "Mrs. Jessca Marie Obordo-Dulang"
       ]
     },
     {
       "category": "Cord Sponsors",
       "names": [
-        "Lorem Ipsum",
-        "Lorem Ipsum"
+        "Mr. Otto Von L. Borbon",
+        "Mrs. Jomarie B. Borbon"
       ]
     },
     {
       "category": "Ring Bearer",
       "names": [
-        "Lorem Ipsum"
+        "Kaleb L. Borbon"
       ]
     },
     {
       "category": "Coin Bearer",
       "names": [
-        "Lorem Ipsum"
+        "Rhainer A. Flores"
       ]
     },
     {
       "category": "Bible Bearer",
       "names": [
-        "Lorem Ipsum"
+        "Lance T. Flores"
       ]
     },
     {
       "category": "Flower Boys",
       "names": [
-        "Lorem Ipsum"
+        "Dayne E. Solivio",
+        "Khalil Laput",
+        "Donie P. Flores",
+        "Nicklaus C. Solivio"
       ]
     },
     {
       "category": "Junior Flower Girls",
       "names": [
-        "Lorem Ipsum",
-        "Lorem Ipsum",
-        "Lorem Ipsum"
+        "Keona L. Borbon",
+        "Dulce Amarys R. Bajamunde",
+        "Ariana P. Flores",
+        "Scarlette Summer M. Solivio"
       ]
     }
   ]
