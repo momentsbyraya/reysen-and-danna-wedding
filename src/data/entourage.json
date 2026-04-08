@@ -34,17 +34,17 @@
         "Mr. Mark Y. Ramirez",
         "Mr. Philips F. Adasa",
         "Mr. Vincent Tanjay",
-        "Mr. & Mrs. Haidee O. Diagmel",
+        "Mr. Nimuel J. Diagmel",
         "Mr. Celso V. Marquez",
         "Mr. Roy V. Bacon",
-        "Mr. Jervy M. Labores",
-        "Mr. Higino T. Alano"
+        "Mr. Jervy M. Labores"
       ],
       "ninang": [
         "Mrs. Michelle Arcete",
         "Mrs. Mercy Boligao",
-        "Mrs. Maria Elvie Operaio",
+        "Mrs. Maria Elvie Operario",
         "Mrs. Sarah Obordo",
+        "Mrs. Arceli Palmero",
         "Mrs. Irish Mae T. Osorio",
         "Mrs. Charmaine I. Elumbaring",
         "Mrs. Melanie P. Lomocso",
@@ -53,11 +53,10 @@
         "Mrs. Betsy Q. Ramirez",
         "Ms. Christine C. Andus",
         "Mrs. Zeneth F. Tanjay",
+        "Mrs. Haidee O. Diagmel",
         "Mrs. Georgee V. Marquez",
         "Mrs. Ester D. Bacon",
-        "Mrs. Christine Joy S. Labores",
-        "Mrs. Janet Gladys C. Alano",
-        "Mrs. Arceli Palmero"
+        "Mrs. Christine Joy S. Labores"
       ]
     },
     {
@@ -141,7 +140,6 @@
     {
       "category": "Flower Boys",
       "names": [
-        "Dayne E. Solivio",
         "Khalil Laput",
         "Donie P. Flores",
         "Nicklaus C. Solivio"
@@ -150,6 +148,8 @@
     {
       "category": "Junior Flower Girls",
       "names": [
+        "Dayne Solivio",
+        "Fern Marguerith O. Dulang",
         "Keona L. Borbon",
         "Dulce Amarys R. Bajamunde",
         "Ariana P. Flores",
