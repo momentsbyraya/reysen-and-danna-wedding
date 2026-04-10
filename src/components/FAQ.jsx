@@ -31,6 +31,7 @@ const FAQ = () => {
       'Is RSVP required?': Mail,
       'Are children allowed?': Baby,
       'Is parking available?': Car,
+      'Where can I park at Missio Dei Hotel?': Car,
       'Can guests take photos or videos during the ceremony?': Camera,
       'Is there a gift registry?': Gift,
       'Final Reminder': Heart
